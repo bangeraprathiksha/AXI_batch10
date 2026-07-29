@@ -1,8 +1,8 @@
 class scoreboard extends uvm_scoreboard;
   `uvm_component_utils(scoreboard)
 
-  uvm_tlm_analysis_fifo #(seq_item) wrt_fifo;   // from write-fifo monitor
-  uvm_tlm_analysis_fifo #(seq_item) rd_fifo;   // from read-fifo monitor
+  uvm_tlm_analysis_fifo #(cpu_seq_item) wrt_fifo;   // from write-fifo monitor
+  uvm_tlm_analysis_fifo #(cpu_seq_item) rd_fifo;   // from read-fifo monitor
 
   function new(string name="scoreboard", uvm_component parent=null);
     super.new(name, parent);
