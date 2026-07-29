@@ -47,7 +47,7 @@ module hdl_top;
     aresetn = 1'b1;
   end
 
-  cpu_intf intf(.clk(aclk),.rst(aresetn));
+  cpu_intf c_intf(.clk(aclk),.rst(aresetn));
 
   // Variable : intf
   // axi4 Interface Instantiation
@@ -55,7 +55,7 @@ module hdl_top;
                .aresetn(aresetn));
 
   initial begin
-    uvm_config_db#(virtual cpu_intf)::set(null,"*","vif",intf);
+    uvm_config_db#(virtual cpu_intf)::set(null,"*","vif",c_intf);
   end
 
   //-------------------------------------------------------
@@ -80,12 +80,12 @@ module hdl_top;
     .ARESETn  (aresetn),
 
     // FIFO side -> cpu_if
-    .wr_en    (intf.wr_en),
-    .rd_en    (intf.rd_en),
-    .wr_data  (intf.wr_data),
-    .rd_data  (intf.rd_data),
-    .full     (intf.full),
-    .empty    (intf.empty),
+    .wr_en    (c_intf.wr_en),
+    .rd_en    (c_intf.rd_en),
+    .wr_data  (c_intf.wr_data),
+    .rd_data  (c_intf.rd_data),
+    .full     (c_intf.full),
+    .empty    (c_intf.empty),
 
     // AXI side -> intf (write address channel)
     .AWID_a    (intf.awid),
