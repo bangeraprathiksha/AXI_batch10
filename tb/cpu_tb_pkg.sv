@@ -31,6 +31,7 @@ package cpu_tb_pkg;
   `include "passive_agent/cpu_passive_agent.sv"
 
   `include "env/cpu_scoreboard.sv"
+  `include "env/cpu_subscriber.sv"
   `include "env/cpu_env.sv"
   `include "env/axi4_vip_env.sv"
 
