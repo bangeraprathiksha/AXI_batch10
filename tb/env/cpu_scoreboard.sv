@@ -16,9 +16,9 @@ class scoreboard extends uvm_scoreboard;
 
   task run_phase(uvm_phase phase);
     forever begin
-      seq_item wrt,rd;
-      wrt = seq_item::type_id::create("wrt");
-      rd  = seq_item::type_id::create("rd");
+      cpu_seq_item wrt,rd;
+      wrt = cpu_seq_item::type_id::create("wrt");
+      rd  = cpu_seq_item::type_id::create("rd");
       fork
       wrt_fifo.get(wrt);
       rd_fifo.get(rd);
