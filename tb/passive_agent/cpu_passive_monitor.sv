@@ -31,8 +31,8 @@ class cpu_passive_monitor extends uvm_monitor;
         item.rd_data = vif.rd_data;
         passive_ap.write(item);
         passive_cg_port.write(item);
+      end
     end
-
   endtask
 
 endclass
