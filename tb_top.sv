@@ -14,7 +14,7 @@ module tb_top;
   import uvm_pkg::*;
   import axi4_globals_pkg::*;
   import axi4_slave_pkg::*;
-  import tb_pkg::*;
+  import cpu_tb_pkg::*;
   `include "uvm_macros.svh"
 
   initial begin
