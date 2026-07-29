@@ -18,9 +18,9 @@ package cpu_tb_pkg;
   `include "slave_seq/axi4_slave_write_seq.sv"
   `include "slave_seq/axi4_slave_read_seq.sv"
 
-  `include "tb_active_agent/cpu_seq_item.sv"
-  `include "tb_active_agent/axi_seq_item"
-  `include "tb_active_agent/cpu_sequencer.sv"
+  `include "active_agent/cpu_seq_item.sv"
+  `include "active_agent/axi_seq_item"
+  `include "active_agent/cpu_sequencer.sv"
   `include "tb_active_agent/cpu_driver.sv"
   `include "tb_active_agent/cpu_active_monitor.sv"
   `include "tb_active_agent/cpu_active_agent.sv"
