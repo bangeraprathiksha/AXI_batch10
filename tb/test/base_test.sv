@@ -2,7 +2,7 @@ class base_test extends uvm_test;
  `uvm_component_utils(base_test)
 
   top_env tenv;
-  cpu_sequence seq;
+  sequence seq;
 
 
  function new(string name="test", uvm_component parent);
