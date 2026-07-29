@@ -1,10 +1,10 @@
-class scoreboard extends uvm_scoreboard;
-  `uvm_component_utils(scoreboard)
+class cpu_scoreboard extends uvm_scoreboard;
+  `uvm_component_utils(cpu_scoreboard)
 
   uvm_tlm_analysis_fifo #(cpu_seq_item) wrt_fifo;   // from write-fifo monitor
   uvm_tlm_analysis_fifo #(cpu_seq_item) rd_fifo;   // from read-fifo monitor
 
-  function new(string name="scoreboard", uvm_component parent=null);
+  function new(string name="cpu_scoreboard", uvm_component parent=null);
     super.new(name, parent);
   endfunction
 
