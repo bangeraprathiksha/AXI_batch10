@@ -1,6 +1,6 @@
 interface cpu_intf(input bit clk);
 
-  logic rst_n;
+  logic rst;
   logic wr_en;
   logic rd_en;
   logic [127:0] wr_data;
