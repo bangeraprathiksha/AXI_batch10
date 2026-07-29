@@ -18,7 +18,7 @@ globals/axi4_globals_pkg.sv
 
 // ---- HDL interfaces ----
 hdl_top/axi4_interface/axi4_if.sv
-hdl_top/cpu_inf/interface.sv
+hdl_top/cpu_inf/cpu_intf.sv
 
 // ---- Slave VIP (HVL layer, slave only) - MUST come before the slave BFM
 // files below: axi4_slave_driver_bfm.sv/axi4_slave_monitor_bfm.sv both
