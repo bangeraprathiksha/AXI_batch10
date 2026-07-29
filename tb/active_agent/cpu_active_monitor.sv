@@ -35,6 +35,4 @@ class cpu_active_monitor extends uvm_monitor;
     end
   endtask
 
-  endtask
-
 endclass
