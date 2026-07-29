@@ -5,14 +5,14 @@ class cpu_passive_monitor extends uvm_monitor;
   `uvm_component_utils(cpu_passive_monitor)
 
   virtual cpu_intf vif;
-  cpu_seq_item req;
+  cpu_seq_item item;
 
   uvm_analysis_port #(cpu_seq_item) passive_ap;
   uvm_analysis_port #(cpu_seq_item) passive_cg_port;
 
   function new(string name = "cpu_passive_monitor", uvm_component parent);
     super.new(name, parent);
-    apassive_ap      = new("passive_ap", this);
+    passive_ap      = new("passive_ap", this);
     passive_cg_port = new("passive_cg_port", this);
   endfunction
 
