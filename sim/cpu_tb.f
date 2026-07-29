@@ -46,7 +46,7 @@ rtl/AXI_Master.v
 rtl/Top_Module_AXI4.v
 
 // ---- Your testbench ----
-tb/tb_pkg.sv
+tb/cpu_tb_pkg.sv
 
 // ---- Top-level ----
 tb_top.sv
