@@ -21,14 +21,14 @@ package cpu_tb_pkg;
   `include "active_agent/cpu_seq_item.sv"
   `include "active_agent/axi_seq_item"
   `include "active_agent/cpu_sequencer.sv"
-  `include "tb_active_agent/cpu_driver.sv"
-  `include "tb_active_agent/cpu_active_monitor.sv"
-  `include "tb_active_agent/cpu_active_agent.sv"
-  `include "tb_active_agent/write_seq.sv"
-  `include "tb_active_agent/read_seq.sv"   // ADDED: cpu-side read sequence
+  `include "active_agent/cpu_driver.sv"
+  `include "active_agent/cpu_active_monitor.sv"
+  `include "active_agent/cpu_active_agent.sv"
+  `include "active_agent/write_seq.sv"
+  `include "active_agent/read_seq.sv"   // ADDED: cpu-side read sequence
 
-  `include "tb_passive_agent/cpu_passive_monitor.sv"
-  `include "tb_passive_agent/cpu_passive_agent.sv"
+  `include "passive_agent/cpu_passive_monitor.sv"
+  `include "passive_agent/cpu_passive_agent.sv"
 
   `include "env/cpu_scoreboard.sv"
   `include "env/cpu_env.sv"
