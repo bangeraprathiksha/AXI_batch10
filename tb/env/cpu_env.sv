@@ -26,8 +26,10 @@ class cpu_env extends uvm_env;
     //---------------------------------------
     // CPU monitor -> Scoreboard
     //---------------------------------------
-    active_agent.mon.active_ap.connect(sb.cpu_imp);
-    passive_agent.mon.passive_ap.connect(sb.slave_imp);
+    active_agent.mon.active_ap.connect(sb.cpu_imp.analysis_export);
+passive_agent.mon.passive_ap.connect(sb.slave_imp.analysis_export);
+    // active_agent.mon.active_ap.connect(sb.cpu_imp);
+    // passive_agent.mon.passive_ap.connect(sb.slave_imp);
 
     //---------------------------------------
     // Coverage
