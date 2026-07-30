@@ -31,7 +31,19 @@ class cpu_read_seq extends uvm_sequence #(axi_seq_item);
     });
 
     finish_item(req);
-
+      `uvm_info(get_type_name(),
+    $sformatf("Generated Read Transaction:\nTXN_ID = %0d\nADDR = 0x%08h\nLEN = %0d\nSIZE = %0d\nBURST = %0d\nLOCK = %0d\nCACHE = %0d\nPROT = %0d\nSTROBE = 0x%0h\nDATA = 0x%08h",
+              req.txn_id,
+              req.addr,
+              req.len,
+              req.size,
+              req.burst,
+              req.lock,
+              req.cache,
+              req.prot,
+              req.strobe[0],
+              req.data[0]),
+    UVM_LOW)
     `uvm_info(get_type_name(), "Generated Read Transaction", UVM_LOW)
     req.print();
 
