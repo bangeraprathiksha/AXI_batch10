@@ -39,8 +39,8 @@ class cpu_driver extends uvm_driver #(axi_seq_item);
 
       send_packet(req);
 
-      `uvm_info(get_type_name(),$sformatf("Packet transmission completed",$time)UVM_LOW)
-
+      `uvm_info(get_type_name(),$sformatf("Packet transmission completed",$time),UVM_LOW)
+      
       seq_item_port.item_done();
     end
   endtask
@@ -51,11 +51,11 @@ class cpu_driver extends uvm_driver #(axi_seq_item);
       @(posedge vif.clk);
       if (!vif.empty) begin
         vif.rd_en <= 1'b1;
-        `uvm_info(get_type_name(),$sformatf("[%0t] FIFO NOT EMPTY -> rd_en asserted",$time,)UVM_HIGH)
+        `uvm_info(get_type_name(),$sformatf("[%0t] FIFO NOT EMPTY -> rd_en asserted",$time),UVM_HIGH)
       end
       else begin
         vif.rd_en <= 1'b0;
-        `uvm_info(get_type_name(),$sformatf("[%0t] FIFO EMPTY -> rd_en deasserted",$time,)UVM_HIGH)
+        `uvm_info(get_type_name(),$sformatf("[%0t] FIFO EMPTY -> rd_en deasserted",$time),UVM_HIGH)
       end
     end
   endtask
@@ -69,7 +69,7 @@ class cpu_driver extends uvm_driver #(axi_seq_item);
     int pad_bits;
 
     `uvm_info(get_type_name(),
-              $sformatf("\n\[%0t]\n
+              $sformatf("\n
 ================ DRIVER WRITE TRANSACTION ================\n\
 TXN_ID : %0h\n\
 ADDR   : %08h\n\
@@ -79,7 +79,6 @@ BURST  : %0d\n\
 LOCK   : %0d\n\
 CACHE  : %0d\n\
 PROT   : %0d",
-      $time,
       pkt.txn_id,
       pkt.addr,
       pkt.len,
@@ -149,9 +148,9 @@ PROT   : %0d",
     pad_bits = (128 - (total_bits % 128)) % 128;
 
     if (pad_bits != 0) begin
-      `uvm_info(get_type_name(),
-        $sformatf("Packet needs %0d padding bits", pad_bits),
-        UVM_MEDIUM)
+      $sformatf("[%0t] Packet size after padding = %0d bits",
+          $time,
+          packet_bits.size())
 
       repeat (pad_bits)
         packet_bits.push_back(1'b0);
@@ -170,9 +169,9 @@ PROT   : %0d",
       for (int b = 127; b >= 0; b--)
         word[b] = packet_bits[idx++];
 
-      `uvm_info(get_type_name(),
-        $sformatf("Prepared 128-bit FIFO Word = %032h", word),
-        UVM_LOW)
+      $sformatf("[%0t] Prepared 128-bit FIFO Word = %032h",
+          $time,
+          word)
 
       @(posedge vif.clk);
 
