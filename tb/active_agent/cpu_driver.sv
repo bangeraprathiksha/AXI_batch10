@@ -33,17 +33,13 @@ class cpu_driver extends uvm_driver #(axi_seq_item);
     forever begin
       seq_item_port.get_next_item(req);
 
-      `uvm_info(get_type_name(),
-        "Received transaction from Sequencer",
-        UVM_LOW)
+      `uvm_info(get_type_name(),$sformatf("[%0t] Received transaction from Sequencer",$time),UVM_LOW)
 
       req.print();
 
       send_packet(req);
 
-      `uvm_info(get_type_name(),
-        "Packet transmission completed",
-        UVM_LOW)
+      `uvm_info(get_type_name(),$sformatf("Packet transmission completed",$time)UVM_LOW)
 
       seq_item_port.item_done();
     end
@@ -55,15 +51,11 @@ class cpu_driver extends uvm_driver #(axi_seq_item);
       @(posedge vif.clk);
       if (!vif.empty) begin
         vif.rd_en <= 1'b1;
-        `uvm_info(get_type_name(),
-          "FIFO NOT EMPTY -> rd_en asserted",
-          UVM_HIGH)
+        `uvm_info(get_type_name(),$sformatf("[%0t] FIFO NOT EMPTY -> rd_en asserted",$time,)UVM_HIGH)
       end
       else begin
         vif.rd_en <= 1'b0;
-        `uvm_info(get_type_name(),
-          "FIFO EMPTY -> rd_en deasserted",
-          UVM_HIGH)
+        `uvm_info(get_type_name(),$sformatf("[%0t] FIFO EMPTY -> rd_en deasserted",$time,)UVM_HIGH)
       end
     end
   endtask
@@ -77,7 +69,7 @@ class cpu_driver extends uvm_driver #(axi_seq_item);
     int pad_bits;
 
     `uvm_info(get_type_name(),
-      $sformatf("\n\
+              $sformatf("\n\[%0t]\n
 ================ DRIVER WRITE TRANSACTION ================\n\
 TXN_ID : %0h\n\
 ADDR   : %08h\n\
@@ -87,6 +79,7 @@ BURST  : %0d\n\
 LOCK   : %0d\n\
 CACHE  : %0d\n\
 PROT   : %0d",
+      $time,
       pkt.txn_id,
       pkt.addr,
       pkt.len,
@@ -150,7 +143,7 @@ PROT   : %0d",
     total_bits = packet_bits.size();
 
     `uvm_info(get_type_name(),
-      $sformatf("Packet size before padding = %0d bits", total_bits),
+              $sformatf("[%0t] Packet size before padding = %0d bits",$time, total_bits),
       UVM_LOW)
 
     pad_bits = (128 - (total_bits % 128)) % 128;
@@ -195,7 +188,7 @@ PROT   : %0d",
       vif.rd_en   <= 1'b0;
 
       `uvm_info(get_type_name(),
-        $sformatf("Driven wr_data = %032h, wr_en = %0b", word, 1'b1),
+                $sformatf("[%0t] Driven wr_data = %032h, wr_en = %0b", $time,word, 1'b1),
         UVM_LOW)
     end
 
