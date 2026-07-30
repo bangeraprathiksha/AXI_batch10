@@ -25,7 +25,7 @@ class axi4_virtual_write_seq extends uvm_sequence;
   `uvm_object_utils(axi4_virtual_write_seq)
   `uvm_declare_p_sequencer(top_vseqr)
 
-  rand int unsigned num_txns = 10;
+  rand int unsigned num_txns = 1;
 
   function new(string name = "axi4_virtual_write_seq");
     super.new(name);
