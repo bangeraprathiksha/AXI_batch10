@@ -153,7 +153,7 @@ PROT   : %0d",
     end
 
     `uvm_info(get_type_name(),
-              $sformatf("Packet size after padding = %0d bits\n packets = %p", packet_bits.size(),packet_bits),
+              $sformatf("Packet size after padding = %0d bits", packet_bits.size()),
       UVM_LOW)
 
     idx = 0;
