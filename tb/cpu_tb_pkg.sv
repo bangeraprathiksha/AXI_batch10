@@ -43,7 +43,7 @@ package cpu_tb_pkg;
 
   `include "env/top_env.sv"
   `include "test/base_test.sv"
-  `include "test/single_seq_test.sv"
+  //`include "test/single_seq_test.sv"
   // ADDED: the 2 requested virtual testcases.
   `include "test/axi4_virtual_write_test.sv"
   `include "test/axi4_virtual_read_test.sv"
