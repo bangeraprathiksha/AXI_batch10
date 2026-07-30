@@ -29,6 +29,21 @@ class cpu_passive_monitor extends uvm_monitor;
       if (vif.rd_en && !vif.empty) begin
         item = cpu_seq_item::type_id::create("item");
         item.rd_data = vif.rd_data;
+         `uvm_info("PASSIVE_MON",
+        $sformatf("\n\
+=====================================================\n\
+PASSIVE MONITOR CAPTURED READ TRANSACTION\n\
+-----------------------------------------------------\n\
+TIME    : %0t\n\
+RD_EN   : %0b\n\
+EMPTY   : %0b\n\
+RD_DATA : 0x%08h\n\
+=====================================================",
+        $time,
+        vif.rd_en,
+        vif.empty,
+        item.rd_data),
+        UVM_LOW)
         passive_ap.write(item);
         passive_cg_port.write(item);
       end
