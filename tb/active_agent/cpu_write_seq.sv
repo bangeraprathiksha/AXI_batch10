@@ -61,7 +61,3 @@ class cpu_write_seq extends uvm_sequence #(axi_seq_item);
   endtask
 
 endclass
-
-  endtask
-
-endclass
