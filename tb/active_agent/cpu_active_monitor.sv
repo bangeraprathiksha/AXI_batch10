@@ -29,12 +29,24 @@ class cpu_active_monitor extends uvm_monitor;
       if (vif.wr_en && !vif.full) begin
         item = cpu_seq_item::type_id::create("item");
         item.wr_data = vif.wr_data;
+   
       `uvm_info("ACTIVE_MON",
-        $sformatf("Captured Write Transaction: wr_en=%0b full=%0b wr_data=0x%0h",
-                  vif.wr_en,
-                  vif.full,
-                  item.wr_data),
-        UVM_MEDIUM)
+        $sformatf("\n\
+=====================================================\n\
+ACTIVE MONITOR CAPTURED WRITE TRANSACTION\n\
+-----------------------------------------------------\n\
+TIME    : %0t\n\
+WR_EN   : %0b\n\
+FULL    : %0b\n\
+WR_DATA : 0x%08h\n\
+=====================================================",
+          $time,
+          vif.wr_en,
+          vif.full,
+          item.wr_data),
+        UVM_LOW)
+
+    
 
         active_ap.write(item);
       	active_cg_port.write(item);
