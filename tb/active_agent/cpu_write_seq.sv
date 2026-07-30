@@ -26,7 +26,41 @@ class cpu_write_seq extends uvm_sequence #(axi_seq_item);
     finish_item(req);
 
     `uvm_info(get_type_name(), "Generated Write Transaction", UVM_LOW)
+    `uvm_info(get_type_name(),$sformatf("\n\
+                ================ WRITE TRANSACTION ================\n\
+                TXN_ID : %0h\n\
+                ADDR   : %08h\n\
+                LEN    : %0d\n\
+                SIZE   : %0d\n\
+                BURST  : %0d\n\
+                LOCK   : %0d\n\
+                CACHE  : %0d\n\
+                PROT   : %0d",
+                req.txn_id,
+                req.addr,
+                req.len,
+                req.size,
+                req.burst,
+                req.lock,
+                req.cache,
+                req.prot),
+                UVM_LOW)
+
+    foreach(req.strobe[i])
+      `uvm_info(get_type_name(),
+        $sformatf("STROBE[%0d] = %h", i, req.strobe[i]),
+        UVM_LOW)
+
+    foreach(req.data[i])
+      `uvm_info(get_type_name(),
+        $sformatf("DATA[%0d]   = %08h", i, req.data[i]),
+        UVM_LOW)
+
     req.print();
+
+  endtask
+
+endclass
 
   endtask
 
