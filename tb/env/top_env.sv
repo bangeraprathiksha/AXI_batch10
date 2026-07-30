@@ -26,6 +26,8 @@ class top_env extends uvm_env;
   function void connect_phase(uvm_phase phase);
     super.connect_phase(phase);
     vseqr_h.sqr_h = env.active_agent.seqr;
+    vseqr_h.slave_write_sqr_h = axi_vip_env_h.slave_agt_h.axi4_slave_write_seqr_h;
+    vseqr_h.slave_read_sqr_h  = axi_vip_env_h.slave_agt_h.axi4_slave_read_seqr_h;
   endfunction
 
 endclass
