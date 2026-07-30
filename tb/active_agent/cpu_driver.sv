@@ -165,9 +165,11 @@ PROT   : %0d",
       for (int b = 127; b >= 0; b--)
         word[b] = packet_bits[idx++];
 
-      $sformatf("[%0t] Prepared 128-bit FIFO Word = %032h",
-          $time,
-          word)
+      `uvm_info(get_type_name(),
+          $sformatf("[%0t] Prepared 128-bit FIFO Word = %032h",
+                    $time,
+                    word),
+          UVM_LOW)
 
       @(posedge vif.clk);
 
