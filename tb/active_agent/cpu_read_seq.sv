@@ -32,18 +32,35 @@ class cpu_read_seq extends uvm_sequence #(axi_seq_item);
 
     finish_item(req);
       `uvm_info(get_type_name(),
-    $sformatf("Generated Read Transaction:\nTXN_ID = %0d\nADDR = 0x%08h\nLEN = %0d\nSIZE = %0d\nBURST = %0d\nLOCK = %0d\nCACHE = %0d\nPROT = %0d\nSTROBE = 0x%0h\nDATA = 0x%08h",
-              req.txn_id,
-              req.addr,
-              req.len,
-              req.size,
-              req.burst,
-              req.lock,
-              req.cache,
-              req.prot,
-              req.strobe[0],
-              req.data[0]),
-    UVM_LOW)
+    `uvm_info(get_type_name(),
+      $sformatf("\n\
+=====================================================\n\
+CPU READ SEQUENCE GENERATED TRANSACTION\n\
+-----------------------------------------------------\n\
+TIME    : %0t\n\
+TXN_ID  : %0d\n\
+ADDR    : 0x%08h\n\
+LEN     : %0d\n\
+SIZE    : %0d\n\
+BURST   : %0d\n\
+LOCK    : %0d\n\
+CACHE   : %0d\n\
+PROT    : %0d\n\
+STROBE  : 0x%0h\n\
+DATA    : 0x%08h\n\
+=====================================================",
+        $time,
+        req.txn_id,
+        req.addr,
+        req.len,
+        req.size,
+        req.burst,
+        req.lock,
+        req.cache,
+        req.prot,
+        req.strobe[0],
+        req.data[0]),
+      UVM_LOW)
     `uvm_info(get_type_name(), "Generated Read Transaction", UVM_LOW)
     req.print();
 
