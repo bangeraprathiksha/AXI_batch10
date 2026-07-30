@@ -24,7 +24,7 @@ class top_vseq extends uvm_sequence;
   `uvm_object_utils(top_vseq)
   `uvm_declare_p_sequencer(top_vseqr)
 
-  rand int unsigned num_txns = 1;
+  rand int unsigned num_txns = 10;
 
   function new(string name = "top_vseq");
     super.new(name);
