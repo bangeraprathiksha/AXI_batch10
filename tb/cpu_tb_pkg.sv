@@ -24,8 +24,8 @@ package cpu_tb_pkg;
   `include "active_agent/cpu_driver.sv"
   `include "active_agent/cpu_active_monitor.sv"
   `include "active_agent/cpu_active_agent.sv"
-  `include "active_agent/write_seq.sv"
-  `include "active_agent/read_seq.sv"   // ADDED: cpu-side read sequence
+  `include "active_agent/cpU_write_seq.sv"
+  `include "active_agent/cpu_read_seq.sv"   // ADDED: cpu-side read sequence
 
   `include "passive_agent/cpu_passive_monitor.sv"
   `include "passive_agent/cpu_passive_agent.sv"
