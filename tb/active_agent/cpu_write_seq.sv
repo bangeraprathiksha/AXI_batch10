@@ -1,10 +1,10 @@
-class write_seq extends uvm_sequence #(axi_seq_item);
+class cpu_write_seq extends uvm_sequence #(axi_seq_item);
 
-  `uvm_object_utils(write_seq)
+  `uvm_object_utils(cpu_write_seq)
 
   axi_seq_item req;
 
-  function new(string name = "write_seq");
+  function new(string name = "cpu_write_seq");
     super.new(name);
   endfunction
 
