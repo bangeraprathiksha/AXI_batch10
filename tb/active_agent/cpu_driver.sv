@@ -148,10 +148,6 @@ PROT   : %0d",
     pad_bits = (128 - (total_bits % 128)) % 128;
 
     if (pad_bits != 0) begin
-      $sformatf("[%0t] Packet size after padding = %0d bits",
-          $time,
-          packet_bits.size())
-
       repeat (pad_bits)
         packet_bits.push_back(1'b0);
     end
