@@ -22,7 +22,7 @@ class axi4_virtual_read_test extends base_test;
     seq = axi4_virtual_read_seq::type_id::create("seq");
     if (!seq.randomize() with { num_txns == 10; })
       `uvm_error(get_type_name(), "randomize failed")
-      seq.start(tenv.vseqr);
+      seq.start(env_h.vseqr_h);
 
     phase.drop_objection(this);
   endtask
