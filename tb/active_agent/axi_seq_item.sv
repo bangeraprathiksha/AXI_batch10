@@ -45,18 +45,5 @@ class axi_seq_item extends uvm_sequence_item;
   	solve len before data;
   	solve len before strobe;
   }
-  `uvm_info("AXI_SEQ_ITEM",
-  $sformatf("TXN_ID=%0d ADDR=%h LEN=%0d SIZE=%0d BURST=%b LOCK=%b CACHE=%b PROT=%b STROBE=%p DATA=%p",
-            txn_id,
-            addr,
-            len,
-            size,
-            burst,
-            lock,
-            cache,
-            prot,
-            strobe,
-            data),
-  UVM_LOW)
   
 endclass
