@@ -21,11 +21,19 @@ class cpu_driver extends uvm_driver #(axi_seq_item);
 
 
   task run_phase(uvm_phase phase);
-    fork
-      write_process();
-      read_process();
-    join
-  endtask
+
+  wait(vif.rst_n == 1'b1);
+
+  `uvm_info(get_type_name(),
+    "Reset deasserted. Starting CPU driver",
+    UVM_LOW)
+
+  fork
+    write_process();
+    read_process();
+  join
+
+endtask
 
 
   task write_process();
