@@ -28,6 +28,17 @@ class top_env extends uvm_env;
     vseqr_h.cpu_sqr_h = env.active_agent.seqr;
     vseqr_h.slave_write_sqr_h = axi_vip_env_h.slave_agt_h.axi4_slave_write_seqr_h;
     vseqr_h.slave_read_sqr_h  = axi_vip_env_h.slave_agt_h.axi4_slave_read_seqr_h;
+
+    axi_vip_env_h.slave_agt_h.axi4_slave_mon_proxy_h.axi4_slave_write_address_analysis_port.connect(env.sb.aw_imp);
+
+    axi_vip_env_h.slave_agt_h.axi4_slave_mon_proxy_h.axi4_slave_write_data_analysis_port.connect(env.sb.w_imp);
+
+    axi_vip_env_h.slave_agt_h.axi4_slave_mon_proxy_h.axi4_slave_write_response_analysis_port.connect(env.sb.b_imp);
+
+    axi_vip_env_h.slave_agt_h.axi4_slave_mon_proxy_h.axi4_slave_read_address_analysis_port.connect(env.sb.ar_imp);
+
+    axi_vip_env_h.slave_agt_h.axi4_slave_mon_proxy_h.axi4_slave_read_data_analysis_port.connect(env.sb.r_imp);
+
   endfunction
 
 endclass
