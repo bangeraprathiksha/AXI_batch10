@@ -22,7 +22,7 @@ class cpu_driver extends uvm_driver #(axi_seq_item);
 
   task run_phase(uvm_phase phase);
 
-  wait(vif.rst_n == 1'b1);
+  wait(vif.rst == 0);
 
   `uvm_info(get_type_name(),
     "Reset deasserted. Starting CPU driver",
