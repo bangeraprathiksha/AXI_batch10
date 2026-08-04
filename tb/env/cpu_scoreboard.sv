@@ -483,57 +483,118 @@ endfunction
 
   
   task fifo_read(input int start_ptr, input int end_ptr);
+
     int ptr;
+
+    `uvm_info("SCB",
+      $sformatf("FIFO Read started: start_ptr=%0d end_ptr=%0d",
+      start_ptr, end_ptr),
+      UVM_MEDIUM)
+
     ptr = start_ptr;
+
     while (ptr <= end_ptr) begin
+
         rd_data = fifo_mem[ptr];
+
+        `uvm_info("SCB",
+          $sformatf("Reading FIFO[%0d] = %h",
+          ptr, rd_data),
+          UVM_HIGH)
+
         decoder(rd_data);
+
+        `uvm_info("SCB",
+          $sformatf("Decoder called for FIFO[%0d]",
+          ptr),
+          UVM_HIGH)
+
         ptr++;
+
     end
+
     rd_ptr = end_ptr + 1;
+
     empty = (wr_ptr == rd_ptr);
     full  = ((wr_ptr - rd_ptr) >= 4096);
-  endtask
+
+    `uvm_info("SCB",
+      $sformatf("FIFO Read completed: rd_ptr=%0d empty=%0b full=%0b",
+      rd_ptr, empty, full),
+      UVM_MEDIUM)
+
+endtask
 
 
   task decoder(bit [127:0] fifo_word);
 
+    `uvm_info("SCB",
+      $sformatf("Decoder received FIFO word = %h", fifo_word),
+      UVM_HIGH)
+
     // First word
     if (fifo_word[127:120] == SOP) begin
+
         len   = fifo_word[83:80];
         beats = len + 1;
         actual_bits    = 60 + (beats*4) + (beats*32) + 8;
         expected_words = (actual_bits + 127) / 128;
 
+        `uvm_info("SCB",
+          $sformatf("SOP found in decoder: LEN=%0d BEATS=%0d ACTUAL_BITS=%0d EXPECTED_WORDS=%0d",
+          len, beats, actual_bits, expected_words),
+          UVM_MEDIUM)
+
     end
 
-        // Store every FIFO word
-        packet_q.push_back(fifo_word);
+    // Store every FIFO word
+    packet_q.push_back(fifo_word);
 
-        // Wait until complete packet
+    `uvm_info("SCB",
+      $sformatf("FIFO word added to packet queue. Current packet_q size=%0d/%0d",
+      packet_q.size(), expected_words),
+      UVM_HIGH)
+
+
+    // Wait until complete packet
     if(packet_q.size() == expected_words) begin
-        decode_packet(packet_q);
-        packet_q.delete();
-        expected_words = 0;
-        end
-  endtask
 
-  task decode_packet(bit [127:0] packet_q[$]);
+        `uvm_info("SCB",
+          $sformatf("Complete packet received. Total words=%0d. Calling decode_packet()",
+          packet_q.size()),
+          UVM_MEDIUM)
+
+        decode_packet(packet_q);
+
+        packet_q.delete();
+
+        expected_words = 0;
+
+        `uvm_info("SCB",
+          "Packet queue cleared after decoding",
+          UVM_HIGH)
+
+    end
+
+endtask
+
+task decode_packet(bit [127:0] packet_q[$]);
+
     bit packet[];
 
-        bit [127:0] hdr;
+    bit [127:0] hdr;
 
-        bit [7:0]  sop;
-        bit [3:0]  txn_id;
-        bit [31:0] addr;
-        bit [3:0]  len;
-        bit [2:0]  size;
-        bit [1:0]  burst;
-        bit [1:0]  lock;
-        bit [1:0]  cache;
-        bit [2:0]  prot;
+    bit [7:0]  sop;
+    bit [3:0]  txn_id;
+    bit [31:0] addr;
+    bit [3:0]  len;
+    bit [2:0]  size;
+    bit [1:0]  burst;
+    bit [1:0]  lock;
+    bit [1:0]  cache;
+    bit [2:0]  prot;
     bit [3:0]  strobe[];
-    bit [31:0]  data[];
+    bit [31:0] data[];
     bit [7:0]  eop;
 
     int idx = 0;
@@ -546,12 +607,23 @@ endfunction
     exp_write_pkt_t write_pkt;
     exp_read_pkt_t read_pkt;
 
+    `uvm_info("SCB",
+      $sformatf("decode_packet called. Packet words received = %0d",
+      packet_q.size()),
+      UVM_MEDIUM)
+
+
     if(packet_q.size() == 0) begin
         `uvm_error("SCB","Empty packet")
         return;
-        end
+    end
 
-        hdr = packet_q[0];
+    hdr = packet_q[0];
+
+    `uvm_info("SCB",
+      $sformatf("Header word = %h", hdr),
+      UVM_HIGH)
+
 
     sop    = hdr[127:120];
     txn_id = hdr[119:116];
@@ -559,16 +631,31 @@ endfunction
     len    = hdr[83:80];
     size   = hdr[79:77];
     burst  = hdr[76:75];
-        lock   = hdr[74:73];
-        cache  = hdr[72:71];
-        prot   = hdr[70:68];
+    lock   = hdr[74:73];
+    cache  = hdr[72:71];
+    prot   = hdr[70:68];
+
+
+    `uvm_info("SCB",
+      $sformatf("Decoded Header: SOP=%h TXN_ID=%0d ADDR=%h LEN=%0d SIZE=%0d BURST=%0d LOCK=%0d CACHE=%0d PROT=%0d",
+      sop, txn_id, addr, len, size, burst, lock, cache, prot),
+      UVM_MEDIUM)
+
 
     if(sop != SOP)
       `uvm_error("SCB","SOP mismatch")
 
+
     // Calculate variable sizes
     beats = len+1;
     total_bits = packet_q.size()*128;
+
+
+    `uvm_info("SCB",
+      $sformatf("Packet calculation: BEATS=%0d TOTAL_BITS=%0d",
+      beats, total_bits),
+      UVM_MEDIUM)
+
 
     // Converting entire packet into bit array
     packet = new[total_bits];
@@ -578,14 +665,28 @@ endfunction
         packet[idx++] = packet_q[i][j];
     end
 
+
+    `uvm_info("SCB",
+      $sformatf("Complete packet converted to bit array. Size=%0d bits",
+      packet.size()),
+      UVM_HIGH)
+
+
     //for strobe
     ptr_strobe = 60;
     strobe = new[beats];
+
     for (int i = 0; i < beats; i++)begin
       for(int j=3; j>=0; j--)begin
         strobe[i][j] = packet[ptr_strobe++];
       end
     end
+
+
+    `uvm_info("SCB",
+      $sformatf("Strobe decoded for %0d beats", beats),
+      UVM_HIGH)
+
 
     //for data
     ptr_data = 60 + (beats*4);
@@ -597,6 +698,12 @@ endfunction
       end
     end
 
+
+    `uvm_info("SCB",
+      $sformatf("Data decoded for %0d beats", beats),
+      UVM_HIGH)
+
+
     //for eop
     ptr_eop = 60 + (beats*4) + (beats*32);
 
@@ -604,37 +711,68 @@ endfunction
       eop[i] = packet[ptr_eop++];
     end
 
+
+    `uvm_info("SCB",
+      $sformatf("EOP decoded = %h", eop),
+      UVM_MEDIUM)
+
+
     if (eop != EOP)
       `uvm_error("SCB", "EOP mismatch")
 
-    if((beats == 1) && (data[0] ==  32'h00000000))begin
+
+    if((beats == 1) && (data[0] == 32'h00000000))begin
+
+        `uvm_info("SCB",
+          "Read packet identified. Storing into expected read queue",
+          UVM_MEDIUM)
+
         read_pkt.txn_id = txn_id;
-                read_pkt.addr   = addr;
-                read_pkt.len    = len;
-                read_pkt.size   = size;
-                read_pkt.burst  = burst;
-                read_pkt.lock   = lock;
-                read_pkt.cache  = cache;
-                read_pkt.prot   = prot;
-                read_pkt.strobe = strobe;
-                read_pkt.data   = data;
+        read_pkt.addr   = addr;
+        read_pkt.len    = len;
+        read_pkt.size   = size;
+        read_pkt.burst  = burst;
+        read_pkt.lock   = lock;
+        read_pkt.cache  = cache;
+        read_pkt.prot   = prot;
+        read_pkt.strobe = strobe;
+        read_pkt.data   = data;
+
         exp_read_q.push_back(read_pkt);
+
+        `uvm_info("SCB",
+          $sformatf("Expected Read Queue size = %0d",
+          exp_read_q.size()),
+          UVM_HIGH)
+
     end
     else begin
+
+        `uvm_info("SCB",
+          "Write packet identified. Storing into expected write queue",
+          UVM_MEDIUM)
+
         write_pkt.txn_id = txn_id;
-                write_pkt.addr   = addr;
-                write_pkt.len    = len;
-                write_pkt.size   = size;
-                write_pkt.burst  = burst;
-                write_pkt.lock   = lock;
-                write_pkt.cache  = cache;
-                write_pkt.prot   = prot;
-                write_pkt.strobe = strobe;
-                write_pkt.data   = data;
+        write_pkt.addr   = addr;
+        write_pkt.len    = len;
+        write_pkt.size   = size;
+        write_pkt.burst  = burst;
+        write_pkt.lock   = lock;
+        write_pkt.cache  = cache;
+        write_pkt.prot   = prot;
+        write_pkt.strobe = strobe;
+        write_pkt.data   = data;
+
         exp_write_q.push_back(write_pkt);
+
+        `uvm_info("SCB",
+          $sformatf("Expected Write Queue size = %0d",
+          exp_write_q.size()),
+          UVM_HIGH)
+
     end
 
-  endtask
+endtask
 
   task run_phase(uvm_phase phase);
 
