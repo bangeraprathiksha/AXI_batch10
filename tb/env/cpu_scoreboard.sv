@@ -384,10 +384,12 @@ axi4_slave_tx ar_q[$];
 
   endfunction
 
-  function void write_cpu(cpu_seq_item t);
+function void write_cpu(cpu_seq_item t);
 
     if(!t.wr_en)
       return;
+
+    `uvm_info("SCB", $sformatf("CPU write received : wr_data = %h", t.wr_data), UVM_MEDIUM)
 
     //-----------------------------
     // FIFO Full
@@ -414,11 +416,15 @@ axi4_slave_tx ar_q[$];
       pkt_start_ptr = wr_ptr;
       len = t.wr_data[83:80];
 
-                                                   
       beats = len + 1;
       actual_bits = 60 + beats*4 + beats*32 + 8;
       expected_words = (actual_bits + 127)/128;
       word_count = 0;
+
+      `uvm_info("SCB",
+        $sformatf("SOP detected: Packet start=%0d LEN=%0d BEATS=%0d EXPECTED_WORDS=%0d",
+        pkt_start_ptr, len, beats, expected_words),
+        UVM_MEDIUM)
     end
 
     //-----------------------------
@@ -434,8 +440,17 @@ axi4_slave_tx ar_q[$];
     //-----------------------------
     fifo_mem[wr_ptr] = t.wr_data;
 
+    `uvm_info("SCB",
+      $sformatf("Storing FIFO[%0d] = %h", wr_ptr, fifo_mem[wr_ptr]),
+      UVM_HIGH)
+
     wr_ptr++;
     word_count++;
+
+    `uvm_info("SCB",
+      $sformatf("Packet word stored: word_count=%0d/%0d wr_ptr=%0d",
+      word_count, expected_words, wr_ptr),
+      UVM_MEDIUM)
 
     //-----------------------------
     // Packet Complete
@@ -446,6 +461,11 @@ axi4_slave_tx ar_q[$];
       pkt_end_q.push_back(wr_ptr-1);
       expected_words = 0;
       word_count = 0;
+
+      `uvm_info("SCB",
+        $sformatf("Packet completed: Start=%0d End=%0d",
+        pkt_start_q[$], pkt_end_q[$]),
+        UVM_MEDIUM)
     end
 
     //-----------------------------
@@ -453,7 +473,15 @@ axi4_slave_tx ar_q[$];
     //-----------------------------
     empty = (wr_ptr == rd_ptr);
     full  = ((wr_ptr-rd_ptr) >= 4096);
-  endfunction
+
+    `uvm_info("SCB",
+      $sformatf("FIFO Status: wr_ptr=%0d rd_ptr=%0d empty=%0b full=%0b",
+      wr_ptr, rd_ptr, empty, full),
+      UVM_HIGH)
+
+endfunction
+
+  
   task fifo_read(input int start_ptr, input int end_ptr);
     int ptr;
     ptr = start_ptr;
