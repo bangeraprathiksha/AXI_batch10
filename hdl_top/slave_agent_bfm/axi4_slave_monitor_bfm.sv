@@ -106,7 +106,7 @@ interface axi4_slave_monitor_bfm(input aclk, input aresetn,
 
     while(awvalid!==1 || awready!==1)begin
       @(posedge aclk);
-      `uvm_info("FROM SLAVE MON BFM",$sformatf("Inside while loop from axi4_slave_write_address_sampling"),UVM_HIGH)
+      `uvm_info("FROM SLAVE MON BFM",$sformatf("Inside while loop from axi4_slave_write_address_sampling awvalid=%0b  awready = %0b",awvalid,awready),UVM_HIGH)
     end    
     
     `uvm_info("FROM SLAVE MON BFM",$sformatf("after while loop from axi4_slave_write_address_sampling "),UVM_HIGH)
