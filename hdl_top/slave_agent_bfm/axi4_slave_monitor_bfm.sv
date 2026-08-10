@@ -132,6 +132,7 @@ interface axi4_slave_monitor_bfm(input aclk, input aresetn,
    // wait for valid and ready to be high
    do begin
    @(posedge aclk);
+     `uvm_info("DEBUG",$sformatf("check wvalid = %0b, wready = %0b",wvalid,wready),UVM_LOW)
    end while(wvalid!==1 || wready!==1);
 
    `uvm_info("FROM SLAVE MON BFM",$sformatf("Inside while loop......"),UVM_HIGH)
