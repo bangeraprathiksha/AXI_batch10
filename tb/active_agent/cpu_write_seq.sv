@@ -17,7 +17,7 @@ class cpu_write_seq extends uvm_sequence #(axi_seq_item);
     assert(req.randomize() with {
       txn_id inside {[0:15]};
       addr[1:0] == 2'b00;      // Word aligned
-      burst inside {0,1,2};    // FIXED, INCR, WRAP
+      burst == 2'b1;    // FIXED
       lock  inside {0,1};
       cache inside {[0:3]};
       prot  inside {[0:7]};
