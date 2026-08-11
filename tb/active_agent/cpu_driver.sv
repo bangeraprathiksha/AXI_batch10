@@ -28,7 +28,7 @@ class cpu_driver extends uvm_driver #(axi_seq_item);
 
   wait(vif.rst == 1);
 
-  repeat(2) @(posedge vif.clk);
+  // repeat(2) @(posedge vif.clk);
 
   fork
     write_process();
@@ -40,6 +40,7 @@ endtask
 
   task write_process();
     axi_seq_item req;
+    repeat(2) @(posedge vif.clk);
     forever begin
       seq_item_port.get_next_item(req);
 
