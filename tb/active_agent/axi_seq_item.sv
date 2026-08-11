@@ -18,7 +18,7 @@ class axi_seq_item extends uvm_sequence_item;
   endfunction
 
   constraint c_len {
-    len == 0;
+    len == 1;
   }
 
   constraint c_size {
