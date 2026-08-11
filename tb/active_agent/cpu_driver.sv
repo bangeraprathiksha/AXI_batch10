@@ -1,4 +1,4 @@
-/*`include "defines.svh"
+`include "defines.svh"
 
 class cpu_driver extends uvm_driver #(axi_seq_item);
 
@@ -28,7 +28,7 @@ class cpu_driver extends uvm_driver #(axi_seq_item);
 
   wait(vif.rst == 1);
 
-  @(posedge vif.clk);
+  repeat(2) @(posedge vif.clk);
 
   fork
     write_process();
@@ -210,7 +210,7 @@ PROT   : %0d",
   endtask
 
 endclass
-*/
+/*
 `include "defines.svh"
 
 class cpu_driver extends uvm_driver #(axi_seq_item);
@@ -434,3 +434,4 @@ PROT   : %0d",
   endtask
 
 endclass
+*/
