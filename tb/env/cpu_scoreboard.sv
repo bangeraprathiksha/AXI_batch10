@@ -700,7 +700,7 @@ task decode_packet(bit [127:0] packet_q[$]);
     end
 
 
-    `uvm_info("SCB",$sformatf("Data decoded for %0d beats data[%0b] = %0h", beats,),UVM_HIGH)
+  `uvm_info("SCB",$sformatf("Data decoded for %0d beats", beats),UVM_HIGH)
 
 
     //for eop
