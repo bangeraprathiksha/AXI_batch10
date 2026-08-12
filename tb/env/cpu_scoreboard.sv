@@ -696,12 +696,11 @@ task decode_packet(bit [127:0] packet_q[$]);
       for (int j = 31; j >= 0; j--) begin
         data[i][j] = packet[ptr_data++];
       end
+      `uvm_info("DATA",$sformatf("data[%0d] = %08h", i, data[i]),UVM_MEDIUM)
     end
 
 
-    `uvm_info("SCB",
-      $sformatf("Data decoded for %0d beats", beats),
-      UVM_HIGH)
+    `uvm_info("SCB",$sformatf("Data decoded for %0d beats data[%0b] = %0h", beats,),UVM_HIGH)
 
 
     //for eop
