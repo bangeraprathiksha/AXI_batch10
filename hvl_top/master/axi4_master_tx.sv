@@ -134,7 +134,7 @@ class axi4_master_tx extends uvm_sequence_item;
 
   //Variable : arqos
   //Used to send the read address quality of service
-  rand bit arqos;
+  rand bit [3:0] arqos;
 
   //Variable : aruser
   //Used to send the read address user data
@@ -180,7 +180,21 @@ class axi4_master_tx extends uvm_sequence_item;
   //Variable: transfer_type
   //Used to the determine the type of the transfer
   rand transfer_type_e transfer_type;
-  
+
+  //-------------------------------------------------------
+  // Read-vs-write address coordination (outstanding-aware)
+  //-------------------------------------------------------
+  //Snapshots filled by the sequence just before randomize, from a runtime
+  //tracker keyed by write transaction id:
+  //  avoid_base/avoid_span : writes still in-flight (no BRESP) -> read stays away
+  //  readback_base         : writes whose BRESP (get_response) returned -> safe
+  int avoid_base   [$];   //in-flight write bases (non-rand, set by seq)
+  int avoid_span   [$];   //in-flight write spans + guard (non-rand)
+  int readback_base[$];   //committed write bases (non-rand)
+
+  //Knob used by the solver for READ transactions
+  rand bit read_from_written;   //1 = read back a committed addr, 0 = fresh miss
+
   //Variable : no_of_wait_states
   //Used to count number of wait states
   rand int no_of_wait_states;
@@ -218,24 +232,22 @@ class axi4_master_tx extends uvm_sequence_item;
   //-------------------------------------------------------
   //Constraint : awaddr
   //Used to generate the alligned address with respect to size
-  constraint awaddr_c0 {soft awaddr == (awaddr%(2**awsize)) == 0;}
+  constraint awaddr_c0 {soft awaddr < 1024 && awaddr > 0;}
 
   //Constraint : awburst_c1
   //Restricting write burst to select only FIXED, INCR and WRAP types
-  constraint awburst_c1 {awburst != WRITE_RESERVED;}
+
+  constraint relation_c1{solve awburst before awlen;}
 
   //Constraint : awlength_c2
   //Adding constraint for restricting write trasnfers
-  constraint awlength_c2 {if(awburst==WRITE_FIXED || WRITE_WRAP)
-                              awlen inside {[0:15]};
-                          else if(awburst == WRITE_INCR) 
-                              awlen inside {[0:255]};}
+  constraint awlength_c2 {(awburst == WRITE_FIXED || awburst == WRITE_WRAP) -> awlen dist {0:=2,1:=2,3:=2,7:=2,15:=2};}
+  constraint awlen_c3{(awburst == WRITE_INCR) -> awlen dist {0:=2,1:=2,3:=2,7:=2,15:=2,31:=2,63:=2,127:=2,255:=2};}
 
-  //Constraint : awlength_c3
-  //Adding constraint for restricting to get multiples of 2 in wrap burst
-  constraint awlength_c3 {if(awburst == WRITE_WRAP)
-                          awlen + 1 inside {2,4,8,16};}
-  
+     constraint arlength_c1 {(arburst == WRITE_FIXED || arburst == WRITE_WRAP) -> arlen dist {0:=2,1:=2,3:=2,7:=2,15:=2};}
+  constraint arlen_c3{(arburst == WRITE_INCR) -> arlen dist {0:=2,1:=2,3:=2,7:=2,15:=2,31:=2,63:=2,127:=2,255:=2};}
+
+
   //Constraint : awlock_c4
   //Adding constraint to select the lock transfer type
   constraint awlock_c4 {soft awlock == WRITE_NORMAL_ACCESS;}
@@ -246,7 +258,7 @@ class axi4_master_tx extends uvm_sequence_item;
 
   //Constraint : awsize_c6
   //Adding a soft constraint to detrmine the awsize
-  constraint awsize_c6 {soft awsize inside {[0:2]};}
+  //constraint awsize_c6 {soft awsize inside {[0:2]};}
 
   //-------------------------------------------------------
   // WRITE DATA Constraints
@@ -277,37 +289,31 @@ class axi4_master_tx extends uvm_sequence_item;
   
   //Constraint : araddr
   //Used to generate the alligned address with respect to size
-  constraint araddr_c0 {soft araddr == (araddr%(2**arsize)) == 0;}
+  constraint araddr_c0 {soft araddr >0 && araddr <1024;}
   
   //Constraint : arburst_c1
   //Restricting read burst to select only FIXED, INCR and WRAP types
-  constraint arburst_c1 { arburst != READ_RESERVED;}
-
-  //Constraint : arlength_c2
-  //Adding constraint for restricting read trasnfers
-  constraint arlength_c2 { if(arburst==READ_FIXED || READ_WRAP)
-                            arlen inside {[0:15]};
-                           else if(arburst == READ_INCR) 
-                            arlen inside {[0:255]};
-                         }
-  
-  //Constraint : arlength_c3
-  //Adding constraint for restricting to get multiples of 2 in wrap burst
-  constraint arlength_c3 { if(arburst == READ_WRAP)
-                            arlen + 1 inside {2,4,8,16};
-                         }
+  constraint arburst_c1 { soft arburst != READ_RESERVED;}
 
   //Constraint : arlock_c9
   //Adding constraint to select the lock transfer type
   constraint arlock_c4 { soft arlock == READ_NORMAL_ACCESS;}
 
-  //Constraint : arburst_c5
-  //Adding a soft constraint to detrmine the burst type
-  constraint arburst_c5 { soft arburst == READ_INCR;}
-
-  //Constraint : arsize_c6
-  //Adding a soft constraint to detrmine the arsize
-  constraint arsize_c6 { soft arsize inside {[0:2]};}
+  //-------------------------------------------------------
+  // Read address selection : readback a written addr, else a non-overlapping miss
+  //-------------------------------------------------------
+  constraint read_addr_c {
+    solve arsize, arlen before araddr;   //read burst span known before placing addr
+    if (tx_type == READ) {
+      //never issue a read that comes near an in-flight (not-yet-BRESP) write
+      foreach (avoid_base[i])
+        (araddr + (arlen+1)*(2**arsize) <= avoid_base[i]) ||
+        (araddr >= avoid_base[i] + avoid_span[i]);
+      //when reading back, land exactly on a committed write base
+      if (read_from_written && readback_base.size() > 0)
+        araddr inside {readback_base};
+    }
+  }
 
   //-------------------------------------------------------
   // Memory Constraints
@@ -342,275 +348,153 @@ endfunction : new
 // Implements the narrow transfers and unalligned transfers
 //--------------------------------------------------------------------------------------------
 function void axi4_master_tx::post_randomize();
-  bit[3:0] wstrb_local;
-  bit[3:0] wstrb_size_0_local;
-  bit[3:0] awsize_0;
-  bit[3:0] awsize_1;
+//-------------------------------------------------------
+// Strobes for alligned with narrow transfers and
+// Unalligned transfers
+//-------------------------------------------------------
+begin //{
+  bit[STROBE_WIDTH-1:0]  remainder_check;
+  // strobe_data provides you the strobe for starting addr
+  bit [STROBE_WIDTH-1:0] strobe_data[int][1];
 
-  bit[3:0] unallignd_wstrb0;
-  bit[3:0] unallignd_wstrb1;
-  bit[3:0] unallignd_wstrb2;
-  bit[1:0] unallignd_wstrb0_cnt;
-  bit[3:0] alligned_wstrb0_cnt;
-  int index;
-  int quotient_check;
-  int quotient_check_1;
-  int remainder_check;
+  // for awsize =0 which means 1B need to transfer 
+  // for this case always addrs will be alligned
+  // because remainder always be 0... in this case
 
-  //-------------------------------------------------------
-  // Step-1: for awsize == 0
-  // Calculate the remainder by dividing awaddr and 2**awsize
-  // that gives the nearest alligned address based on the 
-  // remainder assert that particular strobe bit.
-  //
-  // Step-2: for awsize == 1
-  // Calculate the quotient by dividing awaddr and 2**awsize
-  // if quotient is alligned assert first 2 bits of strobes
-  // else assert next 2 bits of strobes
-  //
-  //Step-3: for awsize == 2
-  //Here you can assert all 4bits of strobes since it is a 
-  //alligned address and all 4bits needs to pass
-  //(addr ex: 0,4,8..)
-  //-------------------------------------------------------
-  //-------------------------------------------------------
-  // Narrow Transfers for alligned address
-  //-------------------------------------------------------
-  if(awaddr % 2**awsize == 0) begin
-    awsize_0 = 4'b0001;
-    awsize_1 = 4'b1111;
-    remainder_check = awaddr % 4;
-    `uvm_info("rem_check",$sformatf("remainder_check = %0d",remainder_check),UVM_HIGH)
-    
-    // Assigning the initial strobe values based on the size and address issued
-    if(awsize == 0) begin
-      if(remainder_check == 0) wstrb_local = 4'b0001; 
-      if(remainder_check == 1) wstrb_local = 4'b0010; 
-      if(remainder_check == 2) wstrb_local = 4'b0100; 
-      if(remainder_check == 3) wstrb_local = 4'b1000; 
-    end
-   
-    if(awsize == 1) begin 
-      quotient_check_1 = awaddr / 2**awsize;
-      if(quotient_check_1 % 2 == 0) begin
-      wstrb_local = 4'b0011;
-    end
-    else begin
-      wstrb_local = 4'b1100;
+  bit [STROBE_WIDTH-1:0] local_addr;
+  bit [STROBE_WIDTH-1:0] min;
+  bit [STROBE_WIDTH-1:0] shift_loc;
+
+  remainder_check = (awaddr%(STROBE_WIDTH));
+  min = (awsize == 1) ? {2{1'b1}} : ((awsize == 2) ? {4{1'b1}} : ((awsize == 3) ? {8{1'b1}} :
+  ((awsize == 4) ? {16{1'b1}} : ((awsize == 5) ? {32{1'b1}} : ((awsize == 6) ? {64{1'b1}} : {128{1'b1}})))));
+
+  for(int l=0;l<STROBE_WIDTH;l++) begin
+    if((remainder_check+l)%2**awsize == 0) begin
+      shift_loc = remainder_check+l;
+      break;
     end
   end
-  
-  if(awsize == 2) wstrb_local = 4'b1111;
-  `uvm_info(get_type_name(), $sformatf("DEBUG_LOCAL :: wstrb_local =  %0b",wstrb_local), UVM_HIGH); 
-  `uvm_info(get_type_name(), $sformatf("DEBUG_LOCL :: awsize =  %0d",awsize), UVM_HIGH); 
-  
-  wstrb_size_0_local = wstrb_local;
-
-  //for loop to generate the strobe values based on strobe size
-  for(int i=0;i<wstrb.size();i++) begin
-    `uvm_info(get_type_name(),$sformatf("inside for loop of post randomize"),UVM_HIGH)
-    
-    if(awsize == 0) begin
-      if(remainder_check == 0)begin
-        if(i==0) begin
-          wstrb[0] = wstrb_local;
-          `uvm_info(get_type_name(), $sformatf("DEBUG_IN_LOOP :: wstrb[0] =  %0b",wstrb[0]), UVM_HIGH); 
-        end 
-        else begin
-          // since remainder is 0 it will be in 1st(0) lane
-          // so after every 4 transfers u need to assign wstrb(0)
-          if(i%4 == 0) begin
-            this.wstrb[i] = awsize_0;
-            wstrb_size_0_local = awsize_0;
-          end
-          else begin
-            wstrb_size_0_local = (wstrb_size_0_local << 2**awsize);
-            this.wstrb[i] = wstrb_size_0_local;
-          end
-          `uvm_info(get_type_name(), $sformatf("DEBUG_IN_LOOP :: wstrb[%0d] =  %0b",i,this.wstrb[i]), UVM_HIGH); 
-          `uvm_info(get_type_name(),$sformatf("outside for loop of post randomize"),UVM_HIGH)
-        end
-      end
-      
-      // since remainder is 1 it will be in 2nd(1) lane
-      else if (remainder_check == 1) begin
-        if(i==0) begin
-          wstrb[0] = wstrb_local;
-          `uvm_info(get_type_name(), $sformatf("DEBUG_IN_LOOP :: wstrb[0] =  %0b",wstrb[0]), UVM_HIGH); 
-        end 
-        else if(i == 1) begin
-          wstrb[1] = wstrb[0] << i;
-        end
-        else if(i == 2) begin
-          wstrb[2] = wstrb[0] << i;
-          wstrb_size_0_local = awsize_0;
-        end
-        else begin 
-          this.wstrb[i] = wstrb_size_0_local;
-          wstrb_size_0_local = (wstrb_size_0_local << 2**awsize);
-          alligned_wstrb0_cnt++;
-          if(alligned_wstrb0_cnt == 4) begin
-            // so after every 4 transfers u need to assign awsize_0
-            wstrb_size_0_local = awsize_0;
-            alligned_wstrb0_cnt = 0;
-          end
-        end
-      end  
-      
-      else if (remainder_check == 2) begin
-        if(i==0) begin
-          wstrb[0] = wstrb_local;
-          `uvm_info(get_type_name(), $sformatf("DEBUG_IN_LOOP :: wstrb[0] =  %0b",wstrb[0]), UVM_HIGH); 
-        end 
-        else if(i == 1) begin
-          wstrb[1] = wstrb[0] << i;
-          wstrb_size_0_local = awsize_0;
-        end
-        
-        else begin 
-          this.wstrb[i] = wstrb_size_0_local;
-          wstrb_size_0_local = (wstrb_size_0_local << 2**awsize);
-          alligned_wstrb0_cnt++;
-          if(alligned_wstrb0_cnt == 4) begin
-            wstrb_size_0_local = awsize_0;
-            alligned_wstrb0_cnt = 0;
-          end
-        end
-      end
-      
-      else if (remainder_check == 3) begin
-        if(i==0) begin
-          wstrb[0] = wstrb_local;
-          wstrb_size_0_local = awsize_0;
-          `uvm_info(get_type_name(), $sformatf("DEBUG_IN_LOOP :: wstrb[0] =  %0b",wstrb[0]), UVM_HIGH); 
-        end 
-        
-        else begin 
-          this.wstrb[i] = wstrb_size_0_local;
-          wstrb_size_0_local = (wstrb_size_0_local << 2**awsize);
-          alligned_wstrb0_cnt++;
-          if(alligned_wstrb0_cnt == 4) begin
-            wstrb_size_0_local = awsize_0;
-            alligned_wstrb0_cnt = 0;
-          end
-        end
-      end
-    end
-    
-    else if(awsize == 1) begin
-      if(quotient_check_1 % 2**awsize == 0) begin 
-        if(i==0) begin
-          wstrb[0] = wstrb_local;
-          `uvm_info(get_type_name(), $sformatf("DEBUG_IN_LOOP :: wstrb[0] =  %0b",wstrb[0]), UVM_HIGH); 
-        end 
-        else begin
-          if(i%2 == 0) begin
-            this.wstrb[i] = {(wstrb_local << 2**awsize)^awsize_1};
-          end
-          else begin
-            this.wstrb[i] = (wstrb_local << 2**awsize);
-          end
-        end
-      end
-      
-      else begin
-        if(i==0) begin
-          wstrb[0] = wstrb_local;
-          `uvm_info(get_type_name(), $sformatf("DEBUG_IN_LOOP :: wstrb[0] =  %0b",wstrb[0]), UVM_HIGH); 
-        end 
-        else begin
-          if(i%2 == 0) begin
-            this.wstrb[i] = wstrb_local;
-          end
-          else begin
-            this.wstrb[i] = (wstrb_local >> 2**awsize);
-          end
-        end
-      end
-    end
-    
-    else if(awsize == 2) begin
-      wstrb[i] = wstrb_local;
-    end
-  end
-end
-
-
-//-------------------------------------------------------
-// Strobes for Unalligned transfers
-//-------------------------------------------------------
-if(awaddr % 2**awsize != 0) begin
-  
-  unallignd_wstrb0 = 4'b0001;
-  unallignd_wstrb1 = 4'b0011;
-  unallignd_wstrb2 = 4'b1111;
-  
-  quotient_check = awaddr / 2**awsize;
-  
   if(awsize == 0) begin
-    wstrb_local = 4'b0001;
+    strobe_data[STROBE_WIDTH][0][remainder_check] = 1'b1;
   end
-  if(awsize == 1) begin
-    if(quotient_check%2 == 0) begin
-      wstrb_local = 4'b0010;
+  else begin
+    if(awaddr % 2**awsize != 0) begin
+        unique case(awsize)
+          1: strobe_data[STROBE_WIDTH][0] = 1'b1 << remainder_check;
+          2: strobe_data[STROBE_WIDTH][0] = ({STROBE_WIDTH{1'b1}} << remainder_check) & ~({STROBE_WIDTH{1'b1}} << (4*(awaddr/2**awsize)+4));
+          3: strobe_data[STROBE_WIDTH][0] = ({STROBE_WIDTH{1'b1}} << remainder_check) & ~({STROBE_WIDTH{1'b1}} << (8*(awaddr/2**awsize)+8));
+          4: strobe_data[STROBE_WIDTH][0] = ({STROBE_WIDTH{1'b1}} << remainder_check) & ~({STROBE_WIDTH{1'b1}} << (16*(awaddr/2**awsize)+16));
+          5: strobe_data[STROBE_WIDTH][0] = ({STROBE_WIDTH{1'b1}} << remainder_check) & ~({STROBE_WIDTH{1'b1}} << (32*(awaddr/2**awsize)+32));
+          6: strobe_data[STROBE_WIDTH][0] = ({STROBE_WIDTH{1'b1}} << remainder_check) & ~({STROBE_WIDTH{1'b1}} << (64*(awaddr/2**awsize)+64));
+          7: strobe_data[STROBE_WIDTH][0] = ({STROBE_WIDTH{1'b1}} << remainder_check) & ~({STROBE_WIDTH{1'b1}} << (128*(awaddr/2**awsize)+128));
+        endcase
     end
-    else begin
-      wstrb_local = 4'b1000;
+    else begin  //{ alligned address
+        unique case(awsize)
+          1: strobe_data[STROBE_WIDTH][0] = 2'b11 << remainder_check;
+          2: strobe_data[STROBE_WIDTH][0] = 4'b1111 << remainder_check; 
+          3: strobe_data[STROBE_WIDTH][0] = 8'b1111_1111 << remainder_check; 
+          4: strobe_data[STROBE_WIDTH][0] = {16{1'b1}} << remainder_check; 
+          5: strobe_data[STROBE_WIDTH][0] = {32{1'b1}} << remainder_check; 
+          6: strobe_data[STROBE_WIDTH][0] = {64{1'b1}} << remainder_check; 
+          7: strobe_data[STROBE_WIDTH][0] = {128{1'b1}} << remainder_check; 
+        endcase
+    end //}
+  end
+  if(awaddr%2**awsize != 0) begin
+    for(int i=0;i<wstrb.size();i++) begin
+      if(awsize == 0) begin
+        if(i==0)  wstrb[0] = strobe_data[STROBE_WIDTH][0];
+        else if(wstrb[i-1][STROBE_WIDTH-1]) wstrb[i] = local_addr|1'b1;
+        else wstrb[i] = wstrb[i-1] << 1; 
+      end
+      if(awsize == 1) begin
+        if(i==0)  wstrb[0] = strobe_data[STROBE_WIDTH][0];
+        else if(i==1) wstrb[i] =  (wstrb[i-1][STROBE_WIDTH-1]) ? (local_addr|2'b11) : min << remainder_check+1 ;
+        else if(wstrb[i-1][STROBE_WIDTH-1] && i>1) wstrb[i] = local_addr|2'b11;
+        else wstrb[i] = wstrb[i-1] << 2; 
+      end
+      if(awsize == 2) begin
+        if(i==0)  wstrb[0] = strobe_data[STROBE_WIDTH][0];
+        else if(i==1) wstrb[i] =  (wstrb[i-1][STROBE_WIDTH-1]) ? (local_addr|4'b1111) : (min << shift_loc);
+        else if(wstrb[i-1][STROBE_WIDTH-1] && i>0) wstrb[i] = local_addr|4'b1111; 
+        else wstrb[i] = wstrb[i-1] << 4; 
+      end
+      if(awsize == 3) begin
+        if(i==0)  wstrb[0] = strobe_data[STROBE_WIDTH][0];
+        else if(i==1) wstrb[i] =  (wstrb[i-1][STROBE_WIDTH-1]) ? (local_addr|8'b1111_1111) : (min << shift_loc);
+        else if(wstrb[i-1][STROBE_WIDTH-1] && i>1) wstrb[i] = local_addr|8'b1111_1111;
+        else wstrb[i] = wstrb[i-1] << 8; 
+      end
+      if(awsize == 4) begin
+        if(i==0)  wstrb[0] = strobe_data[STROBE_WIDTH][0];
+        else if(i==1) wstrb[i] =  (wstrb[i-1][STROBE_WIDTH-1]) ? (local_addr|16'b1111_1111_1111_1111) : (min << shift_loc);
+        else if(wstrb[i-1][STROBE_WIDTH-1] && i>1) wstrb[i] = local_addr|16'b1111_1111_1111_1111;
+        else wstrb[i] = wstrb[i-1] << 16; 
+      end
+      if(awsize == 5) begin
+        if(i==0)  wstrb[0] = strobe_data[STROBE_WIDTH][0];
+        else if(i==1) wstrb[i] =  (wstrb[i-1][STROBE_WIDTH-1]) ? (local_addr|32'b1111_1111_1111_1111_1111_1111_1111_1111) : (min << shift_loc);
+        else if(wstrb[i-1][STROBE_WIDTH-1] && i>1) wstrb[i] = local_addr|32'b1111_1111_1111_1111_1111_1111_1111_1111;
+        else wstrb[i] = wstrb[i-1] << 32; 
+      end
+      if(awsize == 6) begin
+        if(i==0)  wstrb[0] = strobe_data[STROBE_WIDTH][0];
+        else if(i==1) wstrb[i] =  (wstrb[i-1][STROBE_WIDTH-1]) ? (local_addr|64'b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111) : (min << shift_loc);
+        else if(wstrb[i-1][STROBE_WIDTH-1] && i>1) wstrb[i] = local_addr|64'b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
+        else wstrb[i] = wstrb[i-1] << 64; 
+      end
+      if(awsize == 7) begin
+        if(i==0)  wstrb[0] = strobe_data[STROBE_WIDTH][0];
+        else  wstrb[i] = local_addr|128'b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
+      end
     end
   end
-  //in the 1st case why 3 bits made 1 becoz 
-  //since addr is 1 if you pass only that address as high 
-  //then in nxt lane it will start from addr 2 which is unalligned for size
-  //so if u pass all 3 bits nxt transfer will strat from 4 which is alligned.
-  if(awsize == 2) begin
-    if(awaddr % 2**awsize == 1) wstrb_local = 4'b1110; 
-    if(awaddr % 2**awsize == 2) wstrb_local = 4'b1100; 
-    if(awaddr % 2**awsize == 3) wstrb_local = 4'b1000;
+  else begin 
+    for(int i=0;i<wstrb.size();i++) begin
+      if(awsize == 0) begin
+        if(i==0)  wstrb[0] = strobe_data[STROBE_WIDTH][0];
+        else if(wstrb[i-1][STROBE_WIDTH-1]) wstrb[i] = local_addr|1'b1;
+        else wstrb[i] = wstrb[i-1] << 1; 
+      end
+      if(awsize == 1) begin
+        if(i==0)  wstrb[0] = strobe_data[STROBE_WIDTH][0];
+        else if(wstrb[i-1][STROBE_WIDTH-1] && i>0) wstrb[i] = local_addr|2'b11;
+        else wstrb[i] = wstrb[i-1] << 2; 
+      end
+      if(awsize == 2) begin
+        if(i==0)  wstrb[0] = strobe_data[STROBE_WIDTH][0];
+        else if(wstrb[i-1][STROBE_WIDTH-1] && i>0) wstrb[i] = local_addr|4'b1111;
+        else wstrb[i] = wstrb[i-1] << 4; 
+      end
+      if(awsize == 3) begin
+        if(i==0)  wstrb[0] = strobe_data[STROBE_WIDTH][0];
+        else if(wstrb[i-1][STROBE_WIDTH-1] && i>0) wstrb[i] = local_addr|8'b1111_1111;
+        else wstrb[i] = wstrb[i-1] << 8; 
+      end
+      if(awsize == 4) begin
+        if(i==0)  wstrb[0] = strobe_data[STROBE_WIDTH][0];
+        else if(wstrb[i-1][STROBE_WIDTH-1] && i>0) wstrb[i] = local_addr|16'b1111_1111_1111_1111;
+        else wstrb[i] = wstrb[i-1] << 16; 
+      end
+      if(awsize == 5) begin
+        if(i==0)  wstrb[0] = strobe_data[STROBE_WIDTH][0];
+        else if(wstrb[i-1][STROBE_WIDTH-1] && i>0) wstrb[i] = local_addr|32'b1111_1111_1111_1111_1111_1111_1111_1111;
+        else wstrb[i] = wstrb[i-1] << 32; 
+      end
+      if(awsize == 6) begin
+        if(i==0)  wstrb[0] = strobe_data[STROBE_WIDTH][0];
+        else if(wstrb[i-1][STROBE_WIDTH-1] && i>0) wstrb[i] = local_addr|64'b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
+        else wstrb[i] = wstrb[i-1] << 64; 
+      end
+      if(awsize == 7) begin
+        if(i==0)  wstrb[0] = strobe_data[STROBE_WIDTH][0];
+        else wstrb[i] = local_addr|128'b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
+      end
+    end
   end
-  
-  for(int i=0;i<wstrb.size();i++) begin
-    if(awsize == 0) begin
-      if(i == 0) begin
-        wstrb[0] = wstrb_local;
-      end
-      else begin
-        wstrb[i] = wstrb_local << 1;
-        unallignd_wstrb0_cnt++;
-        if(unallignd_wstrb0_cnt == 'd3) begin
-          wstrb[i] = wstrb_local;
-          unallignd_wstrb0_cnt = 0;
-        end
-      end
-    end
-    
-    if(awsize == 1) begin
-      if(i == 0) begin
-        wstrb[0] = wstrb_local;
-      end
-      else if(i == 1) begin
-        wstrb[i] = unallignd_wstrb1;
-      end
-      else begin
-        if(i%2 == 0) begin
-        wstrb[i] = unallignd_wstrb1 << 2;
-      end
-      else if(i%2 != 0) begin
-        wstrb[i] = unallignd_wstrb1;
-      end
-    end
-  end
-  
-  if(awsize == 2) begin
-    if(i==0) begin
-      wstrb[0] = wstrb_local;
-    end
-    else begin
-      wstrb[i] = unallignd_wstrb2;
-    end
-   end
-  end
-end
-
+end //}
 endfunction : post_randomize
 
 //--------------------------------------------------------------------------------------------
@@ -642,6 +526,7 @@ function void axi4_master_tx::do_copy(uvm_object rhs);
   wdata = axi4_master_tx_copy_obj.wdata;
   wstrb = axi4_master_tx_copy_obj.wstrb;
   wuser = axi4_master_tx_copy_obj.wuser;
+  wlast = axi4_master_tx_copy_obj.wlast;
   //WRITE RESPONSE CHANNEL
   bid   = axi4_master_tx_copy_obj.bid;
   bresp = axi4_master_tx_copy_obj.bresp;
@@ -663,6 +548,7 @@ function void axi4_master_tx::do_copy(uvm_object rhs);
   rdata = axi4_master_tx_copy_obj.rdata;
   rresp = axi4_master_tx_copy_obj.rresp;
   ruser = axi4_master_tx_copy_obj.ruser;
+   rlast = axi4_master_tx_copy_obj.rlast;
   //OTHERS
   tx_type       = axi4_master_tx_copy_obj.tx_type;
   transfer_type = axi4_master_tx_copy_obj.transfer_type;
@@ -783,4 +669,3 @@ function void axi4_master_tx::do_print(uvm_printer printer);
 endfunction : do_print
 
 `endif
-

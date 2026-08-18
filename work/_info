@@ -1,0 +1,686 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/fetools/work_area/frontend/Batch_10/sinchanabr/AXI_batch10
+T_opt
+!s110 1787044227
+V9j0WLhPEgVoU:O2;nVid_1
+04 6 4 work tb_top fast 0
+04 7 4 work hdl_top fast 0
+=1-6805caf5892e-6a842182-9d430-34665
+o-quiet -auto_acc_if_foreign -work work +acc
+Z1 tCvgOpt 0
+n@_opt
+OE;O;10.6c;65
+Xaxi4_globals_pkg
+Z2 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+!s110 1787044198
+!i10b 1
+!s100 6bojT^kE=9NJ;2;aozF`k1
+IKRd8mBV<^I8hPU91DmbO52
+VKRd8mBV<^I8hPU91DmbO52
+S1
+R0
+w1787042416
+Z3 8globals/axi4_globals_pkg.sv
+Z4 Fglobals/axi4_globals_pkg.sv
+L0 8
+Z5 OE;L;10.6c;65
+r1
+!s85 0
+31
+Z6 !s108 1787044198.000000
+Z7 !s107 tb/test/axi4_virtual_read_test.sv|tb/test/axi4_virtual_write_test.sv|tb/test/base_test.sv|tb/env/top_env.sv|tb/vseq/axi4_virtual_read_seq.sv|tb/vseq/axi4_virtual_write_seq.sv|tb/vseq/top_vseq.sv|tb/env/axi4_vip_env.sv|tb/env/cpu_env.sv|tb/env/cpu_subscriber.sv|tb/env/cpu_scoreboard.sv|tb/passive_agent/cpu_passive_agent.sv|tb/passive_agent/defines.svh|tb/passive_agent/cpu_passive_monitor.sv|tb/active_agent/cpu_read_seq.sv|tb/active_agent/cpu_write_seq.sv|tb/active_agent/cpu_active_agent.sv|tb/active_agent/cpu_active_monitor.sv|tb/active_agent/defines.svh|tb/active_agent/cpu_driver.sv|tb/active_agent/cpu_sequencer.sv|tb/active_agent/axi_seq_item.sv|tb/active_agent/cpu_seq_item.sv|tb/slave_seq/axi4_slave_read_seq.sv|tb/slave_seq/axi4_slave_write_seq.sv|tb/slave_seq/axi4_slave_base_seq.sv|vip/axi_slave_vip/axi4_slave_agent.sv|vip/axi_slave_vip/axi4_slave_monitor_proxy.sv|vip/axi_slave_vip/axi4_slave_driver_proxy.sv|vip/axi_slave_vip/axi4_slave_read_sequencer.sv|vip/axi_slave_vip/axi4_slave_write_sequencer.sv|vip/axi_slave_vip/axi4_slave_coverage.sv|vip/axi_slave_vip/axi4_slave_cfg_converter.sv|vip/axi_slave_vip/axi4_slave_seq_item_converter.sv|vip/axi_slave_vip/axi4_slave_agent_config.sv|vip/axi_slave_vip/axi4_slave_tx.sv|vip/axi_slave_vip/axi4_slave_memory.sv|/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_deprecated_defines.svh|/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_reg_defines.svh|/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_callback_defines.svh|/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_sequence_defines.svh|/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/tlm1/uvm_tlm_imps.svh|/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_tlm_defines.svh|/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_printer_defines.svh|/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_object_defines.svh|/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_phase_defines.svh|/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_message_defines.svh|/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_version_defines.svh|/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh|tb_top.sv|tb/cpu_tb_pkg.sv|rtl/Top_Module_AXI4.v|rtl/AXI_Master.v|rtl/write_response_handler.v|rtl/AXI_MASTER_READ_CONTROL.v|rtl/AXI_MASTER_WRITE_CONTROL.v|rtl/decoder.v|rtl/sync_fifo.v|rtl/design_fifo.v|hdl_top/hdl_top.sv|hdl_top/tb_slave_assertions.sv|hdl_top/slave_assertions.sv|hdl_top/slave_agent_bfm/axi4_slave_agent_bfm.sv|hdl_top/slave_agent_bfm/axi4_slave_monitor_bfm.sv|hdl_top/slave_agent_bfm/axi4_slave_driver_bfm.sv|vip/axi_slave_vip/axi4_slave_pkg.sv|hdl_top/cpu_intf/cpu_intf.sv|hdl_top/axi4_interface/axi4_if.sv|globals/axi4_globals_pkg.sv|
+Z8 !s90 -sv|-timescale=1ns/1ps|+define+AXI_MODE_master|-f|sim/cpu_tb.f|+incdir+vip/axi_slave_vip|+incdir+hdl_top/axi4_interface|+incdir+hdl_top/cpu_inf|-mfcu|
+!i113 0
+Z9 o-sv -timescale=1ns/1ps -mfcu -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z10 !s92 -sv -timescale=1ns/1ps +define+AXI_MODE_master +incdir+vip/axi_slave_vip +incdir+hdl_top/axi4_interface +incdir+hdl_top/cpu_inf -mfcu -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R1
+Xaxi4_globals_pkg_sv_unit
+R2
+Z11 DXx4 work 16 axi4_globals_pkg 0 22 KRd8mBV<^I8hPU91DmbO52
+Z12 DXx6 mtiUvm 7 uvm_pkg 0 22 oMKUklN?>LE6@MJe7=2><1
+V1H^I55g^`l;5ZD>Da0g?^0
+r1
+!s85 0
+31
+!i10b 1
+!s100 Uo51KScZXoJ:dZNXQd@XY3
+I1H^I55g^`l;5ZD>Da0g?^0
+!i103 1
+S1
+R0
+Z13 w1787043447
+R3
+R4
+Z14 8hdl_top/axi4_interface/axi4_if.sv
+Z15 Fhdl_top/axi4_interface/axi4_if.sv
+Z16 8hdl_top/cpu_intf/cpu_intf.sv
+Z17 Fhdl_top/cpu_intf/cpu_intf.sv
+Z18 8vip/axi_slave_vip/axi4_slave_pkg.sv
+Z19 Fvip/axi_slave_vip/axi4_slave_pkg.sv
+Z20 8hdl_top/slave_agent_bfm/axi4_slave_driver_bfm.sv
+Z21 Fhdl_top/slave_agent_bfm/axi4_slave_driver_bfm.sv
+Z22 8hdl_top/slave_agent_bfm/axi4_slave_monitor_bfm.sv
+Z23 Fhdl_top/slave_agent_bfm/axi4_slave_monitor_bfm.sv
+Z24 8hdl_top/slave_agent_bfm/axi4_slave_agent_bfm.sv
+Z25 Fhdl_top/slave_agent_bfm/axi4_slave_agent_bfm.sv
+Z26 8hdl_top/slave_assertions.sv
+Z27 Fhdl_top/slave_assertions.sv
+Z28 8hdl_top/tb_slave_assertions.sv
+Z29 Fhdl_top/tb_slave_assertions.sv
+Z30 F/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh
+Z31 8hdl_top/hdl_top.sv
+Z32 Fhdl_top/hdl_top.sv
+Z33 8rtl/design_fifo.v
+Z34 Frtl/design_fifo.v
+Z35 8rtl/sync_fifo.v
+Z36 Frtl/sync_fifo.v
+Z37 8rtl/decoder.v
+Z38 Frtl/decoder.v
+Z39 8rtl/AXI_MASTER_WRITE_CONTROL.v
+Z40 Frtl/AXI_MASTER_WRITE_CONTROL.v
+Z41 8rtl/AXI_MASTER_READ_CONTROL.v
+Z42 Frtl/AXI_MASTER_READ_CONTROL.v
+Z43 8rtl/write_response_handler.v
+Z44 Frtl/write_response_handler.v
+Z45 8rtl/AXI_Master.v
+Z46 Frtl/AXI_Master.v
+Z47 8rtl/Top_Module_AXI4.v
+Z48 Frtl/Top_Module_AXI4.v
+Z49 8tb/cpu_tb_pkg.sv
+Z50 Ftb/cpu_tb_pkg.sv
+Z51 8tb_top.sv
+Z52 Ftb_top.sv
+L0 5
+R5
+R6
+R7
+R8
+!i113 0
+R9
+R10
+R1
+Yaxi4_if
+R2
+R11
+R12
+Z53 DXx4 work 24 axi4_globals_pkg_sv_unit 0 22 1H^I55g^`l;5ZD>Da0g?^0
+Z54 VDg1SIo80bB@j0V0VzS_@n1
+r1
+!s85 0
+31
+!i10b 1
+!s100 O4Z3WYKc];KXV;Nn4SGaK3
+I::27fR?6denhhXh<a7diO0
+Z55 !s105 axi4_globals_pkg_sv_unit
+S1
+R0
+Z56 w1787037427
+R14
+R15
+L0 11
+R5
+R6
+R7
+R8
+!i113 0
+R9
+R10
+R1
+vaxi4_slave_agent_bfm
+R2
+R11
+R12
+R53
+R54
+r1
+!s85 0
+31
+!i10b 1
+!s100 QkzWB:zMY1_PMIjk1V7RA1
+IALi[3OgANhY<0hnd<dKKD1
+R55
+S1
+R0
+R56
+R24
+R25
+R30
+L0 8
+R5
+R6
+R7
+R8
+!i113 0
+R9
+R10
+R1
+Yaxi4_slave_driver_bfm
+R2
+R11
+R12
+R53
+Z57 DXx4 work 14 axi4_slave_pkg 0 22 JYj][4W:@No^H;S>GKZP;2
+R54
+r1
+!s85 0
+31
+!i10b 1
+!s100 68fF8?Z3[c9K<gNmCbNg51
+I[zG^`MkcPID7`LOj10QBP2
+R55
+S1
+R0
+R56
+R20
+R21
+R30
+Z58 L0 10
+R5
+R6
+R7
+R8
+!i113 0
+R9
+R10
+R1
+Yaxi4_slave_monitor_bfm
+R2
+R11
+R12
+R53
+R57
+R54
+r1
+!s85 0
+31
+!i10b 1
+!s100 6h7dl;:azCVQfEIJP6^4R2
+I3DS@^NniNg;bKne4Lbgl_0
+R55
+S1
+R0
+R56
+R22
+R23
+R30
+R58
+R5
+R6
+R7
+R8
+!i113 0
+R9
+R10
+R1
+Xaxi4_slave_pkg
+!s115 axi4_slave_monitor_bfm
+!s115 axi4_slave_driver_bfm
+R2
+R12
+R11
+VJYj][4W:@No^H;S>GKZP;2
+r1
+!s85 0
+31
+!i10b 1
+!s100 `G<]dHb8i0@HDgS[[0C3T1
+IJYj][4W:@No^H;S>GKZP;2
+S1
+R0
+w1787042617
+R18
+R19
+R30
+F/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_version_defines.svh
+F/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_message_defines.svh
+F/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_phase_defines.svh
+F/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_object_defines.svh
+F/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_printer_defines.svh
+F/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_tlm_defines.svh
+F/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/tlm1/uvm_tlm_imps.svh
+F/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_sequence_defines.svh
+F/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_callback_defines.svh
+F/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_reg_defines.svh
+F/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_deprecated_defines.svh
+Fvip/axi_slave_vip/axi4_slave_memory.sv
+Fvip/axi_slave_vip/axi4_slave_tx.sv
+Fvip/axi_slave_vip/axi4_slave_agent_config.sv
+Fvip/axi_slave_vip/axi4_slave_seq_item_converter.sv
+Fvip/axi_slave_vip/axi4_slave_cfg_converter.sv
+Fvip/axi_slave_vip/axi4_slave_coverage.sv
+Fvip/axi_slave_vip/axi4_slave_write_sequencer.sv
+Fvip/axi_slave_vip/axi4_slave_read_sequencer.sv
+Fvip/axi_slave_vip/axi4_slave_driver_proxy.sv
+Fvip/axi_slave_vip/axi4_slave_monitor_proxy.sv
+Fvip/axi_slave_vip/axi4_slave_agent.sv
+L0 8
+R5
+R6
+R7
+R8
+!i113 0
+R9
+R10
+R1
+vAXI_Master
+R2
+R11
+R12
+R53
+R54
+r1
+!s85 0
+31
+!i10b 1
+!s100 ^7W<S57M=3zoTK35AmoTY2
+IYG5mQz?95GRVdPbE@EO=h0
+R55
+S1
+R0
+Z59 w1786611223
+R45
+R46
+Z60 L0 21
+R5
+R6
+R7
+R8
+!i113 0
+R9
+R10
+R1
+n@a@x@i_@master
+vAXI_MASTER_READ_Control
+R2
+R11
+R12
+R53
+R54
+r1
+!s85 0
+31
+!i10b 1
+!s100 SdzBIe?gN1XHB=ZYz;99>0
+IhQcADLE_bdN]87;9XfN7P2
+R55
+S1
+R0
+R59
+R41
+R42
+R60
+R5
+R6
+R7
+R8
+!i113 0
+R9
+R10
+R1
+n@a@x@i_@m@a@s@t@e@r_@r@e@a@d_@control
+vAXI_MASTER_WRITE__CONTROL
+R2
+R11
+R12
+R53
+R54
+r1
+!s85 0
+31
+!i10b 1
+!s100 Yz=<R9Gj03cC?=Il=5lzX3
+IbCK4aO4DL0gjTYYKF4We:3
+R55
+S1
+R0
+R59
+R39
+R40
+R60
+R5
+R6
+R7
+R8
+!i113 0
+R9
+R10
+R1
+n@a@x@i_@m@a@s@t@e@r_@w@r@i@t@e__@c@o@n@t@r@o@l
+Ycpu_intf
+R2
+R11
+R12
+R53
+R54
+r1
+!s85 0
+31
+!i10b 1
+!s100 Aa_iDOhLm]:U47cK8C<kD3
+IZS8^U[;oT7gA1U@aaGUX92
+R55
+S1
+R0
+R59
+R16
+R17
+L0 1
+R5
+R6
+R7
+R8
+!i113 0
+R9
+R10
+R1
+Xcpu_tb_pkg
+!s115 cpu_intf
+R2
+R12
+R11
+R57
+VXiiN2;0K_4BM9@_TiDPZ43
+r1
+!s85 0
+31
+!i10b 1
+!s100 E@`ak^jV2Oooj9U>D1=ZO3
+IXiiN2;0K_4BM9@_TiDPZ43
+S1
+R0
+w1787042977
+R49
+R50
+R30
+Ftb/slave_seq/axi4_slave_base_seq.sv
+Ftb/slave_seq/axi4_slave_write_seq.sv
+Ftb/slave_seq/axi4_slave_read_seq.sv
+Ftb/active_agent/cpu_seq_item.sv
+Ftb/active_agent/axi_seq_item.sv
+Ftb/active_agent/cpu_sequencer.sv
+Ftb/active_agent/cpu_driver.sv
+Ftb/active_agent/defines.svh
+Ftb/active_agent/cpu_active_monitor.sv
+Ftb/active_agent/cpu_active_agent.sv
+Ftb/active_agent/cpu_write_seq.sv
+Ftb/active_agent/cpu_read_seq.sv
+Ftb/passive_agent/cpu_passive_monitor.sv
+Ftb/passive_agent/defines.svh
+Ftb/passive_agent/cpu_passive_agent.sv
+Ftb/env/cpu_scoreboard.sv
+Ftb/env/cpu_subscriber.sv
+Ftb/env/cpu_env.sv
+Ftb/env/axi4_vip_env.sv
+Ftb/vseq/top_vseq.sv
+Ftb/vseq/axi4_virtual_write_seq.sv
+Ftb/vseq/axi4_virtual_read_seq.sv
+Ftb/env/top_env.sv
+Ftb/test/base_test.sv
+Ftb/test/axi4_virtual_write_test.sv
+Ftb/test/axi4_virtual_read_test.sv
+L0 7
+R5
+R6
+R7
+R8
+!i113 0
+R9
+R10
+R1
+vdesign_fifo
+R2
+R11
+R12
+R53
+R54
+r1
+!s85 0
+31
+!i10b 1
+!s100 zJzLz=6Aa[85Y=0Yc@8;d3
+I2N<52:?Zf;837>8kTNCQE2
+R55
+S1
+R0
+Z61 w1786611224
+R33
+R34
+L0 1
+R5
+R6
+R7
+R8
+!i113 0
+R9
+R10
+R1
+vhdl_top
+R2
+R11
+R12
+R53
+R54
+r1
+!s85 0
+31
+!i10b 1
+!s100 A=2an<ck`D:ISUbhEncXN2
+I]`JegCXligK?4jSo:?<OI0
+R55
+S1
+R0
+R13
+R31
+R32
+R30
+L0 9
+R5
+R6
+R7
+R8
+!i113 0
+R9
+R10
+R1
+vmy_decoder
+R2
+R11
+R12
+R53
+R54
+r1
+!s85 0
+31
+!i10b 1
+!s100 k?_kQh1`3e;0>PZ4MWF[i0
+I4URl384608EH6KbWF;05Y3
+R55
+S1
+R0
+R61
+R37
+R38
+L0 1
+R5
+R6
+R7
+R8
+!i113 0
+R9
+R10
+R1
+Yslave_assertions
+R2
+R11
+R12
+R53
+R54
+r1
+!s85 0
+31
+!i10b 1
+!s100 _7=0N]`46jQd<1FVdlRhe3
+IQQK6`mcUVW>1lX>ZnVEFJ0
+R55
+S1
+R0
+R56
+R26
+R27
+R30
+L0 13
+R5
+R6
+R7
+R8
+!i113 0
+R9
+R10
+R1
+vsync_fifo
+R2
+R11
+R12
+R53
+R54
+r1
+!s85 0
+31
+!i10b 1
+!s100 ;>kRgM_LaaGWO@CYX7ZFF1
+I9c@MJNHOjX8h=;:aY6CG?1
+R55
+S1
+R0
+R61
+R35
+R36
+L0 1
+R5
+R6
+R7
+R8
+!i113 0
+R9
+R10
+R1
+vtb_slave_assertions
+R2
+R11
+R12
+R53
+R54
+r1
+!s85 0
+31
+!i10b 1
+!s100 35kgeIFcX=22K?f8<Pn@:0
+IRbkSn;kQoKe;cUW;dogI70
+R55
+S1
+R0
+R56
+R28
+R29
+L0 19
+R5
+R6
+R7
+R8
+!i113 0
+R9
+R10
+R1
+vtb_top
+R2
+R11
+R12
+R53
+R57
+DXx4 work 10 cpu_tb_pkg 0 22 XiiN2;0K_4BM9@_TiDPZ43
+R54
+r1
+!s85 0
+31
+!i10b 1
+!s100 a9XP[hW1@NMZdg[NKoI=62
+Ii>;c8ezfN?S134DR<i18o2
+R55
+S1
+R0
+R61
+R51
+R52
+R30
+L0 12
+R5
+R6
+R7
+R8
+!i113 0
+R9
+R10
+R1
+vTop_Module_AXI4
+R2
+R11
+R12
+R53
+R54
+r1
+!s85 0
+31
+!i10b 1
+!s100 E?_J5FG?Q7^igSJmddDL70
+IQ=7Z1L_k0LIDN3AhOAkAF2
+R55
+S1
+R0
+R61
+R47
+R48
+L0 3
+R5
+R6
+R7
+R8
+!i113 0
+R9
+R10
+R1
+n@top_@module_@a@x@i4
+vwrite_response_handler
+R2
+R11
+R12
+R53
+R54
+r1
+!s85 0
+31
+!i10b 1
+!s100 K30DKhoBka?YYd`AiEhcb1
+IB5gM2<B3LBd80GBNc;Q@H2
+R55
+S1
+R0
+R61
+R43
+R44
+L0 1
+R5
+R6
+R7
+R8
+!i113 0
+R9
+R10
+R1

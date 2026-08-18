@@ -1,6 +1,6 @@
 `ifndef HDL_TOP_INCLUDED_
 `define HDL_TOP_INCLUDED_
- 
+
 //--------------------------------------------------------------------------------------------
 // Module      : HDL Top
 // Description : Has a interface master and slave agent bfm.
@@ -17,13 +17,6 @@ module hdl_top;
   //-------------------------------------------------------
   bit aclk;
   bit aresetn;
-
-  //-------------------------------------------------------
-  // Display statement for HDL_TOP
-  //-------------------------------------------------------
-  initial begin
-    $display("HDL_TOP");
-  end
 
   //-------------------------------------------------------
   // System Clock Generation
@@ -46,34 +39,42 @@ module hdl_top;
     end
     aresetn = 1'b1;
   end
+  
+  initial begin
+    $dumpfile("waveform.vcd");      // name of the VCD file
+    $dumpvars(0, hdl_top);    // dump variables from the testbench top
+  end
 
-  cpu_intf c_intf(.clk(aclk),.rst(aresetn));
+cpu_intf c_intf(.clk(aclk),.rst(aresetn));
+
 
   // Variable : intf
   // axi4 Interface Instantiation
   axi4_if intf(.aclk(aclk),
                .aresetn(aresetn));
 
-  initial begin
-    uvm_config_db#(virtual cpu_intf)::set(null,"*","vif",c_intf);
-  end
 
+initial begin
+    uvm_config_db#(virtual cpu_intf)::set(null,"*","vif",c_intf);
+  end               
   //-------------------------------------------------------
   // AXI4  No of Master and Slaves Agent Instantiation
   //-------------------------------------------------------
   genvar i;
   generate
-    // for (i=0; i<NO_OF_MASTERS; i++) begin : axi4_master_agent_bfm
-    //   axi4_master_agent_bfm #(.MASTER_ID(i)) axi4_master_agent_bfm_h(intf);
-    //   defparam axi4_master_agent_bfm[i].axi4_master_agent_bfm_h.MASTER_ID = i;
-    // end
+/*  
+  for (i=0; i<NO_OF_MASTERS; i++) begin : axi4_master_agent_bfm
+      axi4_master_agent_bfm #(.MASTER_ID(i)) axi4_master_agent_bfm_h(intf);
+      defparam axi4_master_agent_bfm[i].axi4_master_agent_bfm_h.MASTER_ID = i;
+    end
+*/
     for (i=0; i<NO_OF_SLAVES; i++) begin : axi4_slave_agent_bfm
       axi4_slave_agent_bfm #(.SLAVE_ID(i)) axi4_slave_agent_bfm_h(intf);
       defparam axi4_slave_agent_bfm[i].axi4_slave_agent_bfm_h.SLAVE_ID = i;
     end
   endgenerate
 
-  Top_Module_AXI4 dut (
+ Top_Module_AXI4 dut (
     .clk      (aclk),
     .rstn     (aresetn),
     .ACLK     (aclk),

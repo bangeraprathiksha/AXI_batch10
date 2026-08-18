@@ -50,11 +50,13 @@ class axi4_master_agent_config extends uvm_object;
 
   //Variable : outstanding_write_tx
   //Used to send the outstanding transactions
-  int outstanding_write_tx;
+  rand int outstanding_write_tx;
   
   //Variable : outstanding_read_tx
   //Used to send the outstanding transactions
-  int outstanding_read_tx;
+  rand int outstanding_read_tx;
+
+
 
   //-------------------------------------------------------
   // Externally defined Tasks and Functions

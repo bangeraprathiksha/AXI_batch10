@@ -78,7 +78,7 @@ endtask
     int idx;
     int total_bits;
     int pad_bits;
-
+/*
     `uvm_info(get_type_name(),
               $sformatf("\n
 ================ DRIVER WRITE TRANSACTION ================\n\
@@ -99,7 +99,7 @@ PROT   : %0d",
       pkt.cache,
       pkt.prot),
       UVM_LOW)
-
+*/
     foreach(pkt.strobe[i])
       `uvm_info(get_type_name(),
         $sformatf("STROBE[%0d] = %h", i, pkt.strobe[i]),
