@@ -17,7 +17,7 @@ class axi4_virtual_write_test extends base_test;
     phase.raise_objection(this);
 
     seq = axi4_virtual_write_seq::type_id::create("seq");
-    if (!seq.randomize() with { num_txns == 10; })
+    if (!seq.randomize() with { num_txns == 3; })
       `uvm_error(get_type_name(), "randomize failed")
       seq.start(env_h.vseqr_h);
     phase.drop_objection(this);

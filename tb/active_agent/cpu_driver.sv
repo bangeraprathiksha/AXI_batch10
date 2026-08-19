@@ -143,7 +143,7 @@ PROT   : %0d",
     end
 
     foreach (pkt.data[i]) begin
-      for (int j = 31; j >= 0; j--)
+      for (int j = 8; j >= 0; j--)
         packet_bits.push_back(pkt.data[i][j]);
     end
 
