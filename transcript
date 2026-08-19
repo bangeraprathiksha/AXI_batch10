@@ -1,3 +1,34 @@
+# vsim -c tb_top hdl_top -do "run -all; quit" "+UVM_TESTNAME=axi4_virtual_write_test" "+UVM_VERBOSITY=UVM_MEDIUM" 
+# Start time: 15:07:17 on Aug 18,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: rtl/decoder.v(370): (vopt-2241) Connection width does not match width of port 'bresp'. The port definition is at: rtl/write_response_handler.v(9).
+# ** Warning: rtl/Top_Module_AXI4.v(133): (vopt-2241) Connection width does not match width of port 'write_data'. The port definition is at: rtl/decoder.v(25).
+# ** Warning: rtl/Top_Module_AXI4.v(133): (vopt-2241) Connection width does not match width of port 'bresp'. The port definition is at: rtl/decoder.v(64).
+# ** Warning: rtl/Top_Module_AXI4.v(133): (vopt-2241) Connection width does not match width of port 'rresp'. The port definition is at: rtl/decoder.v(59).
+# ** Warning: rtl/Top_Module_AXI4.v(133): (vopt-2241) Connection width does not match width of port 'arlock'. The port definition is at: rtl/decoder.v(47).
+# ** Warning: rtl/AXI_Master.v(124): (vopt-2241) Connection width does not match width of port 'AWID'. The port definition is at: rtl/AXI_MASTER_WRITE_CONTROL.v(32).
+# ** Warning: rtl/AXI_Master.v(124): (vopt-2241) Connection width does not match width of port 'WDATA'. The port definition is at: rtl/AXI_MASTER_WRITE_CONTROL.v(47).
+# ** Warning: rtl/AXI_Master.v(124): (vopt-2241) Connection width does not match width of port 'awlen_d'. The port definition is at: rtl/AXI_MASTER_WRITE_CONTROL.v(63).
+# ** Warning: rtl/AXI_Master.v(124): (vopt-2241) Connection width does not match width of port 'wdata_d'. The port definition is at: rtl/AXI_MASTER_WRITE_CONTROL.v(70).
+# ** Warning: rtl/AXI_Master.v(182): (vopt-2241) Connection width does not match width of port 'ARLEN'. The port definition is at: rtl/AXI_MASTER_READ_CONTROL.v(32).
+# ** Warning: rtl/AXI_Master.v(182): (vopt-2241) Connection width does not match width of port 'RDATA'. The port definition is at: rtl/AXI_MASTER_READ_CONTROL.v(42).
+# ** Warning: rtl/AXI_Master.v(182): (vopt-2241) Connection width does not match width of port 'rdata_d'. The port definition is at: rtl/AXI_MASTER_READ_CONTROL.v(66).
+# ** Warning: rtl/AXI_Master.v(182): (vopt-2241) Connection width does not match width of port 'rid_d'. The port definition is at: rtl/AXI_MASTER_READ_CONTROL.v(68).
+# ** Warning: rtl/Top_Module_AXI4.v(177): (vopt-2241) Connection width does not match width of port 'AWID'. The port definition is at: rtl/AXI_Master.v(30).
+# ** Warning: rtl/Top_Module_AXI4.v(177): (vopt-2241) Connection width does not match width of port 'AWLEN'. The port definition is at: rtl/AXI_Master.v(32).
+# ** Warning: rtl/Top_Module_AXI4.v(177): (vopt-2241) Connection width does not match width of port 'WDATA'. The port definition is at: rtl/AXI_Master.v(44).
+# ** Warning: rtl/Top_Module_AXI4.v(177): (vopt-2241) Connection width does not match width of port 'ARLEN'. The port definition is at: rtl/AXI_Master.v(58).
+# ** Warning: rtl/Top_Module_AXI4.v(177): (vopt-2241) Connection width does not match width of port 'RDATA'. The port definition is at: rtl/AXI_Master.v(69).
+# ** Warning: rtl/Top_Module_AXI4.v(177): (vopt-2241) Connection width does not match width of port 'awlen_d'. The port definition is at: rtl/AXI_Master.v(79).
+# ** Warning: rtl/Top_Module_AXI4.v(177): (vopt-2241) Connection width does not match width of port 'wdata_d'. The port definition is at: rtl/AXI_Master.v(86).
+# ** Warning: rtl/Top_Module_AXI4.v(177): (vopt-2241) Connection width does not match width of port 'rdata_d'. The port definition is at: rtl/AXI_Master.v(107).
+# ** Warning: rtl/Top_Module_AXI4.v(177): (vopt-2241) Connection width does not match width of port 'rid_d'. The port definition is at: rtl/AXI_Master.v(109).
+# ** Warning: hdl_top/hdl_top.sv(77): (vopt-2241) Connection width does not match width of port 'AWLEN_a'. The port definition is at: rtl/Top_Module_AXI4.v(44).
+# ** Warning: hdl_top/hdl_top.sv(77): (vopt-2241) Connection width does not match width of port 'AWCACHE_a'. The port definition is at: rtl/Top_Module_AXI4.v(48).
+# ** Warning: hdl_top/hdl_top.sv(77): (vopt-2241) Connection width does not match width of port 'ARLEN_a'. The port definition is at: rtl/Top_Module_AXI4.v(53).
+# ** Warning: hdl_top/hdl_top.sv(77): (vopt-2241) Connection width does not match width of port 'ARCACHE_a'. The port definition is at: rtl/Top_Module_AXI4.v(57).
+# ** Warning: hdl_top/hdl_top.sv(77): (vopt-2685) [TFMPC] - Too few port connections for 'dut'.  Expected 46, found 45.
+# ** Warning: hdl_top/hdl_top.sv(77): (vopt-2718) [TFMPC] - Missing connection for port 'WID_a'.
 # //  Questa Sim
 # //  Version 10.6c linux Jul 25 2017
 # //
@@ -12,9 +43,6 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
-# vsim -voptargs="+acc" "+UVM_TESTNAME=axi4_virtual_write_test" "+UVM_VERBOSITY=UVM_MEDIUM" tb_top hdl_top 
-# Start time: 14:48:32 on Aug 18,2026
-# ** Note: (vsim-8009) Loading existing optimized design _opt
 # Loading sv_std.std
 # Loading work.cpu_intf(fast)
 # Loading work.axi4_slave_driver_bfm(fast)
@@ -26,77 +54,9 @@
 # Loading work.axi4_globals_pkg_sv_unit(fast)
 # Loading work.tb_top(fast)
 # Loading work.hdl_top(fast)
-# Loading work.cpu_intf(fast)
-# Loading work.axi4_if(fast)
-# Loading work.axi4_slave_agent_bfm(fast)
-# Loading work.axi4_slave_driver_bfm(fast)
-# Loading work.axi4_slave_monitor_bfm(fast)
-# Loading work.slave_assertions(fast)
-# Loading work.Top_Module_AXI4(fast)
-# Loading work.design_fifo(fast)
-# Loading work.sync_fifo(fast)
-# Loading work.my_decoder(fast)
-# Loading work.write_response_handler(fast)
-# Loading work.AXI_Master(fast)
-# Loading work.AXI_MASTER_WRITE__CONTROL(fast)
-# Loading work.AXI_MASTER_READ_Control(fast)
 # Loading mtiUvm.questa_uvm_pkg(fast)
-# ** Warning: (vsim-3015) hdl_top/hdl_top.sv(77): [PCDPC] - Port size (4) does not match connection size (8) for port 'AWLEN_a'. The port definition is at: rtl/Top_Module_AXI4.v(44).
-#    Time: 0 ps  Iteration: 0  Instance: /hdl_top/dut File: rtl/Top_Module_AXI4.v
-# ** Warning: (vsim-3015) hdl_top/hdl_top.sv(77): [PCDPC] - Port size (2) does not match connection size (4) for port 'AWCACHE_a'. The port definition is at: rtl/Top_Module_AXI4.v(48).
-#    Time: 0 ps  Iteration: 0  Instance: /hdl_top/dut File: rtl/Top_Module_AXI4.v
-# ** Warning: (vsim-3015) hdl_top/hdl_top.sv(77): [PCDPC] - Port size (4) does not match connection size (8) for port 'ARLEN_a'. The port definition is at: rtl/Top_Module_AXI4.v(53).
-#    Time: 0 ps  Iteration: 0  Instance: /hdl_top/dut File: rtl/Top_Module_AXI4.v
-# ** Warning: (vsim-3015) hdl_top/hdl_top.sv(77): [PCDPC] - Port size (2) does not match connection size (4) for port 'ARCACHE_a'. The port definition is at: rtl/Top_Module_AXI4.v(57).
-#    Time: 0 ps  Iteration: 0  Instance: /hdl_top/dut File: rtl/Top_Module_AXI4.v
-# ** Warning: (vsim-3015) rtl/Top_Module_AXI4.v(133): [PCDPC] - Port size (128) does not match connection size (1) for port 'write_data'. The port definition is at: rtl/decoder.v(25).
-#    Time: 0 ps  Iteration: 0  Instance: /hdl_top/dut/decoder File: rtl/decoder.v
-# ** Warning: (vsim-3015) rtl/Top_Module_AXI4.v(133): [PCDPC] - Port size (10) does not match connection size (2) for port 'arlock'. The port definition is at: rtl/decoder.v(47).
-#    Time: 0 ps  Iteration: 0  Instance: /hdl_top/dut/decoder File: rtl/decoder.v
-# ** Warning: (vsim-3015) rtl/Top_Module_AXI4.v(133): [PCDPC] - Port size (4) does not match connection size (2) for port 'rresp'. The port definition is at: rtl/decoder.v(59).
-#    Time: 0 ps  Iteration: 0  Instance: /hdl_top/dut/decoder File: rtl/decoder.v
-# ** Warning: (vsim-3015) rtl/Top_Module_AXI4.v(133): [PCDPC] - Port size (4) does not match connection size (2) for port 'bresp'. The port definition is at: rtl/decoder.v(64).
-#    Time: 0 ps  Iteration: 0  Instance: /hdl_top/dut/decoder File: rtl/decoder.v
-# ** Warning: (vsim-3015) rtl/decoder.v(370): [PCDPC] - Port size (2) does not match connection size (4) for port 'bresp'. The port definition is at: rtl/write_response_handler.v(9).
-#    Time: 0 ps  Iteration: 0  Instance: /hdl_top/dut/decoder/wresp File: rtl/write_response_handler.v
-# ** Warning: (vsim-3015) rtl/Top_Module_AXI4.v(177): [PCDPC] - Port size (8) does not match connection size (4) for port 'AWID'. The port definition is at: rtl/AXI_Master.v(30).
-#    Time: 0 ps  Iteration: 0  Instance: /hdl_top/dut/DUT_axi File: rtl/AXI_Master.v
-# ** Warning: (vsim-3015) rtl/Top_Module_AXI4.v(177): [PCDPC] - Port size (8) does not match connection size (4) for port 'AWLEN'. The port definition is at: rtl/AXI_Master.v(32).
-#    Time: 0 ps  Iteration: 0  Instance: /hdl_top/dut/DUT_axi File: rtl/AXI_Master.v
-# ** Warning: (vsim-3015) rtl/Top_Module_AXI4.v(177): [PCDPC] - Port size (64) does not match connection size (32) for port 'WDATA'. The port definition is at: rtl/AXI_Master.v(44).
-#    Time: 0 ps  Iteration: 0  Instance: /hdl_top/dut/DUT_axi File: rtl/AXI_Master.v
-# ** Warning: (vsim-3015) rtl/Top_Module_AXI4.v(177): [PCDPC] - Port size (8) does not match connection size (4) for port 'ARLEN'. The port definition is at: rtl/AXI_Master.v(58).
-#    Time: 0 ps  Iteration: 0  Instance: /hdl_top/dut/DUT_axi File: rtl/AXI_Master.v
-# ** Warning: (vsim-3015) rtl/Top_Module_AXI4.v(177): [PCDPC] - Port size (64) does not match connection size (32) for port 'RDATA'. The port definition is at: rtl/AXI_Master.v(69).
-#    Time: 0 ps  Iteration: 0  Instance: /hdl_top/dut/DUT_axi File: rtl/AXI_Master.v
-# ** Warning: (vsim-3015) rtl/Top_Module_AXI4.v(177): [PCDPC] - Port size (8) does not match connection size (4) for port 'awlen_d'. The port definition is at: rtl/AXI_Master.v(79).
-#    Time: 0 ps  Iteration: 0  Instance: /hdl_top/dut/DUT_axi File: rtl/AXI_Master.v
-# ** Warning: (vsim-3015) rtl/Top_Module_AXI4.v(177): [PCDPC] - Port size (64) does not match connection size (32) for port 'wdata_d'. The port definition is at: rtl/AXI_Master.v(86).
-#    Time: 0 ps  Iteration: 0  Instance: /hdl_top/dut/DUT_axi File: rtl/AXI_Master.v
-# ** Warning: (vsim-3015) rtl/Top_Module_AXI4.v(177): [PCDPC] - Port size (64) does not match connection size (32) for port 'rdata_d'. The port definition is at: rtl/AXI_Master.v(107).
-#    Time: 0 ps  Iteration: 0  Instance: /hdl_top/dut/DUT_axi File: rtl/AXI_Master.v
-# ** Warning: (vsim-3015) rtl/Top_Module_AXI4.v(177): [PCDPC] - Port size (8) does not match connection size (4) for port 'rid_d'. The port definition is at: rtl/AXI_Master.v(109).
-#    Time: 0 ps  Iteration: 0  Instance: /hdl_top/dut/DUT_axi File: rtl/AXI_Master.v
-# ** Warning: (vsim-3015) rtl/AXI_Master.v(124): [PCDPC] - Port size (4) does not match connection size (8) for port 'AWID'. The port definition is at: rtl/AXI_MASTER_WRITE_CONTROL.v(32).
-#    Time: 0 ps  Iteration: 0  Instance: /hdl_top/dut/DUT_axi/AXI_WRITE_CONTROL File: rtl/AXI_MASTER_WRITE_CONTROL.v
-# ** Warning: (vsim-3015) rtl/AXI_Master.v(124): [PCDPC] - Port size (32) does not match connection size (64) for port 'WDATA'. The port definition is at: rtl/AXI_MASTER_WRITE_CONTROL.v(47).
-#    Time: 0 ps  Iteration: 0  Instance: /hdl_top/dut/DUT_axi/AXI_WRITE_CONTROL File: rtl/AXI_MASTER_WRITE_CONTROL.v
-# ** Warning: (vsim-3015) rtl/AXI_Master.v(124): [PCDPC] - Port size (4) does not match connection size (8) for port 'awlen_d'. The port definition is at: rtl/AXI_MASTER_WRITE_CONTROL.v(63).
-#    Time: 0 ps  Iteration: 0  Instance: /hdl_top/dut/DUT_axi/AXI_WRITE_CONTROL File: rtl/AXI_MASTER_WRITE_CONTROL.v
-# ** Warning: (vsim-3015) rtl/AXI_Master.v(124): [PCDPC] - Port size (32) does not match connection size (64) for port 'wdata_d'. The port definition is at: rtl/AXI_MASTER_WRITE_CONTROL.v(70).
-#    Time: 0 ps  Iteration: 0  Instance: /hdl_top/dut/DUT_axi/AXI_WRITE_CONTROL File: rtl/AXI_MASTER_WRITE_CONTROL.v
-# ** Warning: (vsim-3015) rtl/AXI_Master.v(182): [PCDPC] - Port size (4) does not match connection size (8) for port 'ARLEN'. The port definition is at: rtl/AXI_MASTER_READ_CONTROL.v(32).
-#    Time: 0 ps  Iteration: 0  Instance: /hdl_top/dut/DUT_axi/AXI_READ_CONTROL File: rtl/AXI_MASTER_READ_CONTROL.v
-# ** Warning: (vsim-3015) rtl/AXI_Master.v(182): [PCDPC] - Port size (32) does not match connection size (64) for port 'RDATA'. The port definition is at: rtl/AXI_MASTER_READ_CONTROL.v(42).
-#    Time: 0 ps  Iteration: 0  Instance: /hdl_top/dut/DUT_axi/AXI_READ_CONTROL File: rtl/AXI_MASTER_READ_CONTROL.v
-# ** Warning: (vsim-3015) rtl/AXI_Master.v(182): [PCDPC] - Port size (32) does not match connection size (64) for port 'rdata_d'. The port definition is at: rtl/AXI_MASTER_READ_CONTROL.v(66).
-#    Time: 0 ps  Iteration: 0  Instance: /hdl_top/dut/DUT_axi/AXI_READ_CONTROL File: rtl/AXI_MASTER_READ_CONTROL.v
-# ** Warning: (vsim-3015) rtl/AXI_Master.v(182): [PCDPC] - Port size (4) does not match connection size (8) for port 'rid_d'. The port definition is at: rtl/AXI_MASTER_READ_CONTROL.v(68).
-#    Time: 0 ps  Iteration: 0  Instance: /hdl_top/dut/DUT_axi/AXI_READ_CONTROL File: rtl/AXI_MASTER_READ_CONTROL.v
 # Loading /tools/mentor/questasim_10.6c/questasim/uvm-1.1d/linux/uvm_dpi.so
-add wave -position insertpoint sim:/hdl_top/c_intf/*
-add wave -position insertpoint sim:/hdl_top/dut/*
-run -all
+# run -all
 # ----------------------------------------------------------------
 # UVM-1.1d
 # (C) 2007-2013 Mentor Graphics Corporation
@@ -280,19 +240,31 @@ run -all
 #   parent sequence (full name)  string        51    uvm_test_top.env_h.env.active_agent.seqr.cpu_wr_seq
 #   sequencer                    string        40    uvm_test_top.env_h.env.active_agent.seqr           
 # ------------------------------------------------------------------------------------------------------
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 30000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[0] = f
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 30000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[1] = f
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 30000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[2] = f
+# UVM_INFO tb/active_agent/cpu_driver.sv(101) @ 30000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] 
+# 
+# ================ DRIVER WRITE TRANSACTION ================
+# TXN_ID : 2
+# ADDR   : 391125fc
+# LEN    : 2
+# SIZE   : 2
+# BURST  : 1
+# LOCK   : 1
+# CACHE  : 3
+# PROT   : 6
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 30000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[3] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 30000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[2] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 30000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[1] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 30000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[0] = 1
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 30000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[0] = 2483fbdd
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 30000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[1] = f1a13568
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 30000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[2] = 9088406d
-# UVM_INFO tb/active_agent/cpu_driver.sv(157) @ 30000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [30000] Packet size before padding = 176 bits
+# UVM_INFO tb/active_agent/cpu_driver.sv(157) @ 30000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [30000] Packet size before padding = 168 bits
 # UVM_INFO tb/active_agent/cpu_driver.sv(168) @ 30000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] Packet size after padding = 256 bits
-# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 30000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [30000] Prepared 128-bit FIFO Word = aa2391125fc24befff2483fbddf1a135
+# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 30000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [30000] Prepared 128-bit FIFO Word = aa2391125fc24bef2483fbddf1a13568
 # UVM_INFO hdl_top/slave_agent_bfm/axi4_slave_driver_bfm.sv(187) @ 30000: reporter [AXI4_SLAVE_DRIVER_BFM] INSIDE WRITE DATA CHANNEL
 # UVM_INFO hdl_top/slave_agent_bfm/axi4_slave_driver_bfm.sv(138) @ 30000: reporter [AXI4_SLAVE_DRIVER_BFM] INSIDE WRITE_ADDRESS_PHASE
-# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 50000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [50000] Driven wr_data = aa2391125fc24befff2483fbddf1a135, wr_en = 1
-# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 50000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [50000] Prepared 128-bit FIFO Word = 689088406d5300000000000000000000
+# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 50000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [50000] Driven wr_data = aa2391125fc24bef2483fbddf1a13568, wr_en = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 50000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [50000] Prepared 128-bit FIFO Word = 9088406d530000000000000000000000
 # UVM_INFO tb/active_agent/cpu_active_monitor.sv(47) @ 50000: uvm_test_top.env_h.env.active_agent.mon [ACTIVE_MON] 
 # =====================================================
 # ACTIVE MONITOR CAPTURED WRITE TRANSACTION
@@ -300,12 +272,12 @@ run -all
 # TIME    : 50000
 # WR_EN   : 1
 # FULL    : 0
-# WR_DATA : 0xaa2391125fc24befff2483fbddf1a135
+# WR_DATA : 0xaa2391125fc24bef2483fbddf1a13568
 # =====================================================
-# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 50000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = aa2391125fc24befff2483fbddf1a135
+# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 50000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = aa2391125fc24bef2483fbddf1a13568
 # UVM_INFO tb/env/cpu_scoreboard.sv(427) @ 50000: uvm_test_top.env_h.env.sb [SCB] SOP detected: Packet start=0 LEN=2 BEATS=3 EXPECTED_WORDS=2
 # UVM_INFO tb/env/cpu_scoreboard.sv(453) @ 50000: uvm_test_top.env_h.env.sb [SCB] Packet word stored: word_count=1/2 wr_ptr=1
-# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 70000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [70000] Driven wr_data = 689088406d5300000000000000000000, wr_en = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 70000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [70000] Driven wr_data = 9088406d530000000000000000000000, wr_en = 1
 # UVM_INFO tb/active_agent/cpu_active_monitor.sv(47) @ 70000: uvm_test_top.env_h.env.active_agent.mon [ACTIVE_MON] 
 # =====================================================
 # ACTIVE MONITOR CAPTURED WRITE TRANSACTION
@@ -313,9 +285,9 @@ run -all
 # TIME    : 70000
 # WR_EN   : 1
 # FULL    : 0
-# WR_DATA : 0x689088406d5300000000000000000000
+# WR_DATA : 0x9088406d530000000000000000000000
 # =====================================================
-# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 70000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = 689088406d5300000000000000000000
+# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 70000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = 9088406d530000000000000000000000
 # UVM_INFO tb/env/cpu_scoreboard.sv(453) @ 70000: uvm_test_top.env_h.env.sb [SCB] Packet word stored: word_count=2/2 wr_ptr=2
 # UVM_INFO tb/env/cpu_scoreboard.sv(468) @ 70000: uvm_test_top.env_h.env.sb [SCB] Packet completed: Start=0 End=1
 # UVM_INFO tb/env/cpu_scoreboard.sv(785) @ 70000: uvm_test_top.env_h.env.sb [SCB] Packet Received : Start=0 End=1
@@ -325,10 +297,11 @@ run -all
 # UVM_INFO tb/env/cpu_scoreboard.sv(613) @ 70000: uvm_test_top.env_h.env.sb [SCB] decode_packet called. Packet words received = 2
 # UVM_INFO tb/env/cpu_scoreboard.sv(642) @ 70000: uvm_test_top.env_h.env.sb [SCB] Decoded Header: SOP=aa TXN_ID=2 ADDR=391125fc LEN=2 SIZE=2 BURST=1 LOCK=1 CACHE=3 PROT=6
 # UVM_INFO tb/env/cpu_scoreboard.sv(657) @ 70000: uvm_test_top.env_h.env.sb [SCB] Packet calculation: BEATS=3 TOTAL_BITS=256
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 70000: uvm_test_top.env_h.env.sb [DATA] data[0] = 2483fbdd
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 70000: uvm_test_top.env_h.env.sb [DATA] data[1] = f1a13568
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 70000: uvm_test_top.env_h.env.sb [DATA] data[2] = 9088406d
-# UVM_INFO tb/env/cpu_scoreboard.sv(716) @ 70000: uvm_test_top.env_h.env.sb [SCB] EOP decoded = 53
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 70000: uvm_test_top.env_h.env.sb [DATA] data[0] = 83fbddf1
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 70000: uvm_test_top.env_h.env.sb [DATA] data[1] = a1356890
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 70000: uvm_test_top.env_h.env.sb [DATA] data[2] = 88406d53
+# UVM_INFO tb/env/cpu_scoreboard.sv(716) @ 70000: uvm_test_top.env_h.env.sb [SCB] EOP decoded = 00
+# UVM_ERROR tb/env/cpu_scoreboard.sv(720) @ 70000: uvm_test_top.env_h.env.sb [SCB] EOP mismatch
 # UVM_INFO tb/env/cpu_scoreboard.sv(752) @ 70000: uvm_test_top.env_h.env.sb [SCB] Write packet identified. Storing into expected write queue
 # UVM_INFO tb/env/cpu_scoreboard.sv(524) @ 70000: uvm_test_top.env_h.env.sb [SCB] FIFO Read completed: rd_ptr=2 empty=1 full=0
 # UVM_INFO tb/active_agent/cpu_driver.sv(209) @ 90000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] wr_en deasserted. Packet transmission finished.
@@ -346,9 +319,10 @@ run -all
 #                 LOCK   : 1
 #                 CACHE  : 3
 #                 PROT   : 6
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 90000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[0] = f
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 90000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[1] = f
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 90000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[2] = f
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 90000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[3] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 90000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[2] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 90000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[1] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 90000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[0] = 1
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 90000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[0]   = 2483fbdd
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 90000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[1]   = f1a13568
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 90000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[2]   = 9088406d
@@ -374,17 +348,29 @@ run -all
 #   parent sequence (full name)  string        51    uvm_test_top.env_h.env.active_agent.seqr.cpu_wr_seq
 #   sequencer                    string        40    uvm_test_top.env_h.env.active_agent.seqr           
 # ------------------------------------------------------------------------------------------------------
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 90000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[0] = f
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 90000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[1] = f
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 90000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[2] = f
+# UVM_INFO tb/active_agent/cpu_driver.sv(101) @ 90000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] 
+# 
+# ================ DRIVER WRITE TRANSACTION ================
+# TXN_ID : 3
+# ADDR   : 05ec0120
+# LEN    : 2
+# SIZE   : 2
+# BURST  : 1
+# LOCK   : 0
+# CACHE  : 2
+# PROT   : 0
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 90000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[3] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 90000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[2] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 90000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[1] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 90000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[0] = 1
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 90000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[0] = cdd99027
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 90000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[1] = 1a726fad
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 90000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[2] = ae3520ef
-# UVM_INFO tb/active_agent/cpu_driver.sv(157) @ 90000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [90000] Packet size before padding = 176 bits
+# UVM_INFO tb/active_agent/cpu_driver.sv(157) @ 90000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [90000] Packet size before padding = 168 bits
 # UVM_INFO tb/active_agent/cpu_driver.sv(168) @ 90000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] Packet size after padding = 256 bits
-# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 90000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [90000] Prepared 128-bit FIFO Word = aa305ec01202490fffcdd990271a726f
-# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 110000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [110000] Driven wr_data = aa305ec01202490fffcdd990271a726f, wr_en = 1
-# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 110000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [110000] Prepared 128-bit FIFO Word = adae3520ef5300000000000000000000
+# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 90000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [90000] Prepared 128-bit FIFO Word = aa305ec01202490fcdd990271a726fad
+# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 110000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [110000] Driven wr_data = aa305ec01202490fcdd990271a726fad, wr_en = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 110000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [110000] Prepared 128-bit FIFO Word = ae3520ef530000000000000000000000
 # UVM_INFO tb/active_agent/cpu_active_monitor.sv(47) @ 110000: uvm_test_top.env_h.env.active_agent.mon [ACTIVE_MON] 
 # =====================================================
 # ACTIVE MONITOR CAPTURED WRITE TRANSACTION
@@ -392,12 +378,12 @@ run -all
 # TIME    : 110000
 # WR_EN   : 1
 # FULL    : 0
-# WR_DATA : 0xaa305ec01202490fffcdd990271a726f
+# WR_DATA : 0xaa305ec01202490fcdd990271a726fad
 # =====================================================
-# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 110000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = aa305ec01202490fffcdd990271a726f
+# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 110000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = aa305ec01202490fcdd990271a726fad
 # UVM_INFO tb/env/cpu_scoreboard.sv(427) @ 110000: uvm_test_top.env_h.env.sb [SCB] SOP detected: Packet start=2 LEN=2 BEATS=3 EXPECTED_WORDS=2
 # UVM_INFO tb/env/cpu_scoreboard.sv(453) @ 110000: uvm_test_top.env_h.env.sb [SCB] Packet word stored: word_count=1/2 wr_ptr=3
-# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 130000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [130000] Driven wr_data = adae3520ef5300000000000000000000, wr_en = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 130000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [130000] Driven wr_data = ae3520ef530000000000000000000000, wr_en = 1
 # UVM_INFO tb/active_agent/cpu_active_monitor.sv(47) @ 130000: uvm_test_top.env_h.env.active_agent.mon [ACTIVE_MON] 
 # =====================================================
 # ACTIVE MONITOR CAPTURED WRITE TRANSACTION
@@ -405,9 +391,9 @@ run -all
 # TIME    : 130000
 # WR_EN   : 1
 # FULL    : 0
-# WR_DATA : 0xadae3520ef5300000000000000000000
+# WR_DATA : 0xae3520ef530000000000000000000000
 # =====================================================
-# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 130000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = adae3520ef5300000000000000000000
+# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 130000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = ae3520ef530000000000000000000000
 # UVM_INFO tb/env/cpu_scoreboard.sv(453) @ 130000: uvm_test_top.env_h.env.sb [SCB] Packet word stored: word_count=2/2 wr_ptr=4
 # UVM_INFO tb/env/cpu_scoreboard.sv(468) @ 130000: uvm_test_top.env_h.env.sb [SCB] Packet completed: Start=2 End=3
 # UVM_INFO tb/env/cpu_scoreboard.sv(785) @ 130000: uvm_test_top.env_h.env.sb [SCB] Packet Received : Start=2 End=3
@@ -417,10 +403,11 @@ run -all
 # UVM_INFO tb/env/cpu_scoreboard.sv(613) @ 130000: uvm_test_top.env_h.env.sb [SCB] decode_packet called. Packet words received = 2
 # UVM_INFO tb/env/cpu_scoreboard.sv(642) @ 130000: uvm_test_top.env_h.env.sb [SCB] Decoded Header: SOP=aa TXN_ID=3 ADDR=05ec0120 LEN=2 SIZE=2 BURST=1 LOCK=0 CACHE=2 PROT=0
 # UVM_INFO tb/env/cpu_scoreboard.sv(657) @ 130000: uvm_test_top.env_h.env.sb [SCB] Packet calculation: BEATS=3 TOTAL_BITS=256
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 130000: uvm_test_top.env_h.env.sb [DATA] data[0] = cdd99027
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 130000: uvm_test_top.env_h.env.sb [DATA] data[1] = 1a726fad
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 130000: uvm_test_top.env_h.env.sb [DATA] data[2] = ae3520ef
-# UVM_INFO tb/env/cpu_scoreboard.sv(716) @ 130000: uvm_test_top.env_h.env.sb [SCB] EOP decoded = 53
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 130000: uvm_test_top.env_h.env.sb [DATA] data[0] = d990271a
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 130000: uvm_test_top.env_h.env.sb [DATA] data[1] = 726fadae
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 130000: uvm_test_top.env_h.env.sb [DATA] data[2] = 3520ef53
+# UVM_INFO tb/env/cpu_scoreboard.sv(716) @ 130000: uvm_test_top.env_h.env.sb [SCB] EOP decoded = 00
+# UVM_ERROR tb/env/cpu_scoreboard.sv(720) @ 130000: uvm_test_top.env_h.env.sb [SCB] EOP mismatch
 # UVM_INFO tb/env/cpu_scoreboard.sv(752) @ 130000: uvm_test_top.env_h.env.sb [SCB] Write packet identified. Storing into expected write queue
 # UVM_INFO tb/env/cpu_scoreboard.sv(524) @ 130000: uvm_test_top.env_h.env.sb [SCB] FIFO Read completed: rd_ptr=4 empty=1 full=0
 # UVM_INFO tb/active_agent/cpu_driver.sv(209) @ 150000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] wr_en deasserted. Packet transmission finished.
@@ -438,9 +425,10 @@ run -all
 #                 LOCK   : 0
 #                 CACHE  : 2
 #                 PROT   : 0
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 150000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[0] = f
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 150000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[1] = f
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 150000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[2] = f
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 150000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[3] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 150000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[2] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 150000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[1] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 150000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[0] = 1
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 150000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[0]   = cdd99027
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 150000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[1]   = 1a726fad
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 150000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[2]   = ae3520ef
@@ -466,17 +454,29 @@ run -all
 #   parent sequence (full name)  string        51    uvm_test_top.env_h.env.active_agent.seqr.cpu_wr_seq
 #   sequencer                    string        40    uvm_test_top.env_h.env.active_agent.seqr           
 # ------------------------------------------------------------------------------------------------------
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 150000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[0] = f
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 150000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[1] = f
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 150000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[2] = f
+# UVM_INFO tb/active_agent/cpu_driver.sv(101) @ 150000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] 
+# 
+# ================ DRIVER WRITE TRANSACTION ================
+# TXN_ID : f
+# ADDR   : 66732fc8
+# LEN    : 2
+# SIZE   : 2
+# BURST  : 1
+# LOCK   : 0
+# CACHE  : 3
+# PROT   : 6
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 150000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[3] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 150000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[2] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 150000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[1] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 150000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[0] = 1
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 150000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[0] = 3640f598
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 150000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[1] = 75c32918
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 150000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[2] = 329c2db6
-# UVM_INFO tb/active_agent/cpu_driver.sv(157) @ 150000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [150000] Packet size before padding = 176 bits
+# UVM_INFO tb/active_agent/cpu_driver.sv(157) @ 150000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [150000] Packet size before padding = 168 bits
 # UVM_INFO tb/active_agent/cpu_driver.sv(168) @ 150000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] Packet size after padding = 256 bits
-# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 150000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [150000] Prepared 128-bit FIFO Word = aaf66732fc8249efff3640f59875c329
-# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 170000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [170000] Driven wr_data = aaf66732fc8249efff3640f59875c329, wr_en = 1
-# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 170000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [170000] Prepared 128-bit FIFO Word = 18329c2db65300000000000000000000
+# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 150000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [150000] Prepared 128-bit FIFO Word = aaf66732fc8249ef3640f59875c32918
+# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 170000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [170000] Driven wr_data = aaf66732fc8249ef3640f59875c32918, wr_en = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 170000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [170000] Prepared 128-bit FIFO Word = 329c2db6530000000000000000000000
 # UVM_INFO tb/active_agent/cpu_active_monitor.sv(47) @ 170000: uvm_test_top.env_h.env.active_agent.mon [ACTIVE_MON] 
 # =====================================================
 # ACTIVE MONITOR CAPTURED WRITE TRANSACTION
@@ -484,12 +484,12 @@ run -all
 # TIME    : 170000
 # WR_EN   : 1
 # FULL    : 0
-# WR_DATA : 0xaaf66732fc8249efff3640f59875c329
+# WR_DATA : 0xaaf66732fc8249ef3640f59875c32918
 # =====================================================
-# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 170000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = aaf66732fc8249efff3640f59875c329
+# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 170000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = aaf66732fc8249ef3640f59875c32918
 # UVM_INFO tb/env/cpu_scoreboard.sv(427) @ 170000: uvm_test_top.env_h.env.sb [SCB] SOP detected: Packet start=4 LEN=2 BEATS=3 EXPECTED_WORDS=2
 # UVM_INFO tb/env/cpu_scoreboard.sv(453) @ 170000: uvm_test_top.env_h.env.sb [SCB] Packet word stored: word_count=1/2 wr_ptr=5
-# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 190000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [190000] Driven wr_data = 18329c2db65300000000000000000000, wr_en = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 190000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [190000] Driven wr_data = 329c2db6530000000000000000000000, wr_en = 1
 # UVM_INFO hdl_top/slave_agent_bfm/axi4_slave_driver_bfm.sv(149) @ 190000: reporter [SLAVE_DRIVER_WADDR_PHASE] outside of awvalid
 # UVM_INFO tb/active_agent/cpu_active_monitor.sv(47) @ 190000: uvm_test_top.env_h.env.active_agent.mon [ACTIVE_MON] 
 # =====================================================
@@ -498,9 +498,9 @@ run -all
 # TIME    : 190000
 # WR_EN   : 1
 # FULL    : 0
-# WR_DATA : 0x18329c2db65300000000000000000000
+# WR_DATA : 0x329c2db6530000000000000000000000
 # =====================================================
-# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 190000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = 18329c2db65300000000000000000000
+# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 190000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = 329c2db6530000000000000000000000
 # UVM_INFO tb/env/cpu_scoreboard.sv(453) @ 190000: uvm_test_top.env_h.env.sb [SCB] Packet word stored: word_count=2/2 wr_ptr=6
 # UVM_INFO tb/env/cpu_scoreboard.sv(468) @ 190000: uvm_test_top.env_h.env.sb [SCB] Packet completed: Start=4 End=5
 # UVM_INFO tb/env/cpu_scoreboard.sv(785) @ 190000: uvm_test_top.env_h.env.sb [SCB] Packet Received : Start=4 End=5
@@ -510,10 +510,11 @@ run -all
 # UVM_INFO tb/env/cpu_scoreboard.sv(613) @ 190000: uvm_test_top.env_h.env.sb [SCB] decode_packet called. Packet words received = 2
 # UVM_INFO tb/env/cpu_scoreboard.sv(642) @ 190000: uvm_test_top.env_h.env.sb [SCB] Decoded Header: SOP=aa TXN_ID=15 ADDR=66732fc8 LEN=2 SIZE=2 BURST=1 LOCK=0 CACHE=3 PROT=6
 # UVM_INFO tb/env/cpu_scoreboard.sv(657) @ 190000: uvm_test_top.env_h.env.sb [SCB] Packet calculation: BEATS=3 TOTAL_BITS=256
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 190000: uvm_test_top.env_h.env.sb [DATA] data[0] = 3640f598
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 190000: uvm_test_top.env_h.env.sb [DATA] data[1] = 75c32918
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 190000: uvm_test_top.env_h.env.sb [DATA] data[2] = 329c2db6
-# UVM_INFO tb/env/cpu_scoreboard.sv(716) @ 190000: uvm_test_top.env_h.env.sb [SCB] EOP decoded = 53
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 190000: uvm_test_top.env_h.env.sb [DATA] data[0] = 40f59875
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 190000: uvm_test_top.env_h.env.sb [DATA] data[1] = c3291832
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 190000: uvm_test_top.env_h.env.sb [DATA] data[2] = 9c2db653
+# UVM_INFO tb/env/cpu_scoreboard.sv(716) @ 190000: uvm_test_top.env_h.env.sb [SCB] EOP decoded = 00
+# UVM_ERROR tb/env/cpu_scoreboard.sv(720) @ 190000: uvm_test_top.env_h.env.sb [SCB] EOP mismatch
 # UVM_INFO tb/env/cpu_scoreboard.sv(752) @ 190000: uvm_test_top.env_h.env.sb [SCB] Write packet identified. Storing into expected write queue
 # UVM_INFO tb/env/cpu_scoreboard.sv(524) @ 190000: uvm_test_top.env_h.env.sb [SCB] FIFO Read completed: rd_ptr=6 empty=1 full=0
 # ** Error: Assertion error.
@@ -533,9 +534,10 @@ run -all
 #                 LOCK   : 0
 #                 CACHE  : 3
 #                 PROT   : 6
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 210000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[0] = f
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 210000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[1] = f
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 210000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[2] = f
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 210000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[3] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 210000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[2] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 210000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[1] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 210000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[0] = 1
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 210000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[0]   = 3640f598
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 210000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[1]   = 75c32918
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 210000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[2]   = 329c2db6
@@ -561,21 +563,31 @@ run -all
 #   parent sequence (full name)  string        51    uvm_test_top.env_h.env.active_agent.seqr.cpu_wr_seq
 #   sequencer                    string        40    uvm_test_top.env_h.env.active_agent.seqr           
 # ------------------------------------------------------------------------------------------------------
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 210000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[0] = f
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 210000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[1] = f
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 210000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[2] = f
+# UVM_INFO tb/active_agent/cpu_driver.sv(101) @ 210000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] 
+# 
+# ================ DRIVER WRITE TRANSACTION ================
+# TXN_ID : b
+# ADDR   : 288b91a4
+# LEN    : 2
+# SIZE   : 2
+# BURST  : 1
+# LOCK   : 0
+# CACHE  : 0
+# PROT   : 3
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 210000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[3] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 210000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[2] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 210000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[1] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 210000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[0] = 1
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 210000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[0] = 1c787ea9
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 210000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[1] = 82afe768
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 210000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[2] = f9708b7f
-# UVM_INFO tb/active_agent/cpu_driver.sv(157) @ 210000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [210000] Packet size before padding = 176 bits
+# UVM_INFO tb/active_agent/cpu_driver.sv(157) @ 210000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [210000] Packet size before padding = 168 bits
 # UVM_INFO tb/active_agent/cpu_driver.sv(168) @ 210000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] Packet size after padding = 256 bits
-# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 210000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [210000] Prepared 128-bit FIFO Word = aab288b91a42483fff1c787ea982afe7
+# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 210000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [210000] Prepared 128-bit FIFO Word = aab288b91a42483f1c787ea982afe768
 # ** Error: Assertion error.
 #    Time: 210 ns Started: 190 ns  Scope: hdl_top.axi4_slave_agent_bfm[0].axi4_slave_agent_bfm_h.axi4_slave_mon_bfm_h.S_A.AXI_WA_STABLE_SIGNALS_CHECK File: hdl_top/slave_assertions.sv Line: 84
-# ** Error: Assertion error.
-#    Time: 210 ns Started: 210 ns  Scope: hdl_top.axi4_slave_agent_bfm[0].axi4_slave_agent_bfm_h.axi4_slave_mon_bfm_h.S_A.AXI_WA_UNKNOWN_SIGNALS_CHECK File: hdl_top/slave_assertions.sv Line: 93
-# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 230000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [230000] Driven wr_data = aab288b91a42483fff1c787ea982afe7, wr_en = 1
-# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 230000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [230000] Prepared 128-bit FIFO Word = 68f9708b7f5300000000000000000000
+# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 230000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [230000] Driven wr_data = aab288b91a42483f1c787ea982afe768, wr_en = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 230000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [230000] Prepared 128-bit FIFO Word = f9708b7f530000000000000000000000
 # UVM_INFO vip/axi_slave_vip/axi4_slave_seq_item_converter.sv(198) @ 230000: reporter [axi4_slave_seq_item_conv_class] Converting write response: input bid = 0
 # UVM_INFO vip/axi_slave_vip/axi4_slave_driver_proxy.sv(209) @ 230000: uvm_test_top.env_h.axi_vip_env_h.slave_agt_h.axi4_slave_drv_proxy_h [axi4_slave_driver_proxy] WRITE_ADDRESS_CHANNEL::Received write address packet, awid = 0
 # UVM_INFO vip/axi_slave_vip/axi4_slave_driver_proxy.sv(399) @ 230000: uvm_test_top.env_h.axi_vip_env_h.slave_agt_h.axi4_slave_drv_proxy_h [SLAVE_STATUS_CHECK] AFTER_FORK_JOIN_ANY:: SLAVE_ADDRESS_CHANNEL_STATUS =
@@ -591,9 +603,9 @@ run -all
 # TIME    : 230000
 # WR_EN   : 1
 # FULL    : 0
-# WR_DATA : 0xaab288b91a42483fff1c787ea982afe7
+# WR_DATA : 0xaab288b91a42483f1c787ea982afe768
 # =====================================================
-# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 230000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = aab288b91a42483fff1c787ea982afe7
+# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 230000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = aab288b91a42483f1c787ea982afe768
 # UVM_INFO tb/env/cpu_scoreboard.sv(427) @ 230000: uvm_test_top.env_h.env.sb [SCB] SOP detected: Packet start=6 LEN=2 BEATS=3 EXPECTED_WORDS=2
 # UVM_INFO tb/env/cpu_scoreboard.sv(453) @ 230000: uvm_test_top.env_h.env.sb [SCB] Packet word stored: word_count=1/2 wr_ptr=7
 # -----------------------------------------------------------------
@@ -615,12 +627,10 @@ run -all
 #   ruser              integral       4     'h6                    
 #   no_of_wait_states  integral       32    'h3                    
 # -----------------------------------------------------------------
-# ** Error: Assertion error.
-#    Time: 230 ns Started: 230 ns  Scope: hdl_top.axi4_slave_agent_bfm[0].axi4_slave_agent_bfm_h.axi4_slave_mon_bfm_h.S_A.AXI_WA_UNKNOWN_SIGNALS_CHECK File: hdl_top/slave_assertions.sv Line: 93
-# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 250000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [250000] Driven wr_data = 68f9708b7f5300000000000000000000, wr_en = 1
-# UVM_INFO hdl_top/slave_agent_bfm/axi4_slave_driver_bfm.sv(138) @ 250000: reporter [AXI4_SLAVE_DRIVER_BFM] INSIDE WRITE_ADDRESS_PHASE
+# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 250000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [250000] Driven wr_data = f9708b7f530000000000000000000000, wr_en = 1
 # UVM_INFO vip/axi_slave_vip/axi4_slave_seq_item_converter.sv(198) @ 250000: reporter [axi4_slave_seq_item_conv_class] Converting write response: input bid = 0
 # UVM_INFO tb/env/cpu_scoreboard.sv(149) @ 250000: uvm_test_top.env_h.env.sb [SCB] AW Channel Received: ID=2 ADDR=391125fc LEN=2
+# UVM_INFO hdl_top/slave_agent_bfm/axi4_slave_driver_bfm.sv(138) @ 250000: reporter [AXI4_SLAVE_DRIVER_BFM] INSIDE WRITE_ADDRESS_PHASE
 # UVM_INFO tb/active_agent/cpu_active_monitor.sv(47) @ 250000: uvm_test_top.env_h.env.active_agent.mon [ACTIVE_MON] 
 # =====================================================
 # ACTIVE MONITOR CAPTURED WRITE TRANSACTION
@@ -628,9 +638,9 @@ run -all
 # TIME    : 250000
 # WR_EN   : 1
 # FULL    : 0
-# WR_DATA : 0x68f9708b7f5300000000000000000000
+# WR_DATA : 0xf9708b7f530000000000000000000000
 # =====================================================
-# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 250000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = 68f9708b7f5300000000000000000000
+# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 250000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = f9708b7f530000000000000000000000
 # UVM_INFO tb/env/cpu_scoreboard.sv(453) @ 250000: uvm_test_top.env_h.env.sb [SCB] Packet word stored: word_count=2/2 wr_ptr=8
 # UVM_INFO tb/env/cpu_scoreboard.sv(468) @ 250000: uvm_test_top.env_h.env.sb [SCB] Packet completed: Start=6 End=7
 # UVM_INFO tb/env/cpu_scoreboard.sv(785) @ 250000: uvm_test_top.env_h.env.sb [SCB] Packet Received : Start=6 End=7
@@ -640,15 +650,14 @@ run -all
 # UVM_INFO tb/env/cpu_scoreboard.sv(613) @ 250000: uvm_test_top.env_h.env.sb [SCB] decode_packet called. Packet words received = 2
 # UVM_INFO tb/env/cpu_scoreboard.sv(642) @ 250000: uvm_test_top.env_h.env.sb [SCB] Decoded Header: SOP=aa TXN_ID=11 ADDR=288b91a4 LEN=2 SIZE=2 BURST=1 LOCK=0 CACHE=0 PROT=3
 # UVM_INFO tb/env/cpu_scoreboard.sv(657) @ 250000: uvm_test_top.env_h.env.sb [SCB] Packet calculation: BEATS=3 TOTAL_BITS=256
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 250000: uvm_test_top.env_h.env.sb [DATA] data[0] = 1c787ea9
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 250000: uvm_test_top.env_h.env.sb [DATA] data[1] = 82afe768
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 250000: uvm_test_top.env_h.env.sb [DATA] data[2] = f9708b7f
-# UVM_INFO tb/env/cpu_scoreboard.sv(716) @ 250000: uvm_test_top.env_h.env.sb [SCB] EOP decoded = 53
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 250000: uvm_test_top.env_h.env.sb [DATA] data[0] = 787ea982
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 250000: uvm_test_top.env_h.env.sb [DATA] data[1] = afe768f9
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 250000: uvm_test_top.env_h.env.sb [DATA] data[2] = 708b7f53
+# UVM_INFO tb/env/cpu_scoreboard.sv(716) @ 250000: uvm_test_top.env_h.env.sb [SCB] EOP decoded = 00
+# UVM_ERROR tb/env/cpu_scoreboard.sv(720) @ 250000: uvm_test_top.env_h.env.sb [SCB] EOP mismatch
 # UVM_INFO tb/env/cpu_scoreboard.sv(752) @ 250000: uvm_test_top.env_h.env.sb [SCB] Write packet identified. Storing into expected write queue
 # UVM_INFO tb/env/cpu_scoreboard.sv(524) @ 250000: uvm_test_top.env_h.env.sb [SCB] FIFO Read completed: rd_ptr=8 empty=1 full=0
 # UVM_INFO hdl_top/slave_assertions.sv(103) @ 250000: reporter [AXI4_SLAVE_ASSERTIONS] AXI_WA_VALID_STABLE_CHECK assertion PASSED @250000
-# ** Error: Assertion error.
-#    Time: 250 ns Started: 250 ns  Scope: hdl_top.axi4_slave_agent_bfm[0].axi4_slave_agent_bfm_h.axi4_slave_mon_bfm_h.S_A.AXI_WA_UNKNOWN_SIGNALS_CHECK File: hdl_top/slave_assertions.sv Line: 93
 # UVM_INFO tb/active_agent/cpu_driver.sv(209) @ 270000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] wr_en deasserted. Packet transmission finished.
 # ** Warning: (vsim-PLI-3070) tb/active_agent/cpu_driver.sv(53): $sformatf : Too many arguments.
 #    Time: 270 ns  Iteration: 1  Region: /cpu_tb_pkg::cpu_driver::run_phase
@@ -664,9 +673,10 @@ run -all
 #                 LOCK   : 0
 #                 CACHE  : 0
 #                 PROT   : 3
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 270000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[0] = f
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 270000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[1] = f
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 270000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[2] = f
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 270000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[3] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 270000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[2] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 270000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[1] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 270000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[0] = 1
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 270000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[0]   = 1c787ea9
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 270000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[1]   = 82afe768
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 270000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[2]   = f9708b7f
@@ -692,20 +702,30 @@ run -all
 #   parent sequence (full name)  string        51    uvm_test_top.env_h.env.active_agent.seqr.cpu_wr_seq
 #   sequencer                    string        40    uvm_test_top.env_h.env.active_agent.seqr           
 # ------------------------------------------------------------------------------------------------------
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 270000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[0] = f
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 270000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[1] = f
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 270000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[2] = f
+# UVM_INFO tb/active_agent/cpu_driver.sv(101) @ 270000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] 
+# 
+# ================ DRIVER WRITE TRANSACTION ================
+# TXN_ID : 7
+# ADDR   : f61889e0
+# LEN    : 2
+# SIZE   : 2
+# BURST  : 1
+# LOCK   : 1
+# CACHE  : 0
+# PROT   : 0
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 270000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[3] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 270000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[2] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 270000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[1] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 270000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[0] = 1
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 270000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[0] = 8b7a83ff
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 270000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[1] = 356439e6
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 270000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[2] = cb12e738
-# UVM_INFO tb/active_agent/cpu_driver.sv(157) @ 270000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [270000] Packet size before padding = 176 bits
+# UVM_INFO tb/active_agent/cpu_driver.sv(157) @ 270000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [270000] Packet size before padding = 168 bits
 # UVM_INFO tb/active_agent/cpu_driver.sv(168) @ 270000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] Packet size after padding = 256 bits
-# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 270000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [270000] Prepared 128-bit FIFO Word = aa7f61889e024a0fff8b7a83ff356439
+# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 270000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [270000] Prepared 128-bit FIFO Word = aa7f61889e024a0f8b7a83ff356439e6
 # UVM_INFO hdl_top/slave_agent_bfm/axi4_slave_driver_bfm.sv(149) @ 270000: reporter [SLAVE_DRIVER_WADDR_PHASE] outside of awvalid
-# ** Error: Assertion error.
-#    Time: 270 ns Started: 270 ns  Scope: hdl_top.axi4_slave_agent_bfm[0].axi4_slave_agent_bfm_h.axi4_slave_mon_bfm_h.S_A.AXI_WA_UNKNOWN_SIGNALS_CHECK File: hdl_top/slave_assertions.sv Line: 93
-# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 290000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [290000] Driven wr_data = aa7f61889e024a0fff8b7a83ff356439, wr_en = 1
-# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 290000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [290000] Prepared 128-bit FIFO Word = e6cb12e7385300000000000000000000
+# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 290000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [290000] Driven wr_data = aa7f61889e024a0f8b7a83ff356439e6, wr_en = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 290000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [290000] Prepared 128-bit FIFO Word = cb12e738530000000000000000000000
 # UVM_INFO tb/active_agent/cpu_active_monitor.sv(47) @ 290000: uvm_test_top.env_h.env.active_agent.mon [ACTIVE_MON] 
 # =====================================================
 # ACTIVE MONITOR CAPTURED WRITE TRANSACTION
@@ -713,18 +733,18 @@ run -all
 # TIME    : 290000
 # WR_EN   : 1
 # FULL    : 0
-# WR_DATA : 0xaa7f61889e024a0fff8b7a83ff356439
+# WR_DATA : 0xaa7f61889e024a0f8b7a83ff356439e6
 # =====================================================
-# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 290000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = aa7f61889e024a0fff8b7a83ff356439
+# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 290000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = aa7f61889e024a0f8b7a83ff356439e6
 # UVM_INFO tb/env/cpu_scoreboard.sv(427) @ 290000: uvm_test_top.env_h.env.sb [SCB] SOP detected: Packet start=8 LEN=2 BEATS=3 EXPECTED_WORDS=2
 # UVM_INFO tb/env/cpu_scoreboard.sv(453) @ 290000: uvm_test_top.env_h.env.sb [SCB] Packet word stored: word_count=1/2 wr_ptr=9
 # ** Error: Assertion error.
 #    Time: 290 ns Started: 290 ns  Scope: hdl_top.axi4_slave_agent_bfm[0].axi4_slave_agent_bfm_h.axi4_slave_mon_bfm_h.S_A.AXI_WD_UNKNOWN_SIGNALS_CHECK File: hdl_top/slave_assertions.sv Line: 124
 # ** Error: Assertion error.
-#    Time: 290 ns Started: 270 ns  Scope: hdl_top.axi4_slave_agent_bfm[0].axi4_slave_agent_bfm_h.axi4_slave_mon_bfm_h.S_A.AXI_WA_STABLE_SIGNALS_CHECK File: hdl_top/slave_assertions.sv Line: 84
-# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 310000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [310000] Driven wr_data = e6cb12e7385300000000000000000000, wr_en = 1
+#    Time: 290 ns Started: 290 ns  Scope: hdl_top.axi4_slave_agent_bfm[0].axi4_slave_agent_bfm_h.axi4_slave_mon_bfm_h.S_A.AXI_WA_STABLE_SIGNALS_CHECK File: hdl_top/slave_assertions.sv Line: 84
+# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 310000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [310000] Driven wr_data = cb12e738530000000000000000000000, wr_en = 1
 # UVM_INFO vip/axi_slave_vip/axi4_slave_seq_item_converter.sv(198) @ 310000: reporter [axi4_slave_seq_item_conv_class] Converting write response: input bid = 0
-# UVM_INFO tb/env/cpu_scoreboard.sv(157) @ 310000: uvm_test_top.env_h.env.sb [SCB] W : DATA='{3723600181, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0} STRB='{15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0} LAST=0
+# UVM_INFO tb/env/cpu_scoreboard.sv(157) @ 310000: uvm_test_top.env_h.env.sb [SCB] W : DATA='{4053874024, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0} STRB='{15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0} LAST=0
 # UVM_INFO tb/active_agent/cpu_active_monitor.sv(47) @ 310000: uvm_test_top.env_h.env.active_agent.mon [ACTIVE_MON] 
 # =====================================================
 # ACTIVE MONITOR CAPTURED WRITE TRANSACTION
@@ -732,9 +752,9 @@ run -all
 # TIME    : 310000
 # WR_EN   : 1
 # FULL    : 0
-# WR_DATA : 0xe6cb12e7385300000000000000000000
+# WR_DATA : 0xcb12e738530000000000000000000000
 # =====================================================
-# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 310000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = e6cb12e7385300000000000000000000
+# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 310000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = cb12e738530000000000000000000000
 # UVM_INFO tb/env/cpu_scoreboard.sv(453) @ 310000: uvm_test_top.env_h.env.sb [SCB] Packet word stored: word_count=2/2 wr_ptr=10
 # UVM_INFO tb/env/cpu_scoreboard.sv(468) @ 310000: uvm_test_top.env_h.env.sb [SCB] Packet completed: Start=8 End=9
 # UVM_INFO tb/env/cpu_scoreboard.sv(785) @ 310000: uvm_test_top.env_h.env.sb [SCB] Packet Received : Start=8 End=9
@@ -744,10 +764,11 @@ run -all
 # UVM_INFO tb/env/cpu_scoreboard.sv(613) @ 310000: uvm_test_top.env_h.env.sb [SCB] decode_packet called. Packet words received = 2
 # UVM_INFO tb/env/cpu_scoreboard.sv(642) @ 310000: uvm_test_top.env_h.env.sb [SCB] Decoded Header: SOP=aa TXN_ID=7 ADDR=f61889e0 LEN=2 SIZE=2 BURST=1 LOCK=1 CACHE=0 PROT=0
 # UVM_INFO tb/env/cpu_scoreboard.sv(657) @ 310000: uvm_test_top.env_h.env.sb [SCB] Packet calculation: BEATS=3 TOTAL_BITS=256
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 310000: uvm_test_top.env_h.env.sb [DATA] data[0] = 8b7a83ff
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 310000: uvm_test_top.env_h.env.sb [DATA] data[1] = 356439e6
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 310000: uvm_test_top.env_h.env.sb [DATA] data[2] = cb12e738
-# UVM_INFO tb/env/cpu_scoreboard.sv(716) @ 310000: uvm_test_top.env_h.env.sb [SCB] EOP decoded = 53
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 310000: uvm_test_top.env_h.env.sb [DATA] data[0] = 7a83ff35
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 310000: uvm_test_top.env_h.env.sb [DATA] data[1] = 6439e6cb
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 310000: uvm_test_top.env_h.env.sb [DATA] data[2] = 12e73853
+# UVM_INFO tb/env/cpu_scoreboard.sv(716) @ 310000: uvm_test_top.env_h.env.sb [SCB] EOP decoded = 00
+# UVM_ERROR tb/env/cpu_scoreboard.sv(720) @ 310000: uvm_test_top.env_h.env.sb [SCB] EOP mismatch
 # UVM_INFO tb/env/cpu_scoreboard.sv(752) @ 310000: uvm_test_top.env_h.env.sb [SCB] Write packet identified. Storing into expected write queue
 # UVM_INFO tb/env/cpu_scoreboard.sv(524) @ 310000: uvm_test_top.env_h.env.sb [SCB] FIFO Read completed: rd_ptr=10 empty=1 full=0
 # ** Error: Assertion error.
@@ -767,9 +788,10 @@ run -all
 #                 LOCK   : 1
 #                 CACHE  : 0
 #                 PROT   : 0
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 330000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[0] = f
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 330000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[1] = f
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 330000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[2] = f
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 330000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[3] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 330000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[2] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 330000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[1] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 330000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[0] = 1
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 330000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[0]   = 8b7a83ff
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 330000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[1]   = 356439e6
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 330000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[2]   = cb12e738
@@ -795,15 +817,29 @@ run -all
 #   parent sequence (full name)  string        51    uvm_test_top.env_h.env.active_agent.seqr.cpu_wr_seq
 #   sequencer                    string        40    uvm_test_top.env_h.env.active_agent.seqr           
 # ------------------------------------------------------------------------------------------------------
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 330000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[0] = f
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 330000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[1] = f
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 330000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[2] = f
+# UVM_INFO tb/active_agent/cpu_driver.sv(101) @ 330000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] 
+# 
+# ================ DRIVER WRITE TRANSACTION ================
+# TXN_ID : 3
+# ADDR   : 613bc9a8
+# LEN    : 2
+# SIZE   : 2
+# BURST  : 1
+# LOCK   : 0
+# CACHE  : 1
+# PROT   : 7
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 330000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[3] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 330000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[2] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 330000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[1] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 330000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[0] = 1
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 330000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[0] = 347d695e
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 330000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[1] = faf5cc47
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 330000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[2] = ac27b514
-# UVM_INFO tb/active_agent/cpu_driver.sv(157) @ 330000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [330000] Packet size before padding = 176 bits
+# UVM_INFO tb/active_agent/cpu_driver.sv(157) @ 330000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [330000] Packet size before padding = 168 bits
 # UVM_INFO tb/active_agent/cpu_driver.sv(168) @ 330000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] Packet size after padding = 256 bits
-# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 330000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [330000] Prepared 128-bit FIFO Word = aa3613bc9a8248ffff347d695efaf5cc
+# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 330000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [330000] Prepared 128-bit FIFO Word = aa3613bc9a8248ff347d695efaf5cc47
+# UVM_INFO vip/axi_slave_vip/axi4_slave_seq_item_converter.sv(198) @ 330000: reporter [axi4_slave_seq_item_conv_class] Converting write response: input bid = 0
+# UVM_INFO tb/env/cpu_scoreboard.sv(157) @ 330000: uvm_test_top.env_h.env.sb [SCB] W : DATA='{612629469, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0} STRB='{15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0} LAST=0
 # UVM_INFO vip/axi_slave_vip/axi4_slave_seq_item_converter.sv(198) @ 330000: reporter [axi4_slave_seq_item_conv_class] Converting write response: input bid = 0
 # UVM_INFO vip/axi_slave_vip/axi4_slave_driver_proxy.sv(209) @ 330000: uvm_test_top.env_h.axi_vip_env_h.slave_agt_h.axi4_slave_drv_proxy_h [axi4_slave_driver_proxy] WRITE_ADDRESS_CHANNEL::Received write address packet, awid = 2
 # UVM_INFO vip/axi_slave_vip/axi4_slave_driver_proxy.sv(399) @ 330000: uvm_test_top.env_h.axi_vip_env_h.slave_agt_h.axi4_slave_drv_proxy_h [SLAVE_STATUS_CHECK] AFTER_FORK_JOIN_ANY:: SLAVE_ADDRESS_CHANNEL_STATUS =
@@ -812,8 +848,6 @@ run -all
 #  WAITING
 # UVM_INFO vip/axi_slave_vip/axi4_slave_driver_proxy.sv(401) @ 330000: uvm_test_top.env_h.axi_vip_env_h.slave_agt_h.axi4_slave_drv_proxy_h [SLAVE_STATUS_CHECK] AFTER_FORK_JOIN_ANY:: SLAVE_WRESP_CHANNEL_STATUS = 
 # WAITING
-# UVM_INFO vip/axi_slave_vip/axi4_slave_seq_item_converter.sv(198) @ 330000: reporter [axi4_slave_seq_item_conv_class] Converting write response: input bid = 0
-# UVM_INFO tb/env/cpu_scoreboard.sv(157) @ 330000: uvm_test_top.env_h.env.sb [SCB] W : DATA='{4280583163, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0} STRB='{15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0} LAST=0
 # -------------------------------------------------------------------------------
 # Name                 Type           Size  Value                                
 # -------------------------------------------------------------------------------
@@ -835,11 +869,11 @@ run -all
 # -------------------------------------------------------------------------------
 # ** Error: Assertion error.
 #    Time: 330 ns Started: 330 ns  Scope: hdl_top.axi4_slave_agent_bfm[0].axi4_slave_agent_bfm_h.axi4_slave_mon_bfm_h.S_A.AXI_WD_UNKNOWN_SIGNALS_CHECK File: hdl_top/slave_assertions.sv Line: 124
-# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 350000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [350000] Driven wr_data = aa3613bc9a8248ffff347d695efaf5cc, wr_en = 1
-# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 350000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [350000] Prepared 128-bit FIFO Word = 47ac27b5145300000000000000000000
-# UVM_INFO hdl_top/slave_agent_bfm/axi4_slave_driver_bfm.sv(138) @ 350000: reporter [AXI4_SLAVE_DRIVER_BFM] INSIDE WRITE_ADDRESS_PHASE
+# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 350000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [350000] Driven wr_data = aa3613bc9a8248ff347d695efaf5cc47, wr_en = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 350000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [350000] Prepared 128-bit FIFO Word = ac27b514530000000000000000000000
 # UVM_INFO vip/axi_slave_vip/axi4_slave_seq_item_converter.sv(198) @ 350000: reporter [axi4_slave_seq_item_conv_class] Converting write response: input bid = 0
 # UVM_INFO tb/env/cpu_scoreboard.sv(157) @ 350000: uvm_test_top.env_h.env.sb [SCB] W : DATA='{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0} STRB='{15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0} LAST=1
+# UVM_INFO hdl_top/slave_agent_bfm/axi4_slave_driver_bfm.sv(138) @ 350000: reporter [AXI4_SLAVE_DRIVER_BFM] INSIDE WRITE_ADDRESS_PHASE
 # UVM_INFO tb/active_agent/cpu_active_monitor.sv(47) @ 350000: uvm_test_top.env_h.env.active_agent.mon [ACTIVE_MON] 
 # =====================================================
 # ACTIVE MONITOR CAPTURED WRITE TRANSACTION
@@ -847,14 +881,14 @@ run -all
 # TIME    : 350000
 # WR_EN   : 1
 # FULL    : 0
-# WR_DATA : 0xaa3613bc9a8248ffff347d695efaf5cc
+# WR_DATA : 0xaa3613bc9a8248ff347d695efaf5cc47
 # =====================================================
-# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 350000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = aa3613bc9a8248ffff347d695efaf5cc
+# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 350000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = aa3613bc9a8248ff347d695efaf5cc47
 # UVM_INFO tb/env/cpu_scoreboard.sv(427) @ 350000: uvm_test_top.env_h.env.sb [SCB] SOP detected: Packet start=10 LEN=2 BEATS=3 EXPECTED_WORDS=2
 # UVM_INFO tb/env/cpu_scoreboard.sv(453) @ 350000: uvm_test_top.env_h.env.sb [SCB] Packet word stored: word_count=1/2 wr_ptr=11
 # ** Error: Assertion error.
 #    Time: 350 ns Started: 350 ns  Scope: hdl_top.axi4_slave_agent_bfm[0].axi4_slave_agent_bfm_h.axi4_slave_mon_bfm_h.S_A.AXI_WD_UNKNOWN_SIGNALS_CHECK File: hdl_top/slave_assertions.sv Line: 124
-# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 370000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [370000] Driven wr_data = 47ac27b5145300000000000000000000, wr_en = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 370000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [370000] Driven wr_data = ac27b514530000000000000000000000, wr_en = 1
 # UVM_INFO vip/axi_slave_vip/axi4_slave_seq_item_converter.sv(198) @ 370000: reporter [axi4_slave_seq_item_conv_class] Converting write response: input bid = 0
 # UVM_INFO vip/axi_slave_vip/axi4_slave_driver_proxy.sv(228) @ 370000: uvm_test_top.env_h.axi_vip_env_h.slave_agt_h.axi4_slave_drv_proxy_h [axi4_slave_driver_proxy] W data sampled | beats=257 wlast=0
 # UVM_INFO tb/active_agent/cpu_active_monitor.sv(47) @ 370000: uvm_test_top.env_h.env.active_agent.mon [ACTIVE_MON] 
@@ -864,9 +898,9 @@ run -all
 # TIME    : 370000
 # WR_EN   : 1
 # FULL    : 0
-# WR_DATA : 0x47ac27b5145300000000000000000000
+# WR_DATA : 0xac27b514530000000000000000000000
 # =====================================================
-# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 370000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = 47ac27b5145300000000000000000000
+# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 370000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = ac27b514530000000000000000000000
 # UVM_INFO tb/env/cpu_scoreboard.sv(453) @ 370000: uvm_test_top.env_h.env.sb [SCB] Packet word stored: word_count=2/2 wr_ptr=12
 # UVM_INFO tb/env/cpu_scoreboard.sv(468) @ 370000: uvm_test_top.env_h.env.sb [SCB] Packet completed: Start=10 End=11
 # UVM_INFO vip/axi_slave_vip/axi4_slave_driver_proxy.sv(336) @ 370000: uvm_test_top.env_h.axi_vip_env_h.slave_agt_h.axi4_slave_drv_proxy_h [axi4_slave_driver_proxy] WRITE_RESPONSE_CHANNEL::Slave driver sending out bid = 0
@@ -877,10 +911,11 @@ run -all
 # UVM_INFO tb/env/cpu_scoreboard.sv(613) @ 370000: uvm_test_top.env_h.env.sb [SCB] decode_packet called. Packet words received = 2
 # UVM_INFO tb/env/cpu_scoreboard.sv(642) @ 370000: uvm_test_top.env_h.env.sb [SCB] Decoded Header: SOP=aa TXN_ID=3 ADDR=613bc9a8 LEN=2 SIZE=2 BURST=1 LOCK=0 CACHE=1 PROT=7
 # UVM_INFO tb/env/cpu_scoreboard.sv(657) @ 370000: uvm_test_top.env_h.env.sb [SCB] Packet calculation: BEATS=3 TOTAL_BITS=256
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 370000: uvm_test_top.env_h.env.sb [DATA] data[0] = 347d695e
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 370000: uvm_test_top.env_h.env.sb [DATA] data[1] = faf5cc47
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 370000: uvm_test_top.env_h.env.sb [DATA] data[2] = ac27b514
-# UVM_INFO tb/env/cpu_scoreboard.sv(716) @ 370000: uvm_test_top.env_h.env.sb [SCB] EOP decoded = 53
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 370000: uvm_test_top.env_h.env.sb [DATA] data[0] = 7d695efa
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 370000: uvm_test_top.env_h.env.sb [DATA] data[1] = f5cc47ac
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 370000: uvm_test_top.env_h.env.sb [DATA] data[2] = 27b51453
+# UVM_INFO tb/env/cpu_scoreboard.sv(716) @ 370000: uvm_test_top.env_h.env.sb [SCB] EOP decoded = 00
+# UVM_ERROR tb/env/cpu_scoreboard.sv(720) @ 370000: uvm_test_top.env_h.env.sb [SCB] EOP mismatch
 # UVM_INFO tb/env/cpu_scoreboard.sv(752) @ 370000: uvm_test_top.env_h.env.sb [SCB] Write packet identified. Storing into expected write queue
 # UVM_INFO tb/env/cpu_scoreboard.sv(524) @ 370000: uvm_test_top.env_h.env.sb [SCB] FIFO Read completed: rd_ptr=12 empty=1 full=0
 # UVM_INFO tb/active_agent/cpu_driver.sv(209) @ 390000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] wr_en deasserted. Packet transmission finished.
@@ -898,9 +933,10 @@ run -all
 #                 LOCK   : 0
 #                 CACHE  : 1
 #                 PROT   : 7
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 390000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[0] = f
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 390000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[1] = f
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 390000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[2] = f
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 390000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[3] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 390000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[2] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 390000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[1] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 390000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[0] = 1
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 390000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[0]   = 347d695e
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 390000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[1]   = faf5cc47
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 390000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[2]   = ac27b514
@@ -926,24 +962,40 @@ run -all
 #   parent sequence (full name)  string        51    uvm_test_top.env_h.env.active_agent.seqr.cpu_wr_seq
 #   sequencer                    string        40    uvm_test_top.env_h.env.active_agent.seqr           
 # ------------------------------------------------------------------------------------------------------
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 390000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[0] = f
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 390000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[1] = f
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 390000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[2] = f
+# UVM_INFO tb/active_agent/cpu_driver.sv(101) @ 390000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] 
+# 
+# ================ DRIVER WRITE TRANSACTION ================
+# TXN_ID : a
+# ADDR   : 4c772e70
+# LEN    : 2
+# SIZE   : 2
+# BURST  : 1
+# LOCK   : 0
+# CACHE  : 0
+# PROT   : 4
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 390000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[3] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 390000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[2] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 390000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[1] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 390000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[0] = 1
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 390000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[0] = 3927a4c2
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 390000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[1] = 08c7ee3d
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 390000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[2] = ef066a3c
-# UVM_INFO tb/active_agent/cpu_driver.sv(157) @ 390000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [390000] Packet size before padding = 176 bits
+# UVM_INFO tb/active_agent/cpu_driver.sv(157) @ 390000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [390000] Packet size before padding = 168 bits
 # UVM_INFO tb/active_agent/cpu_driver.sv(168) @ 390000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] Packet size after padding = 256 bits
-# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 390000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [390000] Prepared 128-bit FIFO Word = aaa4c772e702484fff3927a4c208c7ee
+# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 390000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [390000] Prepared 128-bit FIFO Word = aaa4c772e702484f3927a4c208c7ee3d
 # UVM_INFO hdl_top/slave_agent_bfm/axi4_slave_driver_bfm.sv(187) @ 390000: reporter [AXI4_SLAVE_DRIVER_BFM] INSIDE WRITE DATA CHANNEL
-# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 410000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [410000] Driven wr_data = aaa4c772e702484fff3927a4c208c7ee, wr_en = 1
-# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 410000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [410000] Prepared 128-bit FIFO Word = 3def066a3c5300000000000000000000
+# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 410000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [410000] Driven wr_data = aaa4c772e702484f3927a4c208c7ee3d, wr_en = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 410000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [410000] Prepared 128-bit FIFO Word = ef066a3c530000000000000000000000
+# UVM_INFO vip/axi_slave_vip/axi4_slave_seq_item_converter.sv(198) @ 410000: reporter [axi4_slave_seq_item_conv_class] Converting write response: input bid = 0
+# UVM_INFO vip/axi_slave_vip/axi4_slave_monitor_proxy.sv(195) @ 410000: uvm_test_top.env_h.axi_vip_env_h.slave_agt_h.axi4_slave_mon_proxy_h [axi4_slave_monitor_proxy] Sending out write response, bid = 0
+# UVM_INFO tb/env/cpu_scoreboard.sv(176) @ 410000: uvm_test_top.env_h.env.sb [SCB] B : ID=0 RESP=0
+# UVM_ERROR tb/env/cpu_scoreboard.sv(233) @ 410000: uvm_test_top.env_h.env.sb [SCB] Write beat count mismatch
 # UVM_INFO vip/axi_slave_vip/axi4_slave_seq_item_converter.sv(198) @ 410000: reporter [axi4_slave_seq_item_conv_class] Converting write response: input bid = 0
 # PACKET INPUT SIZE IS 0
 # ------------------------------------------------------------
 # Name           Type           Size  Value                   
 # ------------------------------------------------------------
-# axi4_slave_tx  axi4_slave_tx  -     @1976                   
+# axi4_slave_tx  axi4_slave_tx  -     @1984                   
 #   tx_type      string         5     WRITE                   
 #   awid         string         6     AWID_0                  
 #   awaddr       integral       32    'h0                     
@@ -954,8 +1006,8 @@ run -all
 #   awcache      string         16    WRITE_BUFFERABLE        
 #   awprot       string         24    WRITE_NORMAL_SECURE_DATA
 #   awqos        integral       4     'h0                     
-#   wdata[0]     integral       32    'hddf1a135              
-#   wdata[1]     integral       32    'hff2483fb              
+#   wdata[0]     integral       32    'hf1a13568              
+#   wdata[1]     integral       32    'h2483fbdd              
 #   wstrb[0]     integral       4     'hf                     
 #   wstrb[1]     integral       4     'hf                     
 #   wlast        integral       1     'd0                     
@@ -965,10 +1017,6 @@ run -all
 #   buser        integral       4     'd0                     
 # ------------------------------------------------------------
 # UVM_INFO @ 410000: uvm_test_top.env_h.axi_vip_env_h.slave_agt_h.axi4_slave_write_seqr_h [Sequencer] Dropping response for sequence 2, sequence not found.  Probable cause: sequence exited or has been killed
-# UVM_INFO vip/axi_slave_vip/axi4_slave_seq_item_converter.sv(198) @ 410000: reporter [axi4_slave_seq_item_conv_class] Converting write response: input bid = 0
-# UVM_INFO vip/axi_slave_vip/axi4_slave_monitor_proxy.sv(195) @ 410000: uvm_test_top.env_h.axi_vip_env_h.slave_agt_h.axi4_slave_mon_proxy_h [axi4_slave_monitor_proxy] Sending out write response, bid = 0
-# UVM_INFO tb/env/cpu_scoreboard.sv(176) @ 410000: uvm_test_top.env_h.env.sb [SCB] B : ID=0 RESP=0
-# UVM_ERROR tb/env/cpu_scoreboard.sv(233) @ 410000: uvm_test_top.env_h.env.sb [SCB] Write beat count mismatch
 # UVM_INFO tb/active_agent/cpu_active_monitor.sv(47) @ 410000: uvm_test_top.env_h.env.active_agent.mon [ACTIVE_MON] 
 # =====================================================
 # ACTIVE MONITOR CAPTURED WRITE TRANSACTION
@@ -976,12 +1024,12 @@ run -all
 # TIME    : 410000
 # WR_EN   : 1
 # FULL    : 0
-# WR_DATA : 0xaaa4c772e702484fff3927a4c208c7ee
+# WR_DATA : 0xaaa4c772e702484f3927a4c208c7ee3d
 # =====================================================
-# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 410000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = aaa4c772e702484fff3927a4c208c7ee
+# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 410000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = aaa4c772e702484f3927a4c208c7ee3d
 # UVM_INFO tb/env/cpu_scoreboard.sv(427) @ 410000: uvm_test_top.env_h.env.sb [SCB] SOP detected: Packet start=12 LEN=2 BEATS=3 EXPECTED_WORDS=2
 # UVM_INFO tb/env/cpu_scoreboard.sv(453) @ 410000: uvm_test_top.env_h.env.sb [SCB] Packet word stored: word_count=1/2 wr_ptr=13
-# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 430000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [430000] Driven wr_data = 3def066a3c5300000000000000000000, wr_en = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 430000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [430000] Driven wr_data = ef066a3c530000000000000000000000, wr_en = 1
 # UVM_INFO tb/active_agent/cpu_active_monitor.sv(47) @ 430000: uvm_test_top.env_h.env.active_agent.mon [ACTIVE_MON] 
 # =====================================================
 # ACTIVE MONITOR CAPTURED WRITE TRANSACTION
@@ -989,9 +1037,9 @@ run -all
 # TIME    : 430000
 # WR_EN   : 1
 # FULL    : 0
-# WR_DATA : 0x3def066a3c5300000000000000000000
+# WR_DATA : 0xef066a3c530000000000000000000000
 # =====================================================
-# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 430000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = 3def066a3c5300000000000000000000
+# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 430000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = ef066a3c530000000000000000000000
 # UVM_INFO tb/env/cpu_scoreboard.sv(453) @ 430000: uvm_test_top.env_h.env.sb [SCB] Packet word stored: word_count=2/2 wr_ptr=14
 # UVM_INFO tb/env/cpu_scoreboard.sv(468) @ 430000: uvm_test_top.env_h.env.sb [SCB] Packet completed: Start=12 End=13
 # UVM_INFO tb/env/cpu_scoreboard.sv(785) @ 430000: uvm_test_top.env_h.env.sb [SCB] Packet Received : Start=12 End=13
@@ -1001,10 +1049,11 @@ run -all
 # UVM_INFO tb/env/cpu_scoreboard.sv(613) @ 430000: uvm_test_top.env_h.env.sb [SCB] decode_packet called. Packet words received = 2
 # UVM_INFO tb/env/cpu_scoreboard.sv(642) @ 430000: uvm_test_top.env_h.env.sb [SCB] Decoded Header: SOP=aa TXN_ID=10 ADDR=4c772e70 LEN=2 SIZE=2 BURST=1 LOCK=0 CACHE=0 PROT=4
 # UVM_INFO tb/env/cpu_scoreboard.sv(657) @ 430000: uvm_test_top.env_h.env.sb [SCB] Packet calculation: BEATS=3 TOTAL_BITS=256
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 430000: uvm_test_top.env_h.env.sb [DATA] data[0] = 3927a4c2
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 430000: uvm_test_top.env_h.env.sb [DATA] data[1] = 08c7ee3d
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 430000: uvm_test_top.env_h.env.sb [DATA] data[2] = ef066a3c
-# UVM_INFO tb/env/cpu_scoreboard.sv(716) @ 430000: uvm_test_top.env_h.env.sb [SCB] EOP decoded = 53
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 430000: uvm_test_top.env_h.env.sb [DATA] data[0] = 27a4c208
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 430000: uvm_test_top.env_h.env.sb [DATA] data[1] = c7ee3def
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 430000: uvm_test_top.env_h.env.sb [DATA] data[2] = 066a3c53
+# UVM_INFO tb/env/cpu_scoreboard.sv(716) @ 430000: uvm_test_top.env_h.env.sb [SCB] EOP decoded = 00
+# UVM_ERROR tb/env/cpu_scoreboard.sv(720) @ 430000: uvm_test_top.env_h.env.sb [SCB] EOP mismatch
 # UVM_INFO tb/env/cpu_scoreboard.sv(752) @ 430000: uvm_test_top.env_h.env.sb [SCB] Write packet identified. Storing into expected write queue
 # UVM_INFO tb/env/cpu_scoreboard.sv(524) @ 430000: uvm_test_top.env_h.env.sb [SCB] FIFO Read completed: rd_ptr=14 empty=1 full=0
 # UVM_INFO tb/active_agent/cpu_driver.sv(209) @ 450000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] wr_en deasserted. Packet transmission finished.
@@ -1022,9 +1071,10 @@ run -all
 #                 LOCK   : 0
 #                 CACHE  : 0
 #                 PROT   : 4
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 450000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[0] = f
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 450000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[1] = f
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 450000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[2] = f
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 450000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[3] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 450000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[2] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 450000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[1] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 450000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[0] = 1
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 450000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[0]   = 3927a4c2
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 450000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[1]   = 08c7ee3d
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 450000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[2]   = ef066a3c
@@ -1050,17 +1100,29 @@ run -all
 #   parent sequence (full name)  string        51    uvm_test_top.env_h.env.active_agent.seqr.cpu_wr_seq
 #   sequencer                    string        40    uvm_test_top.env_h.env.active_agent.seqr           
 # ------------------------------------------------------------------------------------------------------
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 450000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[0] = f
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 450000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[1] = f
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 450000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[2] = f
+# UVM_INFO tb/active_agent/cpu_driver.sv(101) @ 450000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] 
+# 
+# ================ DRIVER WRITE TRANSACTION ================
+# TXN_ID : f
+# ADDR   : ee89bb08
+# LEN    : 2
+# SIZE   : 2
+# BURST  : 1
+# LOCK   : 0
+# CACHE  : 3
+# PROT   : 6
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 450000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[3] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 450000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[2] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 450000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[1] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 450000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[0] = 1
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 450000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[0] = 32eb0a7f
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 450000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[1] = c06a24a3
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 450000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[2] = ef3b7b32
-# UVM_INFO tb/active_agent/cpu_driver.sv(157) @ 450000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [450000] Packet size before padding = 176 bits
+# UVM_INFO tb/active_agent/cpu_driver.sv(157) @ 450000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [450000] Packet size before padding = 168 bits
 # UVM_INFO tb/active_agent/cpu_driver.sv(168) @ 450000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] Packet size after padding = 256 bits
-# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 450000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [450000] Prepared 128-bit FIFO Word = aafee89bb08249efff32eb0a7fc06a24
-# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 470000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [470000] Driven wr_data = aafee89bb08249efff32eb0a7fc06a24, wr_en = 1
-# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 470000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [470000] Prepared 128-bit FIFO Word = a3ef3b7b325300000000000000000000
+# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 450000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [450000] Prepared 128-bit FIFO Word = aafee89bb08249ef32eb0a7fc06a24a3
+# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 470000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [470000] Driven wr_data = aafee89bb08249ef32eb0a7fc06a24a3, wr_en = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 470000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [470000] Prepared 128-bit FIFO Word = ef3b7b32530000000000000000000000
 # UVM_INFO tb/active_agent/cpu_active_monitor.sv(47) @ 470000: uvm_test_top.env_h.env.active_agent.mon [ACTIVE_MON] 
 # =====================================================
 # ACTIVE MONITOR CAPTURED WRITE TRANSACTION
@@ -1068,12 +1130,12 @@ run -all
 # TIME    : 470000
 # WR_EN   : 1
 # FULL    : 0
-# WR_DATA : 0xaafee89bb08249efff32eb0a7fc06a24
+# WR_DATA : 0xaafee89bb08249ef32eb0a7fc06a24a3
 # =====================================================
-# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 470000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = aafee89bb08249efff32eb0a7fc06a24
+# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 470000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = aafee89bb08249ef32eb0a7fc06a24a3
 # UVM_INFO tb/env/cpu_scoreboard.sv(427) @ 470000: uvm_test_top.env_h.env.sb [SCB] SOP detected: Packet start=14 LEN=2 BEATS=3 EXPECTED_WORDS=2
 # UVM_INFO tb/env/cpu_scoreboard.sv(453) @ 470000: uvm_test_top.env_h.env.sb [SCB] Packet word stored: word_count=1/2 wr_ptr=15
-# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 490000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [490000] Driven wr_data = a3ef3b7b325300000000000000000000, wr_en = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 490000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [490000] Driven wr_data = ef3b7b32530000000000000000000000, wr_en = 1
 # UVM_INFO tb/active_agent/cpu_active_monitor.sv(47) @ 490000: uvm_test_top.env_h.env.active_agent.mon [ACTIVE_MON] 
 # =====================================================
 # ACTIVE MONITOR CAPTURED WRITE TRANSACTION
@@ -1081,9 +1143,9 @@ run -all
 # TIME    : 490000
 # WR_EN   : 1
 # FULL    : 0
-# WR_DATA : 0xa3ef3b7b325300000000000000000000
+# WR_DATA : 0xef3b7b32530000000000000000000000
 # =====================================================
-# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 490000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = a3ef3b7b325300000000000000000000
+# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 490000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = ef3b7b32530000000000000000000000
 # UVM_INFO tb/env/cpu_scoreboard.sv(453) @ 490000: uvm_test_top.env_h.env.sb [SCB] Packet word stored: word_count=2/2 wr_ptr=16
 # UVM_INFO tb/env/cpu_scoreboard.sv(468) @ 490000: uvm_test_top.env_h.env.sb [SCB] Packet completed: Start=14 End=15
 # UVM_INFO tb/env/cpu_scoreboard.sv(785) @ 490000: uvm_test_top.env_h.env.sb [SCB] Packet Received : Start=14 End=15
@@ -1093,10 +1155,11 @@ run -all
 # UVM_INFO tb/env/cpu_scoreboard.sv(613) @ 490000: uvm_test_top.env_h.env.sb [SCB] decode_packet called. Packet words received = 2
 # UVM_INFO tb/env/cpu_scoreboard.sv(642) @ 490000: uvm_test_top.env_h.env.sb [SCB] Decoded Header: SOP=aa TXN_ID=15 ADDR=ee89bb08 LEN=2 SIZE=2 BURST=1 LOCK=0 CACHE=3 PROT=6
 # UVM_INFO tb/env/cpu_scoreboard.sv(657) @ 490000: uvm_test_top.env_h.env.sb [SCB] Packet calculation: BEATS=3 TOTAL_BITS=256
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 490000: uvm_test_top.env_h.env.sb [DATA] data[0] = 32eb0a7f
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 490000: uvm_test_top.env_h.env.sb [DATA] data[1] = c06a24a3
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 490000: uvm_test_top.env_h.env.sb [DATA] data[2] = ef3b7b32
-# UVM_INFO tb/env/cpu_scoreboard.sv(716) @ 490000: uvm_test_top.env_h.env.sb [SCB] EOP decoded = 53
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 490000: uvm_test_top.env_h.env.sb [DATA] data[0] = eb0a7fc0
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 490000: uvm_test_top.env_h.env.sb [DATA] data[1] = 6a24a3ef
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 490000: uvm_test_top.env_h.env.sb [DATA] data[2] = 3b7b3253
+# UVM_INFO tb/env/cpu_scoreboard.sv(716) @ 490000: uvm_test_top.env_h.env.sb [SCB] EOP decoded = 00
+# UVM_ERROR tb/env/cpu_scoreboard.sv(720) @ 490000: uvm_test_top.env_h.env.sb [SCB] EOP mismatch
 # UVM_INFO tb/env/cpu_scoreboard.sv(752) @ 490000: uvm_test_top.env_h.env.sb [SCB] Write packet identified. Storing into expected write queue
 # UVM_INFO tb/env/cpu_scoreboard.sv(524) @ 490000: uvm_test_top.env_h.env.sb [SCB] FIFO Read completed: rd_ptr=16 empty=1 full=0
 # UVM_INFO tb/active_agent/cpu_driver.sv(209) @ 510000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] wr_en deasserted. Packet transmission finished.
@@ -1114,9 +1177,10 @@ run -all
 #                 LOCK   : 0
 #                 CACHE  : 3
 #                 PROT   : 6
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 510000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[0] = f
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 510000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[1] = f
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 510000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[2] = f
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 510000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[3] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 510000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[2] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 510000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[1] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 510000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[0] = 1
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 510000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[0]   = 32eb0a7f
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 510000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[1]   = c06a24a3
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 510000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[2]   = ef3b7b32
@@ -1142,18 +1206,30 @@ run -all
 #   parent sequence (full name)  string        51    uvm_test_top.env_h.env.active_agent.seqr.cpu_wr_seq
 #   sequencer                    string        40    uvm_test_top.env_h.env.active_agent.seqr           
 # ------------------------------------------------------------------------------------------------------
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 510000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[0] = f
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 510000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[1] = f
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 510000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[2] = f
+# UVM_INFO tb/active_agent/cpu_driver.sv(101) @ 510000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] 
+# 
+# ================ DRIVER WRITE TRANSACTION ================
+# TXN_ID : e
+# ADDR   : f376ecec
+# LEN    : 2
+# SIZE   : 2
+# BURST  : 1
+# LOCK   : 0
+# CACHE  : 1
+# PROT   : 2
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 510000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[3] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 510000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[2] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 510000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[1] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 510000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[0] = 1
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 510000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[0] = ea9cd4a4
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 510000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[1] = 2c6bfcc6
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 510000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[2] = 3a9eeda3
-# UVM_INFO tb/active_agent/cpu_driver.sv(157) @ 510000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [510000] Packet size before padding = 176 bits
+# UVM_INFO tb/active_agent/cpu_driver.sv(157) @ 510000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [510000] Packet size before padding = 168 bits
 # UVM_INFO tb/active_agent/cpu_driver.sv(168) @ 510000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] Packet size after padding = 256 bits
-# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 510000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [510000] Prepared 128-bit FIFO Word = aaef376ecec248afffea9cd4a42c6bfc
+# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 510000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [510000] Prepared 128-bit FIFO Word = aaef376ecec248afea9cd4a42c6bfcc6
 # UVM_INFO tb/passive_agent/cpu_passive_monitor.sv(41) @ 510000: uvm_test_top.env_h.env.passive_agent.mon [PASSIVE_MON] TIME=510000 RD_EN=1 EMPTY=0 RD_DATA=0xxxxxxxxx
-# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 530000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [530000] Driven wr_data = aaef376ecec248afffea9cd4a42c6bfc, wr_en = 1
-# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 530000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [530000] Prepared 128-bit FIFO Word = c63a9eeda35300000000000000000000
+# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 530000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [530000] Driven wr_data = aaef376ecec248afea9cd4a42c6bfcc6, wr_en = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 530000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [530000] Prepared 128-bit FIFO Word = 3a9eeda3530000000000000000000000
 # UVM_INFO tb/active_agent/cpu_active_monitor.sv(47) @ 530000: uvm_test_top.env_h.env.active_agent.mon [ACTIVE_MON] 
 # =====================================================
 # ACTIVE MONITOR CAPTURED WRITE TRANSACTION
@@ -1161,12 +1237,12 @@ run -all
 # TIME    : 530000
 # WR_EN   : 1
 # FULL    : 0
-# WR_DATA : 0xaaef376ecec248afffea9cd4a42c6bfc
+# WR_DATA : 0xaaef376ecec248afea9cd4a42c6bfcc6
 # =====================================================
-# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 530000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = aaef376ecec248afffea9cd4a42c6bfc
+# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 530000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = aaef376ecec248afea9cd4a42c6bfcc6
 # UVM_INFO tb/env/cpu_scoreboard.sv(427) @ 530000: uvm_test_top.env_h.env.sb [SCB] SOP detected: Packet start=16 LEN=2 BEATS=3 EXPECTED_WORDS=2
 # UVM_INFO tb/env/cpu_scoreboard.sv(453) @ 530000: uvm_test_top.env_h.env.sb [SCB] Packet word stored: word_count=1/2 wr_ptr=17
-# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 550000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [550000] Driven wr_data = c63a9eeda35300000000000000000000, wr_en = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 550000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [550000] Driven wr_data = 3a9eeda3530000000000000000000000, wr_en = 1
 # UVM_INFO tb/active_agent/cpu_active_monitor.sv(47) @ 550000: uvm_test_top.env_h.env.active_agent.mon [ACTIVE_MON] 
 # =====================================================
 # ACTIVE MONITOR CAPTURED WRITE TRANSACTION
@@ -1174,9 +1250,9 @@ run -all
 # TIME    : 550000
 # WR_EN   : 1
 # FULL    : 0
-# WR_DATA : 0xc63a9eeda35300000000000000000000
+# WR_DATA : 0x3a9eeda3530000000000000000000000
 # =====================================================
-# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 550000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = c63a9eeda35300000000000000000000
+# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 550000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = 3a9eeda3530000000000000000000000
 # UVM_INFO tb/env/cpu_scoreboard.sv(453) @ 550000: uvm_test_top.env_h.env.sb [SCB] Packet word stored: word_count=2/2 wr_ptr=18
 # UVM_INFO tb/env/cpu_scoreboard.sv(468) @ 550000: uvm_test_top.env_h.env.sb [SCB] Packet completed: Start=16 End=17
 # UVM_INFO tb/env/cpu_scoreboard.sv(785) @ 550000: uvm_test_top.env_h.env.sb [SCB] Packet Received : Start=16 End=17
@@ -1186,10 +1262,11 @@ run -all
 # UVM_INFO tb/env/cpu_scoreboard.sv(613) @ 550000: uvm_test_top.env_h.env.sb [SCB] decode_packet called. Packet words received = 2
 # UVM_INFO tb/env/cpu_scoreboard.sv(642) @ 550000: uvm_test_top.env_h.env.sb [SCB] Decoded Header: SOP=aa TXN_ID=14 ADDR=f376ecec LEN=2 SIZE=2 BURST=1 LOCK=0 CACHE=1 PROT=2
 # UVM_INFO tb/env/cpu_scoreboard.sv(657) @ 550000: uvm_test_top.env_h.env.sb [SCB] Packet calculation: BEATS=3 TOTAL_BITS=256
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 550000: uvm_test_top.env_h.env.sb [DATA] data[0] = ea9cd4a4
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 550000: uvm_test_top.env_h.env.sb [DATA] data[1] = 2c6bfcc6
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 550000: uvm_test_top.env_h.env.sb [DATA] data[2] = 3a9eeda3
-# UVM_INFO tb/env/cpu_scoreboard.sv(716) @ 550000: uvm_test_top.env_h.env.sb [SCB] EOP decoded = 53
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 550000: uvm_test_top.env_h.env.sb [DATA] data[0] = 9cd4a42c
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 550000: uvm_test_top.env_h.env.sb [DATA] data[1] = 6bfcc63a
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 550000: uvm_test_top.env_h.env.sb [DATA] data[2] = 9eeda353
+# UVM_INFO tb/env/cpu_scoreboard.sv(716) @ 550000: uvm_test_top.env_h.env.sb [SCB] EOP decoded = 00
+# UVM_ERROR tb/env/cpu_scoreboard.sv(720) @ 550000: uvm_test_top.env_h.env.sb [SCB] EOP mismatch
 # UVM_INFO tb/env/cpu_scoreboard.sv(752) @ 550000: uvm_test_top.env_h.env.sb [SCB] Write packet identified. Storing into expected write queue
 # UVM_INFO tb/env/cpu_scoreboard.sv(524) @ 550000: uvm_test_top.env_h.env.sb [SCB] FIFO Read completed: rd_ptr=18 empty=1 full=0
 # UVM_INFO tb/active_agent/cpu_driver.sv(209) @ 570000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] wr_en deasserted. Packet transmission finished.
@@ -1207,9 +1284,10 @@ run -all
 #                 LOCK   : 0
 #                 CACHE  : 1
 #                 PROT   : 2
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 570000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[0] = f
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 570000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[1] = f
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 570000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[2] = f
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 570000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[3] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 570000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[2] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 570000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[1] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 570000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[0] = 1
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 570000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[0]   = ea9cd4a4
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 570000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[1]   = 2c6bfcc6
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 570000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[2]   = 3a9eeda3
@@ -1235,18 +1313,30 @@ run -all
 #   parent sequence (full name)  string        51    uvm_test_top.env_h.env.active_agent.seqr.cpu_wr_seq
 #   sequencer                    string        40    uvm_test_top.env_h.env.active_agent.seqr           
 # ------------------------------------------------------------------------------------------------------
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 570000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[0] = f
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 570000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[1] = f
-# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 570000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[2] = f
+# UVM_INFO tb/active_agent/cpu_driver.sv(101) @ 570000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] 
+# 
+# ================ DRIVER WRITE TRANSACTION ================
+# TXN_ID : 0
+# ADDR   : 96a5c41c
+# LEN    : 2
+# SIZE   : 2
+# BURST  : 1
+# LOCK   : 0
+# CACHE  : 1
+# PROT   : 4
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 570000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[3] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 570000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[2] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 570000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[1] = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(106) @ 570000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] STROBE[0] = 1
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 570000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[0] = 35157723
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 570000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[1] = abc7c376
 # UVM_INFO tb/active_agent/cpu_driver.sv(111) @ 570000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] DATA[2] = 67affb66
-# UVM_INFO tb/active_agent/cpu_driver.sv(157) @ 570000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [570000] Packet size before padding = 176 bits
+# UVM_INFO tb/active_agent/cpu_driver.sv(157) @ 570000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [570000] Packet size before padding = 168 bits
 # UVM_INFO tb/active_agent/cpu_driver.sv(168) @ 570000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] Packet size after padding = 256 bits
-# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 570000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [570000] Prepared 128-bit FIFO Word = aa096a5c41c248cfff35157723abc7c3
+# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 570000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [570000] Prepared 128-bit FIFO Word = aa096a5c41c248cf35157723abc7c376
 # UVM_INFO tb/passive_agent/cpu_passive_monitor.sv(41) @ 570000: uvm_test_top.env_h.env.passive_agent.mon [PASSIVE_MON] TIME=570000 RD_EN=1 EMPTY=0 RD_DATA=0xaa005300000000000000000000000000
-# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 590000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [590000] Driven wr_data = aa096a5c41c248cfff35157723abc7c3, wr_en = 1
-# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 590000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [590000] Prepared 128-bit FIFO Word = 7667affb665300000000000000000000
+# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 590000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [590000] Driven wr_data = aa096a5c41c248cf35157723abc7c376, wr_en = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(183) @ 590000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [590000] Prepared 128-bit FIFO Word = 67affb66530000000000000000000000
 # UVM_INFO hdl_top/slave_agent_bfm/axi4_slave_driver_bfm.sv(149) @ 590000: reporter [SLAVE_DRIVER_WADDR_PHASE] outside of awvalid
 # UVM_INFO tb/passive_agent/cpu_passive_monitor.sv(41) @ 590000: uvm_test_top.env_h.env.passive_agent.mon [PASSIVE_MON] TIME=590000 RD_EN=1 EMPTY=0 RD_DATA=0xxxxxxxxx
 # UVM_INFO tb/active_agent/cpu_active_monitor.sv(47) @ 590000: uvm_test_top.env_h.env.active_agent.mon [ACTIVE_MON] 
@@ -1256,14 +1346,12 @@ run -all
 # TIME    : 590000
 # WR_EN   : 1
 # FULL    : 0
-# WR_DATA : 0xaa096a5c41c248cfff35157723abc7c3
+# WR_DATA : 0xaa096a5c41c248cf35157723abc7c376
 # =====================================================
-# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 590000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = aa096a5c41c248cfff35157723abc7c3
+# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 590000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = aa096a5c41c248cf35157723abc7c376
 # UVM_INFO tb/env/cpu_scoreboard.sv(427) @ 590000: uvm_test_top.env_h.env.sb [SCB] SOP detected: Packet start=18 LEN=2 BEATS=3 EXPECTED_WORDS=2
 # UVM_INFO tb/env/cpu_scoreboard.sv(453) @ 590000: uvm_test_top.env_h.env.sb [SCB] Packet word stored: word_count=1/2 wr_ptr=19
-# ** Error: Assertion error.
-#    Time: 590 ns Started: 590 ns  Scope: hdl_top.axi4_slave_agent_bfm[0].axi4_slave_agent_bfm_h.axi4_slave_mon_bfm_h.S_A.AXI_WA_UNKNOWN_SIGNALS_CHECK File: hdl_top/slave_assertions.sv Line: 93
-# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 610000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [610000] Driven wr_data = 7667affb665300000000000000000000, wr_en = 1
+# UVM_INFO tb/active_agent/cpu_driver.sv(200) @ 610000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] [610000] Driven wr_data = 67affb66530000000000000000000000, wr_en = 1
 # UVM_INFO tb/active_agent/cpu_active_monitor.sv(47) @ 610000: uvm_test_top.env_h.env.active_agent.mon [ACTIVE_MON] 
 # =====================================================
 # ACTIVE MONITOR CAPTURED WRITE TRANSACTION
@@ -1271,9 +1359,9 @@ run -all
 # TIME    : 610000
 # WR_EN   : 1
 # FULL    : 0
-# WR_DATA : 0x7667affb665300000000000000000000
+# WR_DATA : 0x67affb66530000000000000000000000
 # =====================================================
-# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 610000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = 7667affb665300000000000000000000
+# UVM_INFO tb/env/cpu_scoreboard.sv(392) @ 610000: uvm_test_top.env_h.env.sb [SCB] CPU write received : wr_data = 67affb66530000000000000000000000
 # UVM_INFO tb/env/cpu_scoreboard.sv(453) @ 610000: uvm_test_top.env_h.env.sb [SCB] Packet word stored: word_count=2/2 wr_ptr=20
 # UVM_INFO tb/env/cpu_scoreboard.sv(468) @ 610000: uvm_test_top.env_h.env.sb [SCB] Packet completed: Start=18 End=19
 # UVM_INFO tb/env/cpu_scoreboard.sv(785) @ 610000: uvm_test_top.env_h.env.sb [SCB] Packet Received : Start=18 End=19
@@ -1283,16 +1371,15 @@ run -all
 # UVM_INFO tb/env/cpu_scoreboard.sv(613) @ 610000: uvm_test_top.env_h.env.sb [SCB] decode_packet called. Packet words received = 2
 # UVM_INFO tb/env/cpu_scoreboard.sv(642) @ 610000: uvm_test_top.env_h.env.sb [SCB] Decoded Header: SOP=aa TXN_ID=0 ADDR=96a5c41c LEN=2 SIZE=2 BURST=1 LOCK=0 CACHE=1 PROT=4
 # UVM_INFO tb/env/cpu_scoreboard.sv(657) @ 610000: uvm_test_top.env_h.env.sb [SCB] Packet calculation: BEATS=3 TOTAL_BITS=256
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 610000: uvm_test_top.env_h.env.sb [DATA] data[0] = 35157723
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 610000: uvm_test_top.env_h.env.sb [DATA] data[1] = abc7c376
-# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 610000: uvm_test_top.env_h.env.sb [DATA] data[2] = 67affb66
-# UVM_INFO tb/env/cpu_scoreboard.sv(716) @ 610000: uvm_test_top.env_h.env.sb [SCB] EOP decoded = 53
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 610000: uvm_test_top.env_h.env.sb [DATA] data[0] = 157723ab
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 610000: uvm_test_top.env_h.env.sb [DATA] data[1] = c7c37667
+# UVM_INFO tb/env/cpu_scoreboard.sv(699) @ 610000: uvm_test_top.env_h.env.sb [DATA] data[2] = affb6653
+# UVM_INFO tb/env/cpu_scoreboard.sv(716) @ 610000: uvm_test_top.env_h.env.sb [SCB] EOP decoded = 00
+# UVM_ERROR tb/env/cpu_scoreboard.sv(720) @ 610000: uvm_test_top.env_h.env.sb [SCB] EOP mismatch
 # UVM_INFO tb/env/cpu_scoreboard.sv(752) @ 610000: uvm_test_top.env_h.env.sb [SCB] Write packet identified. Storing into expected write queue
 # UVM_INFO tb/env/cpu_scoreboard.sv(524) @ 610000: uvm_test_top.env_h.env.sb [SCB] FIFO Read completed: rd_ptr=20 empty=1 full=0
 # ** Error: Assertion error.
 #    Time: 610 ns Started: 590 ns  Scope: hdl_top.axi4_slave_agent_bfm[0].axi4_slave_agent_bfm_h.axi4_slave_mon_bfm_h.S_A.AXI_WA_STABLE_SIGNALS_CHECK File: hdl_top/slave_assertions.sv Line: 84
-# ** Error: Assertion error.
-#    Time: 610 ns Started: 610 ns  Scope: hdl_top.axi4_slave_agent_bfm[0].axi4_slave_agent_bfm_h.axi4_slave_mon_bfm_h.S_A.AXI_WA_UNKNOWN_SIGNALS_CHECK File: hdl_top/slave_assertions.sv Line: 93
 # UVM_INFO tb/active_agent/cpu_driver.sv(209) @ 630000: uvm_test_top.env_h.env.active_agent.drv [cpu_driver] wr_en deasserted. Packet transmission finished.
 # ** Warning: (vsim-PLI-3070) tb/active_agent/cpu_driver.sv(53): $sformatf : Too many arguments.
 #    Time: 630 ns  Iteration: 1  Region: /cpu_tb_pkg::cpu_driver::run_phase
@@ -1308,9 +1395,10 @@ run -all
 #                 LOCK   : 0
 #                 CACHE  : 1
 #                 PROT   : 4
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 630000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[0] = f
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 630000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[1] = f
-# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 630000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[2] = f
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 630000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[3] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 630000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[2] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 630000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[1] = 1
+# UVM_INFO tb/active_agent/cpu_write_seq.sv(52) @ 630000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] STROBE[0] = 1
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 630000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[0]   = 35157723
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 630000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[1]   = abc7c376
 # UVM_INFO tb/active_agent/cpu_write_seq.sv(57) @ 630000: uvm_test_top.env_h.env.active_agent.seqr@@cpu_wr_seq [cpu_write_seq] DATA[2]   = 67affb66
@@ -1341,9 +1429,9 @@ run -all
 # --- UVM Report Summary ---
 # 
 # ** Report counts by severity
-# UVM_INFO :  491
+# UVM_INFO :  521
 # UVM_WARNING :    0
-# UVM_ERROR :    1
+# UVM_ERROR :   11
 # UVM_FATAL :    0
 # ** Report counts by id
 # [ACTIVE_MON]    20
@@ -1353,7 +1441,7 @@ run -all
 # [PASSIVE_MON]     3
 # [Questa UVM]     2
 # [RNTST]     1
-# [SCB]   166
+# [SCB]   176
 # [SLAVE_ASSERTIONS]     1
 # [SLAVE_DRIVER_WADDR_PHASE]     3
 # [SLAVE_STATUS_CHECK]     6
@@ -1367,9 +1455,11 @@ run -all
 # [axi4_slave_driver_proxy]     5
 # [axi4_slave_monitor_proxy]     1
 # [axi4_slave_seq_item_conv_class]     9
-# [cpu_driver]   150
-# [cpu_write_seq]    80
+# [cpu_driver]   170
+# [cpu_write_seq]    90
 # ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
 #    Time: 630 ns  Iteration: 66  Instance: /tb_top
-# 1
-# Break in Task uvm_pkg/uvm_root::run_test at /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh line 430
+# ** Error: Assertion error.
+#    Time: 630 ns Started: 590 ns  Scope: hdl_top.axi4_slave_agent_bfm[0].axi4_slave_agent_bfm_h.axi4_slave_mon_bfm_h.S_A.AXI_WA_VALID_STABLE_CHECK File: /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh Line: 102
+# End time: 15:07:21 on Aug 18,2026, Elapsed time: 0:00:04
+# Errors: 9, Warnings: 38

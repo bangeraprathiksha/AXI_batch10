@@ -25,8 +25,8 @@ class cpu_read_seq extends uvm_sequence #(axi_seq_item);
       data.size() == 1;
       data[0] == 32'h00000000;
 
-      strobe.size() == 1;
-      strobe[0] == 4'h0;
+//      strobe.size() == 1;
+  //    strobe[0] == 4'h0;
     })
       `uvm_fatal(get_type_name(), "Randomization Failed")
 

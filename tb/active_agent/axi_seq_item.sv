@@ -8,7 +8,7 @@ class axi_seq_item extends uvm_sequence_item;
   rand bit [1:0]  lock;
   rand bit [1:0]  cache;
   rand bit [2:0]  prot;
-  rand bit [3:0]  strobe[];
+  rand bit [3:0]  strobe;
   rand bit [31:0]  data[];
 
   `uvm_object_utils(axi_seq_item)
@@ -33,12 +33,10 @@ class axi_seq_item extends uvm_sequence_item;
   
   constraint c_arrays {
     data.size()   == len+1;
-    strobe.size() == len+1;
   }
 
   constraint c_strobe {
-    foreach(strobe[i])
-      strobe[i] == 4'hF;
+         strobe == 4'hF;
   }
   
   constraint c_solve_order {
