@@ -107,7 +107,7 @@ PROT   : %0d",
 
     foreach(pkt.data[i])
       `uvm_info(get_type_name(),
-        $sformatf("DATA[%0d] = %08h", i, pkt.data[i]),
+        $sformatf("DATA[%0d] = %0h", i, pkt.data[i]),
         UVM_LOW)
 
     for (int i = 7; i >= 0; i--)
@@ -137,7 +137,7 @@ PROT   : %0d",
     for (int i = 2; i >= 0; i--)
       packet_bits.push_back(pkt.prot[i]);
 
-    foreach (pkt.strobe[i]) begin
+/*    foreach (pkt.strobe[i]) begin
       //for (int j = 3; j >= 0; j--)
         packet_bits.push_back(pkt.strobe[i]);
     end
@@ -146,7 +146,16 @@ PROT   : %0d",
       for (int j = 8; j >= 0; j--)
         packet_bits.push_back(pkt.data[i][j]);
     end
+*/
+// STROBE - fixed 4 bits
+for (int i = 3; i >= 0; i--)
+  packet_bits.push_back(pkt.strobe[i]);
 
+// DATA - array of 8-bit values
+foreach (pkt.data[i]) begin
+  for (int j = 7; j >= 0; j--)
+    packet_bits.push_back(pkt.data[i][j]);
+end
     for (int i = 7; i >= 0; i--)
       packet_bits.push_back(EOP[i]);
 

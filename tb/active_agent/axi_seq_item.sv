@@ -32,7 +32,7 @@ class axi_seq_item extends uvm_sequence_item;
   
   
   constraint c_arrays {
-    data.size()   == (len+1)*4;
+   soft  data.size()   == ((len+1)*(1<<size));
   }
 
   constraint c_strobe {
@@ -43,5 +43,5 @@ class axi_seq_item extends uvm_sequence_item;
   	solve len before data;
   	solve len before strobe;
   }
-  
+
 endclass
